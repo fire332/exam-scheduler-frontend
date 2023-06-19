@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "checkJs": true,
+    "composite": true,
+    "skipLibCheck": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "emitDeclarationOnly": true, // workaround for noEmit not allowed in referenced tsconfig
+
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": [
+    ".eslintrc.cjs",
+    ".prettierrc.cjs",
+    "postcss.config.js",
+    "tailwind.config.js"
+  ]
+}
