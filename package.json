@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "chromatic": "chromatic --exit-zero-on-changes"
   },
   "engines": {
     "node": ">=18",
@@ -35,6 +36,7 @@
     "@storybook/addon-links": "7.0.22",
     "@storybook/addon-styling": "^1.3.0",
     "@storybook/blocks": "7.0.22",
+    "@storybook/jest": "^0.1.0",
     "@storybook/react": "7.0.22",
     "@storybook/react-vite": "7.0.22",
     "@storybook/testing-library": "0.0.14-next.2",
@@ -47,6 +49,7 @@
     "@typescript-eslint/eslint-plugin": "6.0.0-alpha.138",
     "@typescript-eslint/parser": "6.0.0-alpha.156",
     "@vitejs/plugin-react-swc": "^3.3.2",
+    "chromatic": "^6.19.8",
     "eslint": "^8.43.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-react-hooks": "^4.6.0",
