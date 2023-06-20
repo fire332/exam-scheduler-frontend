@@ -1,0 +1,36 @@
+name: Chromatic
+on: [push]
+
+jobs:
+  chromatic-deployment:
+    runs-on: ubuntu-latest
+    environment: chromatic
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # 👈 Required to retrieve git history
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: '^8.6.2'
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: 'package.json'
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+      - name: Publish to Chromatic
+        if: github.ref != 'refs/heads/main'
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          exitOnceUploaded: true
+      - name: Publish to Chromatic and auto accept changes
+        if: github.ref == 'refs/heads/main'
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          autoAcceptChanges: true
+          exitOnceUploaded: true
