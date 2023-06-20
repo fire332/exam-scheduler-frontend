@@ -1,0 +1,29 @@
+name: Cache dependencies
+
+# This workflow is needed as caches generated in pull requests cannot be reused in other pull requests
+# See: https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows#restrictions-for-accessing-a-cache
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  cache-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: '^8.6.2'
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: 'package.json'
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+      - name: Pre-bundle dependencies
+        run: pnpm dlx vite optimize
