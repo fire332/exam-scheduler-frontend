@@ -10,5 +10,5 @@ const meta = {
 export default meta;
 
 export const FICLogoBW: Story = {
-  render: () => <FICLogoBWComponent width="300" height="auto" />
+  render: () => <FICLogoBWComponent width="400" height="auto" />
 };

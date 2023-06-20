@@ -1,8 +1,7 @@
-export default function FICLogoBW({
-  props
-}: {
-  props: React.SVGAttributes<SVGSVGElement>;
-}) {
+export default function FICLogoBW(props: React.SVGAttributes<SVGSVGElement>) {
+  const fillClassNames = 'fill-surface-700 dark:fill-white';
+  const lineClassName = 'fill-none stroke-surface-700 dark:stroke-white';
+
   return (
     <svg
       id="Layer_2"
@@ -12,64 +11,64 @@ export default function FICLogoBW({
       {...props}
     >
       <path
-        className="fill-surface-900 dark:fill-white"
+        className={fillClassNames}
         d="M1.15,28.31s52.25-1.22,81.19,6.12c8.91,2.21,9.8,7.72,9.89,12.75a42.91,42.91,0,0,0,.55,5.06A17.3,17.3,0,0,0,81.56,40C50,29.26,1.15,28.31,1.15,28.31Z"
         transform="translate(-0.22 -0.22)"
       />
       <path
-        className="fill-surface-900 dark:fill-white"
+        className={fillClassNames}
         d="M101.55,22.92c2.42-2.18,7.07-11-10.22-9.44C48.05,16.34.22,23.13.22,23.13s67.17-7,92-4.06c8.69,1,6,7.73,5.6,8.61A29,29,0,0,1,101.53,23Z"
         transform="translate(-0.22 -0.22)"
       />
       <path
-        className="fill-surface-900 dark:fill-white"
+        className={fillClassNames}
         d="M67.7,23.09C45.89,22.39.63,25.66.63,25.66s46.51-2.32,81.52,3c8.69,1.19,10.89,5.47,11.16,9a36.43,36.43,0,0,1,1.8-5.1C97.24,25.57,89.86,22.67,67.7,23.09Z"
         transform="translate(-0.22 -0.22)"
       />
       <path
-        className="fill-surface-900 dark:fill-white"
+        className={fillClassNames}
         d="M93.36,54.85s3.45,12.26,19.35,15.8c24.9,5.79,43.9-9.2,43.9-9.2a34.4,34.4,0,0,1-30,18.73C98.56,80.32,93.36,54.85,93.36,54.85Z"
         transform="translate(-0.22 -0.22)"
       />
       <path
-        className="fill-surface-900 dark:fill-white"
+        className={fillClassNames}
         d="M101.65,22.83a28.47,28.47,0,0,0-3.92,4.91c-2.07,5.41,3.57,9.91,12.68,10.32,29.21-.2,41.93-14.76,41.93-14.76L158.44.22s-7.37,14.09-25.78,22c-14.44,6.63-29.25,7.21-31.21,4A2.82,2.82,0,0,1,101.65,22.83Z"
         transform="translate(-0.22 -0.22)"
       />
       <path
-        className="fill-surface-900 dark:fill-white"
+        className={fillClassNames}
         d="M95.13,32.43c-1.07,4.23-2,17,23.3,16,33.41-2.47,54.63-26.77,54.63-26.77l-8.75,21.93s-20.77,21.11-50.77,17.14c-20.62-2.79-21.18-17-21.18-17A29.59,29.59,0,0,1,95.13,32.43Z"
         transform="translate(-0.22 -0.22)"
       />
       <line
-        className="fill-none stroke-surface-900 dark:stroke-white"
+        className={lineClassName}
         x1="196.74"
         y1="0.09"
         x2="196.74"
         y2="88.78"
       />
       <path
-        className="fill-surface-900 dark:fill-white"
+        className={fillClassNames}
         d="M34.17,86.57V66.91c0-1.34-.16-6.49-.23-7.59a5.7,5.7,0,0,0-3.32-4.63h9.57V86.57Z"
         transform="translate(-0.22 -0.22)"
       />
       <path
-        className="fill-surface-900 dark:fill-white"
+        className={fillClassNames}
         d="M32.87,45.93A3.81,3.81,0,0,1,36.7,42.1a3.75,3.75,0,0,1,3.75,3.83,3.7,3.7,0,0,1-3.61,3.75A3.83,3.83,0,0,1,32.87,45.93Z"
         transform="translate(-0.22 -0.22)"
       />
       <path
-        className="fill-surface-900 dark:fill-white"
+        className={fillClassNames}
         d="M7.57,86.57h9.18a6.35,6.35,0,0,1-2.87-3.74,54.59,54.59,0,0,1-.34-7.61V56.62h6.14V54.68H13.54V51.79c0-7.14,2.45-10.06,6.72-10.06s5.45,4.48,5.45,4.48l4.13-2.39s-2.68-4.07-9.68-4.07S7.56,44.27,7.56,52.6Z"
         transform="translate(-0.22 -0.22)"
       />
       <path
-        className="fill-surface-900 dark:fill-white"
+        className={fillClassNames}
         d="M71.22,61.17c-1.57-3.62-4-4.81-6.17-4.81-5.4,0-9.89,4.56-9.89,13.56,0,8.72,3.57,13.89,10.86,13.89,3,0,5.73-1.31,8.23-4l1.39,1.6a14.81,14.81,0,0,1-11.7,5.46c-9.83,0-16-6.39-16-15.46,0-9.89,7.15-17.54,17.17-17,4.28.24,8.37,2.13,10.17,4.22Z"
         transform="translate(-0.22 -0.22)"
       />
       <rect
-        className="fill-surface-900 dark:fill-white"
+        className={fillClassNames}
         x="220.58"
         y="32.84"
         width="106.79"
@@ -91,7 +90,7 @@ export default function FICLogoBW({
         transform="translate(-0.22 -0.22)"
       />
       <text
-        className="fill-surface-900 dark:fill-white"
+        className={fillClassNames}
         style={{
           fontSize: '11.66px',
           fontFamily: 'PFDINSerif-Medium,PF DIN Serif',
