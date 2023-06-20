@@ -1,4 +1,4 @@
-name: Pull Request Code Quality Checks
+name: Code Quality Checks
 on: [pull_request]
 
 jobs:
