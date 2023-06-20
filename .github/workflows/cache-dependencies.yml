@@ -25,3 +25,5 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
+      - name: Pre-bundle dependencies
+        run: pnpm dlx vite optimize
