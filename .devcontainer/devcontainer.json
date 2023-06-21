@@ -1,0 +1,14 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:18",
+  "updateContentCommand": "pnpm install && pnpm dlx vite optimize",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "bradlc.vscode-tailwindcss",
+        "christian-kohler.npm-intellisense"
+      ]
+    }
+  }
+}
