@@ -1,7 +1,6 @@
 {
   "image": "mcr.microsoft.com/devcontainers/typescript-node:18",
   "updateContentCommand": "pnpm install && pnpm dlx vite optimize",
-  "postCreateCommand": "pnpm run dev",
   "customizations": {
     "vscode": {
       "extensions": [
