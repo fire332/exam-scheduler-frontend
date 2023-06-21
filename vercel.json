@@ -1,0 +1,13 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://exam-scheduler-backend.onrender.com/:path*"
+    },
+    {
+      "source": "/oauth/v2/:path*",
+      "destination": "https://fancy-runnable-unicorn-dfmpp0.zitadel.cloud/oauth/v2/:path*"
+    }
+  ]
+}

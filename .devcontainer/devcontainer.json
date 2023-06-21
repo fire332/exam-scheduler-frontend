@@ -3,5 +3,6 @@
   "features": {
     "ghcr.io/devcontainers-contrib/features/vercel-cli:1": {}
   },
-  "postCreateCommand": "pnpm install && vercel dev"
+  "updateContentCommand": "pnpm install && pnpm dlx vite optimize",
+  "postCreateCommand": "vercel dev"
 }
