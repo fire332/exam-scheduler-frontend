@@ -4,5 +4,15 @@
     "ghcr.io/devcontainers-contrib/features/vercel-cli:1": {}
   },
   "updateContentCommand": "pnpm install && pnpm dlx vite optimize",
-  "postCreateCommand": "vercel dev"
+  "postCreateCommand": "pnpm run dev",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "bradlc.vscode-tailwindcss",
+        "christian-kohler.npm-intellisense"
+      ]
+    }
+  }
 }
