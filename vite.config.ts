@@ -1,10 +1,11 @@
 import react from '@vitejs/plugin-react-swc';
-import { defineConfig } from 'vite';
+import { env } from 'node:process';
+import { defineConfig, type UserConfigExport } from 'vite';
 
-// https://vitejs.dev/config/
-export default defineConfig({
+const config = {
   plugins: [react()],
   server: {
+    host: env.CODESPACES ? true : undefined,
     proxy: {
       '/api/': {
         target: 'https://exam-scheduler-backend.onrender.com/',
@@ -16,4 +17,7 @@ export default defineConfig({
       }
     }
   }
-});
+} satisfies UserConfigExport;
+
+// https://vitejs.dev/config/
+export default defineConfig(config);
