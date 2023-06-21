@@ -1,0 +1,7 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:18",
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/vercel-cli:1": {}
+  },
+  "postCreateCommand": "pnpm install && vercel dev"
+}
