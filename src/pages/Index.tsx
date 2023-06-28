@@ -1,34 +1,23 @@
-import { useState } from 'react';
-
-import '../App.css';
-import reactLogo from '../assets/react.svg';
-import viteLogo from '/vite.svg';
+import Button from '../components/Button/Button';
+import FICLogoColoured from '../components/FICLogo/FICLogoColoured';
 
 function Index() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="mx-auto max-w-lg ">
+        <header className="flex h-32 w-full items-center">
+          <FICLogoColoured height="48" />
+        </header>
+
+        <div className="prose my-8 text-center lg:prose-xl">
+          <h3 className="text-surface-700">Exam Scheduling</h3>
+          <h4 className="font-light text-surface-700">
+            Schedule and apply to invigilate exams
+          </h4>
+        </div>
+
+        <Button text="SIGN IN" />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   );
 }

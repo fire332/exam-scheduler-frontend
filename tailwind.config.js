@@ -7,6 +7,9 @@ const config = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   plugins: [formsPlugin, typographyPlugin],
   theme: {
+    fontFamily: {
+      sans: ['Nunito Sans']
+    },
     extend: {
       colors: {
         primary: {
