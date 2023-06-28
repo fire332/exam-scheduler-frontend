@@ -22,13 +22,13 @@
     "@rest-hooks/hooks": "^3.1.14",
     "@rest-hooks/react": "^7.4.2",
     "@rest-hooks/rest": "^6.7.0",
+    "@tanstack/router": "0.0.1-beta.89",
     "classnames": "^2.3.2",
     "framer-motion": "^10.12.16",
     "oidc-react": "^3.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.44.3",
-    "react-router-dom": "^6.13.0"
+    "react-hook-form": "^7.44.3"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "7.0.22",
