@@ -1,6 +1,6 @@
 import { RootRoute, Route, Router } from '@tanstack/router';
 import App from './App';
-import Index from './pages';
+import Index from './pages/Index';
 
 const rootRoute = new RootRoute({
   component: App
