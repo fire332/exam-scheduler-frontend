@@ -3,7 +3,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://exam-scheduler-backend.onrender.com/:path*"
+      "destination": "https://fic-exam-scheduler-api-6f324588b682.herokuapp.com/:path*"
     },
     {
       "source": "/oauth/v2/:path*",
