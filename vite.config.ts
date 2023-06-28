@@ -8,7 +8,7 @@ const config = {
     host: env.CODESPACES ? true : undefined,
     proxy: {
       '/api/': {
-        target: 'https://exam-scheduler-backend.onrender.com/',
+        target: 'https://fic-exam-scheduler-api-6f324588b682.herokuapp.com/',
         changeOrigin: true
       },
       '/oauth/v2/': {
