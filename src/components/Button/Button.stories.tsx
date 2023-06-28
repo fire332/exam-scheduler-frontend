@@ -4,11 +4,12 @@ import ButtonComponent from './Button';
 type Story = StoryObj<typeof ButtonComponent>;
 
 const meta = {
-  component: ButtonComponent
+  component: ButtonComponent,
+  argTypes: { children: { control: 'text' } }
 } satisfies Meta<typeof ButtonComponent>;
 
 export default meta;
 
 export const Button: Story = {
-  render: (args) => <ButtonComponent {...args} />
+  render: (args) => <ButtonComponent {...args}>{args.children}</ButtonComponent>
 };

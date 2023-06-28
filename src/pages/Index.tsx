@@ -10,13 +10,13 @@ function Index() {
         </header>
 
         <div className="prose my-8 text-center lg:prose-xl">
-          <h3 className="text-surface-700">Exam Scheduling</h3>
+          <h3 className="!mb-0 text-surface-700">Exam Scheduling</h3>
           <h4 className="font-light text-surface-700">
             Schedule and apply to invigilate exams
           </h4>
         </div>
 
-        <Button text="SIGN IN" />
+        <Button>SIGN IN</Button>
       </div>
     </>
   );
