@@ -1,7 +1,10 @@
+import { useAuth } from 'oidc-react';
 import Button from '../components/Button/Button';
 import FICLogoColoured from '../components/FICLogo/FICLogoColoured';
 
 function Index() {
+  const { signIn } = useAuth();
+
   return (
     <>
       <div className="mx-auto max-w-lg ">
@@ -16,7 +19,7 @@ function Index() {
           </h4>
         </div>
 
-        <Button>SIGN IN</Button>
+        <Button onClick={() => void signIn()}>SIGN IN</Button>
       </div>
     </>
   );
