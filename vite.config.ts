@@ -9,11 +9,11 @@ const config = {
     proxy: {
       '/api/': {
         target: 'https://fic-exam-scheduler-api-6f324588b682.herokuapp.com/',
-        changeOrigin: true
+        rewrite: (path) => path.replace(/^\/api\//, '')
       },
-      '/oauth/v2/': {
-        target: 'https://fancy-runnable-unicorn-dfmpp0.zitadel.cloud/oauth/v2/',
-        changeOrigin: true
+      '/auth/': {
+        target: 'https://fancy-runnable-unicorn-dfmpp0.zitadel.cloud/',
+        rewrite: (path) => path.replace(/^\/auth\//, '')
       }
     }
   }
