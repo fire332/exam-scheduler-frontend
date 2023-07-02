@@ -14,6 +14,8 @@ const oidcConfig = {
   authority: 'https://fancy-runnable-unicorn-dfmpp0.zitadel.cloud/',
   clientId: '219095101232709889@exam-scheduler',
   redirectUri: window.location.origin,
+  responseType: 'code',
+  scope: 'openid profile email',
   autoSignIn: false
 };
 
