@@ -32,12 +32,14 @@ const meta = {
   args: {
     active: true,
     shortText: 'Short Label',
-    longText: 'Long Label'
+    longText: 'Long Label',
+    icon: 'DefaultIcon'
   },
   argTypes: {
     icon: {
       control: 'radio',
       options: {
+        DefaultIcon: 'DefaultIcon',
         CalendarIcon: 'CalendarIcon',
         EnvelopeClosedIcon: 'EnvelopeClosedIcon',
         EyeClosedIcon: 'EyeClosedIcon'
