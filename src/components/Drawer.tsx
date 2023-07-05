@@ -7,14 +7,19 @@ interface Props {
 
 export default function Drawer({
   children,
-  onClick,
+  onClick
 }: React.PropsWithChildren<Props>) {
-  return <nav className='h-full flex flex-col max-w-[80px] min-w-[4rem] justify-center'>
-    <button onClick={onClick} className="h-16 flex justify-center items-center">
-        <HamburgerMenuIcon/>
-    </button>
-    <div className='w-full flex flex-grow flex-col justify-center items-center'>
+  return (
+    <nav className="inline-flex h-full min-w-[4rem] max-w-[80px] flex-col justify-center">
+      <button
+        onClick={onClick}
+        className="flex h-16 items-center justify-center"
+      >
+        <HamburgerMenuIcon />
+      </button>
+      <div className="flex w-full flex-grow flex-col items-center justify-center">
         {children}
-    </div>
-    </nav>;
+      </div>
+    </nav>
+  );
 }
