@@ -1,5 +1,5 @@
 import { useAuth } from 'oidc-react';
-import Button from '../components/Button/Button';
+import Button from '../components/ButtonHero';
 import FICLogoColoured from '../components/FICLogo/FICLogoColoured';
 
 function Index() {

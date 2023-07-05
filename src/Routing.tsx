@@ -1,6 +1,8 @@
 import { RootRoute, Route, Router } from '@tanstack/router';
 import App from './App';
-import Index from './pages/Index';
+import Dashboard from './routes/Dashboard';
+import ExamRequests from './routes/ExamRequests';
+import Index from './routes/Index';
 
 const rootRoute = new RootRoute({
   component: App
@@ -12,7 +14,20 @@ const indexRoute = new Route({
   component: Index
 });
 
-const routeTree = rootRoute.addChildren([indexRoute]);
+const dashboardRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: '/dashboard',
+  component: Dashboard
+});
+
+const examRequestsRoute = new Route({
+  getParentRoute: () => dashboardRoute,
+  path: '/exam-requests',
+  component: ExamRequests
+});
+
+const routeTree = rootRoute.addChildren([indexRoute, dashboardRoute]);
+dashboardRoute.addChildren([examRequestsRoute]);
 const router = new Router({ routeTree });
 
 export { router };
