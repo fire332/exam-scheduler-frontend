@@ -1,4 +1,5 @@
 import { Entity, createResource } from '@rest-hooks/rest';
+import AuthdEndpoint from './AuthdEndpoint';
 
 interface TimeRange {
   startTime: number;
@@ -19,7 +20,9 @@ export class ExamRequest extends Entity {
 }
 
 export const ExamRequestResource = createResource({
-  urlPrefix: 'https://fic-exam-scheduler-api-6f324588b682.herokuapp.com/',
-  path: '/examRequest',
-  schema: ExamRequest
+  urlPrefix: 'https://fic-exam-scheduler-api-6f324588b682.herokuapp.com',
+  path: '/examRequest/:id',
+  schema: ExamRequest,
+
+  Endpoint: AuthdEndpoint
 });

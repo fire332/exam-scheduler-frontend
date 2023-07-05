@@ -35,9 +35,9 @@ dependencies:
   luxon:
     specifier: ^3.3.0
     version: 3.3.0
-  oidc-react:
-    specifier: ^3.2.2
-    version: 3.2.2(react-dom@18.2.0)(react@18.2.0)
+  oidc-client-ts:
+    specifier: ^2.2.4
+    version: 2.2.4
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -47,6 +47,9 @@ dependencies:
   react-hook-form:
     specifier: ^7.45.1
     version: 7.45.1(react@18.2.0)
+  react-oidc-context:
+    specifier: ^2.2.2
+    version: 2.2.2(oidc-client-ts@2.2.4)(react@18.2.0)
 
 devDependencies:
   '@storybook/addon-essentials':
@@ -8922,17 +8925,6 @@ packages:
       jwt-decode: 3.1.2
     dev: false
 
-  /oidc-react@3.2.2(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-xt5DtgiI6yxS+7ff2nBUZR49YfovfAApgpYhmsMoAutlqb41uZUcmquiIWRtbEXLe7UF5Zs8i1eQ1jFpr/+4JQ==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || || ^17.0.0 ||  ^18.0.0
-    dependencies:
-      oidc-client-ts: 2.2.4
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
   /on-finished@2.4.1:
     resolution: {integrity: sha512-oVlzkg3ENAhCk2zdv7IJwd/QUD4z2RxRwpkcGY8psCVcCYZNq4wYnVWALHM+brtuJjePWiYF/ClmuDr8Ch5+kg==}
     engines: {node: '>= 0.8'}
@@ -10014,6 +10006,17 @@ packages:
   /react-is@18.1.0:
     resolution: {integrity: sha512-Fl7FuabXsJnV5Q1qIOQwx/sagGF18kogb4gpfcG4gjLBWO0WDiiz1ko/ExayuxE7InyQkBLkxRFG5oxY6Uu3Kg==}
     dev: true
+
+  /react-oidc-context@2.2.2(oidc-client-ts@2.2.4)(react@18.2.0):
+    resolution: {integrity: sha512-rke8goKuxxQhSAR11h8wVn56m7kEa1mcAfYDlIycsIgmbZOFzKA0Un0y0RodHZ/M/CG6u0JD1I8RKZHqRJjWnA==}
+    engines: {node: '>=12.13.0'}
+    peerDependencies:
+      oidc-client-ts: ^2.2.1
+      react: '>=16.8.0'
+    dependencies:
+      oidc-client-ts: 2.2.4
+      react: 18.2.0
+    dev: false
 
   /react-refresh@0.14.0:
     resolution: {integrity: sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==}

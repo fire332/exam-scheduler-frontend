@@ -28,10 +28,11 @@
     "classnames": "^2.3.2",
     "framer-motion": "^10.12.18",
     "luxon": "^3.3.0",
-    "oidc-react": "^3.2.2",
+    "oidc-client-ts": "^2.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.45.1"
+    "react-hook-form": "^7.45.1",
+    "react-oidc-context": "^2.2.2"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "7.0.25",

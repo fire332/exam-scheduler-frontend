@@ -1,9 +1,7 @@
-import { useAuth } from 'oidc-react';
 import Button from './Button';
 
 export default function UserBar() {
-  const { userData } = useAuth();
-  console.log(userData?.profile);
+  // const { userData } = useAuth();
 
   //   {userData?.profile.preferred_username}
 
