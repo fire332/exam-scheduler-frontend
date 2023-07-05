@@ -1,13 +1,3 @@
 {
-  "cleanUrls": true,
-  "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "https://fic-exam-scheduler-api-6f324588b682.herokuapp.com/:path*"
-    },
-    {
-      "source": "/oauth/v2/:path*",
-      "destination": "https://fancy-runnable-unicorn-dfmpp0.zitadel.cloud/oauth/v2/:path*"
-    }
-  ]
+  "routes": [{ "src": "/[^.]+", "dest": "/", "status": 200 }]
 }
