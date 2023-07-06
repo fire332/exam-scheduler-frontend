@@ -50,6 +50,19 @@ const config = {
           800: 'color(display-p3 0.11 0.157 0.251 / <alpha-value>)',
           900: 'color(display-p3 0.043 0.075 0.137 / <alpha-value>)',
           950: 'color(display-p3 0.02 0.039 0.082 / <alpha-value>)'
+        },
+        error: {
+          50: 'color(display-p3 1 0.922 0.922 / <alpha-value>)',
+          100: 'color(display-p3 0.996 0.824 0.824 / <alpha-value>)',
+          200: 'color(display-p3 0.988 0.671 0.671 / <alpha-value>)',
+          300: 'color(display-p3 0.98 0.502 0.502 / <alpha-value>)',
+          400: 'color(display-p3 0.969 0.353 0.353 / <alpha-value>)',
+          500: 'color(display-p3 0.949 0.188 0.188 / <alpha-value>)',
+          600: 'color(display-p3 0.875 0.043 0.043 / <alpha-value>)',
+          700: 'color(display-p3 0.655 0.027 0.027 / <alpha-value>)',
+          800: 'color(display-p3 0.443 0.016 0.016 / <alpha-value>)',
+          900: 'color(display-p3 0.216 0.004 0.004 / <alpha-value>)',
+          950: 'color(display-p3 0.118 0 0 / <alpha-value>)'
         }
       }
     }
