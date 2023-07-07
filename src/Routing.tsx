@@ -1,11 +1,10 @@
-import { RootRoute, Route, Router } from '@tanstack/router';
-import App from './App';
+import { Outlet, RootRoute, Route, Router } from '@tanstack/router';
 import Dashboard from './routes/Dashboard';
 import ExamRequests from './routes/ExamRequests';
 import Index from './routes/Index';
 
 const rootRoute = new RootRoute({
-  component: App
+  component: Outlet
 });
 
 const indexRoute = new Route({

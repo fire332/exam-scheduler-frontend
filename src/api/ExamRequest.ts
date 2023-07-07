@@ -1,25 +1,34 @@
 import { Entity, createResource } from '@rest-hooks/rest';
-
-interface TimeRange {
-  startTime: number;
-  endTime: number;
-}
+import { DateTime, Duration } from 'luxon';
+import AuthdEndpoint from './AuthdEndpoint';
 
 export class ExamRequest extends Entity {
   requestId = '';
   courseCode = '';
   instructorId = '';
   studentCount = 0;
-  examDatePreferences: TimeRange[] = [];
+  isoDuration = '';
+  isoDatePrefs: string[] = [];
 
   pk() {
     return this.requestId;
   }
+
+  get duration() {
+    return Duration.fromISO(this.isoDuration);
+  }
+
+  get datePreferences() {
+    return this.isoDatePrefs.map((isoStr) => DateTime.fromISO(isoStr, {}));
+  }
+
   static key = 'ExamRequest';
 }
 
 export const ExamRequestResource = createResource({
-  urlPrefix: 'https://fic-exam-scheduler-api-6f324588b682.herokuapp.com/',
-  path: '/examRequest',
-  schema: ExamRequest
+  urlPrefix: 'https://fic-exam-scheduler-api-6f324588b682.herokuapp.com',
+  path: '/examRequest/:id',
+  schema: ExamRequest,
+
+  Endpoint: AuthdEndpoint
 });

@@ -1,9 +1,9 @@
-import { useAuth } from 'oidc-react';
+import { useAuth } from 'react-oidc-context';
 import Button from '../components/ButtonHero';
 import FICLogoColoured from '../components/FICLogo/FICLogoColoured';
 
 function Index() {
-  const { signIn } = useAuth();
+  const auth = useAuth();
 
   return (
     <>
@@ -19,7 +19,7 @@ function Index() {
           </h4>
         </div>
 
-        <Button onClick={() => void signIn()}>SIGN IN</Button>
+        <Button onClick={() => void auth.signinRedirect()}>SIGN IN</Button>
       </div>
     </>
   );

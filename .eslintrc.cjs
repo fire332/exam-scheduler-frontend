@@ -27,6 +27,20 @@ module.exports = {
       { fixMixedExportsWithInlineTypeSpecifier: true }
     ],
     '@typescript-eslint/consistent-type-imports': 'error',
-    '@typescript-eslint/no-redundant-type-constituents': 'error'
+    '@typescript-eslint/no-redundant-type-constituents': 'error',
+    '@typescript-eslint/switch-exhaustiveness-check': 'error',
+    '@typescript-eslint/require-array-sort-compare': [
+      'error',
+      { ignoreStringArrays: true }
+    ],
+    '@typescript-eslint/no-useless-empty-export': 'error',
+    '@typescript-eslint/no-unnecessary-qualifier': 'error',
+    '@typescript-eslint/no-require-imports': 'error',
+    '@typescript-eslint/no-import-type-side-effects': 'error',
+    '@typescript-eslint/no-confusing-void-expression': [
+      'error',
+      { ignoreVoidOperator: true, ignoreArrowShorthand: true }
+    ],
+    '@typescript-eslint/method-signature-style': 'error'
   }
 };

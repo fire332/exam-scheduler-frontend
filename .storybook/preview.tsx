@@ -5,7 +5,6 @@ import {
 } from '@rest-hooks/react';
 import { withThemeByClassName } from '@storybook/addon-styling';
 import type { Preview, StoryFn } from '@storybook/react';
-import { type DecoratorFunction } from '@storybook/types';
 
 import '../src/index.css';
 
@@ -44,6 +43,6 @@ export const decorators = [
     },
     defaultTheme: 'light'
   })
-] satisfies DecoratorFunction[];
+];
 
 export default preview;

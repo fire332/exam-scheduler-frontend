@@ -1,17 +1,16 @@
-import { useAuth } from 'oidc-react';
+import { useAuth } from 'react-oidc-context';
 import Button from './Button';
 
 export default function UserBar() {
-  const { userData } = useAuth();
-  console.log(userData?.profile);
-
-  //   {userData?.profile.preferred_username}
+  const auth = useAuth();
 
   return (
     <div className="inline-block">
-      <Button>Logout</Button>
+      <Button onClick={() => void auth.removeUser()}>Logout</Button>
 
-      <div className="h-9 w-9 items-center justify-center rounded-full bg-surface-500"></div>
+      <div className="h-9 w-9 items-center justify-center rounded-full bg-surface-500">
+        {auth.user?.profile.given_name}
+      </div>
     </div>
   );
 }

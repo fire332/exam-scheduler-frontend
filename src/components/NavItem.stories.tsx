@@ -14,11 +14,11 @@ const iconMap = {
   DefaultIcon: undefined
 } as const;
 
-interface ExtraProps {
-  icon: keyof typeof iconMap;
+interface ExtraStoryArgs {
+  iconChoise: keyof typeof iconMap;
 }
 
-type Story = StoryObj<ComponentProps<typeof Component> & ExtraProps>;
+type Story = StoryObj<ComponentProps<typeof Component> & ExtraStoryArgs>;
 
 const meta = {
   component: Component,
@@ -33,10 +33,10 @@ const meta = {
     active: true,
     shortText: 'Short Label',
     longText: 'Long Label',
-    icon: 'DefaultIcon'
+    iconChoise: 'DefaultIcon'
   },
   argTypes: {
-    icon: {
+    iconChoise: {
       control: 'radio',
       options: {
         DefaultIcon: 'DefaultIcon',
@@ -46,13 +46,13 @@ const meta = {
       }
     }
   }
-} satisfies Meta<ComponentProps<typeof Component> & ExtraProps>;
+} satisfies Meta<ComponentProps<typeof Component> & ExtraStoryArgs>;
 
 export default meta;
 
 export const NavItem: Story = {
   render: (args) => {
-    const icon = iconMap[args.icon];
-    return <Component {...args} Icon={icon} />;
+    const icon = iconMap[args.iconChoise];
+    return <Component {...args} icon={icon} />;
   }
 };

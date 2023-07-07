@@ -4,29 +4,35 @@ import {
   EyeOpenIcon
 } from '@radix-ui/react-icons';
 import { Outlet } from '@tanstack/router';
+import { useAuth } from 'react-oidc-context';
 import Drawer from '../components/Drawer';
 import NavItem from '../components/NavItem';
 import UserBar from '../components/UserBar';
 
 export default function Dashboard() {
+  const { activeNavigator } = useAuth();
+
+  if (activeNavigator === 'signoutRedirect') {
+    // TODO
+  }
+
   return (
     <>
-      <Drawer>
-        <NavItem shortText={'Schedule'} longText={''} Icon={CalendarIcon} />
+      <Drawer expanded={false}>
+        <NavItem shortText={'Schedule'} longText={''} icon={CalendarIcon} />
         <NavItem
           shortText={'Requests'}
           longText={''}
-          Icon={EnvelopeClosedIcon}
+          icon={EnvelopeClosedIcon}
         />
-        <NavItem shortText={'Proctoring'} longText={''} Icon={EyeOpenIcon} />
+        <NavItem shortText={'Proctoring'} longText={''} icon={EyeOpenIcon} />
       </Drawer>
-
       <div className="flex grow flex-col">
         <div className="h-16 w-full">
           <UserBar></UserBar>
         </div>
 
-        <div className="grow rounded-tl-md bg-white px-8 text-surface-900">
+        <div className="grow rounded-tl-md bg-surface-50 px-8 text-surface-900">
           <Outlet />
         </div>
       </div>

@@ -1,12 +1,19 @@
 {
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
   "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
   "files.readonlyInclude": {
     ".husky": true,
     "dist": true,
     "src/vite-env.d.ts": true,
     "pnpm-lock.yaml": true,
     "node_modules": true
+  },
+  "files.insertFinalNewline": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
   }
 }
