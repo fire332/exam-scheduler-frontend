@@ -17,12 +17,12 @@ function AdditionalInfo({
   children
 }: PropsWithChildren<Props>) {
   return (
-    <div className="inline-block [&:not(:last-child)]:after:px-2 [&:not(:last-child)]:after:text-surface-100 [&:not(:last-child)]:after:content-['|']">
+    <div className="inline-flex items-center [&:not(:last-child)]:after:px-2 [&:not(:last-child)]:after:text-surface-100 [&:not(:last-child)]:after:content-['|']">
       <Icon
         width="14"
         height="14"
         color="color(display-p3 0.192 0.251 0.365)"
-        className="inline-block"
+        className="mb-[1px] inline-block"
       />
 
       <span className="ml-2">{children}</span>

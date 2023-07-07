@@ -1,7 +1,10 @@
+import { useAuth } from 'react-oidc-context';
 import Button from '../components/ButtonHero';
 import FICLogoColoured from '../components/FICLogo/FICLogoColoured';
 
 function Index() {
+  const auth = useAuth();
+
   return (
     <>
       <div className="mx-auto max-w-lg ">
@@ -16,13 +19,7 @@ function Index() {
           </h4>
         </div>
 
-        <Button
-          onClick={() => {
-            window.location = '/dashboard';
-          }}
-        >
-          SIGN IN
-        </Button>
+        <Button onClick={() => void auth.signinRedirect()}>SIGN IN</Button>
       </div>
     </>
   );

@@ -1,20 +1,18 @@
 import type { RestGenerics } from '@rest-hooks/rest';
 import { RestEndpoint } from '@rest-hooks/rest';
+import { getUser } from '../authConfig';
 
 export default class AuthdEndpoint<
   O extends RestGenerics = { path: '' }
 > extends RestEndpoint<O> {
-  declare static accessToken?: string;
-
   getHeaders(headers: HeadersInit) {
     const newHeaders: HeadersInit & { Authorization?: string } = {
       ...headers
     };
 
-    console.log('got token:', AuthdEndpoint.accessToken);
+    const accessToken = getUser()?.access_token;
 
-    if (AuthdEndpoint.accessToken)
-      newHeaders.Authorization = `Bearer ${AuthdEndpoint.accessToken}`;
+    if (accessToken) newHeaders.Authorization = `Bearer ${accessToken}`;
 
     return newHeaders;
   }

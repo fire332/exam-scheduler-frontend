@@ -7,7 +7,7 @@ interface Props {
   active?: boolean;
   shortText: string;
   longText: string;
-  Icon?: ComponentType<
+  icon?: ComponentType<
     ComponentProps<
       React.ForwardRefExoticComponent<
         IconProps & React.RefAttributes<SVGSVGElement>
@@ -21,8 +21,10 @@ function NavItem({
   active,
   shortText,
   longText,
-  Icon = DotFilledIcon
+  icon = DotFilledIcon
 }: Props) {
+  const NavIcon = icon;
+
   return (
     <li
       className={
@@ -42,7 +44,7 @@ function NavItem({
             : `h-8 w-14 ${active ? 'bg-primary-200' : ''}`)
         }
       >
-        <Icon
+        <NavIcon
           width="24"
           height="24"
           color="color(display-p3 0.11 0.137 0.192)"

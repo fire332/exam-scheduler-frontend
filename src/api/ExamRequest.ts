@@ -1,21 +1,27 @@
 import { Entity, createResource } from '@rest-hooks/rest';
+import { DateTime, Duration } from 'luxon';
 import AuthdEndpoint from './AuthdEndpoint';
-
-interface TimeRange {
-  startTime: number;
-  endTime: number;
-}
 
 export class ExamRequest extends Entity {
   requestId = '';
   courseCode = '';
   instructorId = '';
   studentCount = 0;
-  examDatePreferences: TimeRange[] = [];
+  isoDuration = '';
+  isoDatePrefs: string[] = [];
 
   pk() {
     return this.requestId;
   }
+
+  get duration() {
+    return Duration.fromISO(this.isoDuration);
+  }
+
+  get datePreferences() {
+    return this.isoDatePrefs.map((isoStr) => DateTime.fromISO(isoStr, {}));
+  }
+
   static key = 'ExamRequest';
 }
 

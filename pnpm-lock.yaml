@@ -50,6 +50,9 @@ dependencies:
   react-oidc-context:
     specifier: ^2.2.2
     version: 2.2.2(oidc-client-ts@2.2.4)(react@18.2.0)
+  react-timing-hooks:
+    specifier: ^4.0.2
+    version: 4.0.2(react@18.2.0)
 
 devDependencies:
   '@storybook/addon-essentials':
@@ -10255,6 +10258,14 @@ packages:
     resolution: {integrity: sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /react-timing-hooks@4.0.2(react@18.2.0):
+    resolution: {integrity: sha512-wjzu6e/H1ouyhSu0YRLkECGChvnQswJoq7HSKLc39gxiJeQv48CC9SGK02E6vHfXcCxH/Yx6XhSZJHPg3RBtdQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
