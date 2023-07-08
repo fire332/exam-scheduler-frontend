@@ -17,7 +17,7 @@ export default function Drawer({
       className={
         'flex h-full flex-col justify-center bg-surface-100 px-4' +
         ' ' +
-        (expanded ? 'w-[360px]' : 'w-[96px] gap-y-3')
+        (expanded ? 'w-[360px]' : 'w-[96px]')
       }
     >
       <div className={expanded ? 'flex items-center' : 'flex justify-center'}>
@@ -30,7 +30,7 @@ export default function Drawer({
           </div>
         )}
       </div>
-      <div className="flex w-full flex-grow flex-col items-center justify-center">
+      <div className="flex w-full flex-grow flex-col items-center justify-center gap-y-3">
         {children}
       </div>
     </nav>
