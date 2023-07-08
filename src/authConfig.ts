@@ -3,7 +3,6 @@ import type { AuthProviderProps } from 'react-oidc-context';
 
 const onSigninCallback = (): void => {
   window.history.replaceState({}, document.title, window.location.pathname);
-  window.location.pathname = '/dashboard/exam-requests';
 };
 
 const onRemoveUser = () => {
@@ -11,8 +10,8 @@ const onRemoveUser = () => {
 };
 
 const authConfig = {
-  authority: 'https://fancy-runnable-unicorn-dfmpp0.zitadel.cloud/',
-  client_id: '219095101232709889@exam-scheduler',
+  authority: import.meta.env.VITE_OIDC_AUTHORITY,
+  client_id: import.meta.env.VITE_OIDC_CLIENTID,
   redirect_uri: window.location.origin,
   scope: 'openid profile email',
   monitorSession: true,

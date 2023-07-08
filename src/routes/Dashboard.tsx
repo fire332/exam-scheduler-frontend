@@ -3,9 +3,12 @@ import {
   EnvelopeClosedIcon,
   EyeOpenIcon
 } from '@radix-ui/react-icons';
+import { AsyncBoundary } from '@rest-hooks/react';
 import { Outlet } from '@tanstack/router';
 import { useAuth } from 'react-oidc-context';
 import Drawer from '../components/Drawer';
+import FetchError from '../components/FetchError';
+import LoadingSpinner from '../components/LoadingSpinner';
 import NavItem from '../components/NavItem';
 import UserBar from '../components/UserBar';
 
@@ -33,7 +36,16 @@ export default function Dashboard() {
         </div>
 
         <div className="grow rounded-tl-md bg-surface-50 px-8 text-surface-900">
-          <Outlet />
+          <AsyncBoundary
+            fallback={
+              <div className="flex h-full items-center justify-center">
+                <LoadingSpinner />
+              </div>
+            }
+            errorComponent={FetchError}
+          >
+            <Outlet />
+          </AsyncBoundary>
         </div>
       </div>
     </>

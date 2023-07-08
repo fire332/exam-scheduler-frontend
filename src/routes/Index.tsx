@@ -5,6 +5,10 @@ import FICLogoColoured from '../components/FICLogo/FICLogoColoured';
 function Index() {
   const auth = useAuth();
 
+  if (auth.isAuthenticated) {
+    window.location.pathname = '/dashboard/exam-requests';
+  }
+
   return (
     <>
       <div className="mx-auto max-w-lg ">

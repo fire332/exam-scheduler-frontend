@@ -1,6 +1,10 @@
 name: Code Quality Checks
 on: [pull_request]
 
+permissions:
+  pull-requests: write
+  contents: read
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -10,7 +14,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: '^8.6.2'
+          version: '^8.6.6'
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -21,11 +25,13 @@ jobs:
       - name: Lint with TypeScript
         uses: EPMatt/reviewdog-action-tsc@v1
         with:
-          reporter: github-pr-check
+          reporter: github-pr-review
+          filter_mode: nofilter
       - name: Lint with ESLint
         uses: reviewdog/action-eslint@v1
         with:
-          reporter: github-pr-check
+          reporter: github-pr-review
+          filter_mode: nofilter
       - uses: EPMatt/reviewdog-action-prettier@v1
         with:
           reporter: github-pr-check

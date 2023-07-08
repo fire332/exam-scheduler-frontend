@@ -8,7 +8,6 @@
   "files.readonlyInclude": {
     ".husky": true,
     "dist": true,
-    "src/vite-env.d.ts": true,
     "pnpm-lock.yaml": true,
     "node_modules": true
   },

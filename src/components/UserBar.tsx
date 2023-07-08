@@ -6,7 +6,7 @@ export default function UserBar() {
 
   return (
     <div className="inline-block">
-      <Button onClick={() => void auth.removeUser()}>Logout</Button>
+      <Button onClick={() => void auth.removeUser()}>Sign Out</Button>
 
       <div className="h-9 w-9 items-center justify-center rounded-full bg-surface-500">
         {auth.user?.profile.given_name}
