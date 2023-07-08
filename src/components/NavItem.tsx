@@ -52,7 +52,7 @@ function NavItem({
       </div>
       <div
         className={
-          'font-bold text-surface-700' +
+          'font-bold text-surface-800' +
           ' ' +
           (expanded ? 'inline-block text-sm' : 'text-xs')
         }
