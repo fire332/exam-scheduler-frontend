@@ -21,7 +21,8 @@ interface ExtraProps {
   rightIcon: keyof typeof iconMap;
 }
 
-type Story = StoryObj<ComponentProps<typeof Component> & ExtraProps>;
+type StoryArgs = ComponentProps<typeof Component> & ExtraProps;
+type Story = StoryObj<StoryArgs>;
 
 const meta = {
   component: Component,
@@ -58,7 +59,7 @@ const meta = {
       }
     }
   }
-} satisfies Meta<ComponentProps<typeof Component> & ExtraProps>;
+} satisfies Meta<StoryArgs>;
 
 export default meta;
 
