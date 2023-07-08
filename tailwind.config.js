@@ -39,17 +39,17 @@ const config = {
           950: 'color(display-p3 0.067 0.012 0.016 / <alpha-value>)'
         },
         surface: {
-          50: 'color(display-p3 0.918 0.941 0.98 / <alpha-value>)',
-          100: 'color(display-p3 0.835 0.871 0.945 / <alpha-value>)',
-          200: 'color(display-p3 0.694 0.749 0.867 / <alpha-value>)',
-          300: 'color(display-p3 0.58 0.647 0.78 / <alpha-value>)',
-          400: 'color(display-p3 0.475 0.537 0.663 / <alpha-value>)',
-          500: 'color(display-p3 0.42 0.447 0.502 / <alpha-value>)',
-          600: 'color(display-p3 0.29 0.341 0.451 / <alpha-value>)',
-          700: 'color(display-p3 0.192 0.251 0.365 / <alpha-value>)',
-          800: 'color(display-p3 0.11 0.157 0.251 / <alpha-value>)',
-          900: 'color(display-p3 0.043 0.075 0.137 / <alpha-value>)',
-          950: 'color(display-p3 0.02 0.039 0.082 / <alpha-value>)'
+          50: 'color(display-p3 0.969 0.969 0.973 / <alpha-value>)',
+          100: 'color(display-p3 0.933 0.937 0.945 / <alpha-value>)',
+          200: 'color(display-p3 0.867 0.875 0.894 / <alpha-value>)',
+          300: 'color(display-p3 0.804 0.816 0.843 / <alpha-value>)',
+          400: 'color(display-p3 0.678 0.698 0.741 / <alpha-value>)',
+          500: 'color(display-p3 0.545 0.573 0.635 / <alpha-value>)',
+          600: 'color(display-p3 0.42 0.451 0.522 / <alpha-value>)',
+          700: 'color(display-p3 0.31 0.333 0.388 / <alpha-value>)',
+          800: 'color(display-p3 0.212 0.227 0.267 / <alpha-value>)',
+          900: 'color(display-p3 0.106 0.114 0.133 / <alpha-value>)',
+          950: 'color(display-p3 0.055 0.059 0.067 / <alpha-value>)'
         },
         error: {
           50: 'color(display-p3 1 0.922 0.922 / <alpha-value>)',
@@ -60,7 +60,7 @@ const config = {
           500: 'color(display-p3 0.949 0.188 0.188 / <alpha-value>)',
           600: 'color(display-p3 0.875 0.043 0.043 / <alpha-value>)',
           700: 'color(display-p3 0.655 0.027 0.027 / <alpha-value>)',
-          800: 'color(display-p3 0.443 0.016 0.016 / <alpha-value>)',
+          800: 'color(display-p3 0.250 0.010 0.010 / <alpha-value>)',
           900: 'color(display-p3 0.216 0.004 0.004 / <alpha-value>)',
           950: 'color(display-p3 0.118 0 0 / <alpha-value>)'
         }
