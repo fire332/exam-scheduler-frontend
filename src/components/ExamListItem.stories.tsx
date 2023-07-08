@@ -4,9 +4,8 @@ import { DateTime } from 'luxon';
 import AdditionalInfo from './AdditionalInfo';
 import Component from './ExamListItem';
 
-// TODO: clean up archaic JS Date useage
-
-type Story = StoryObj<typeof Component>;
+type StoryArgs = typeof Component;
+type Story = StoryObj<StoryArgs>;
 
 const meta = {
   component: Component,
@@ -14,15 +13,15 @@ const meta = {
     heading: 'BUS 251',
     subheading: 'Steve Gibson'
   }
-} satisfies Meta<typeof Component>;
+} satisfies Meta<StoryArgs>;
 
 export default meta;
 
 export const ExamListItem: Story = {
   render: (args) => {
-    const jsStartDate = new Date('August 12, 23 09:00:00');
-    const startDate = DateTime.fromJSDate(new Date('August 12, 23 09:00:00'));
-    const endDate = DateTime.fromJSDate(new Date('August 12, 23 11:50:00'));
+    // https://moment.github.io/luxon/#/parsing?id=table-of-tokens
+    const startDate = DateTime.fromFormat('Aug 12, 2023, 9:00 AM', 'ff');
+    const endDate = DateTime.fromFormat('Aug 12, 2023, 11:50 AM', 'ff');
 
     const diff = endDate.diff(startDate, ['hours', 'minutes']);
 
@@ -30,15 +29,16 @@ export const ExamListItem: Story = {
       <Component {...args}>
         <div>
           <AdditionalInfo Icon={CalendarIcon}>
-            {jsStartDate.toLocaleString('default', {
-              month: 'long',
-              day: 'numeric'
+            {startDate.toLocaleString({
+              weekday: 'short',
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric'
             })}
-            , {startDate.toFormat('y')}
           </AdditionalInfo>
 
           <AdditionalInfo Icon={ClockIcon}>
-            {startDate.toFormat('h')}am
+            {startDate.toLocaleString({ hour: 'numeric' })}
           </AdditionalInfo>
 
           <AdditionalInfo Icon={TimerIcon}>{diff.toHuman()}</AdditionalInfo>

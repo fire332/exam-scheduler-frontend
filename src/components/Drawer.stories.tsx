@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import DrawerComponent from './Drawer';
+import Component from './Drawer';
 import NavItem from './NavItem';
 
-type Story = StoryObj<typeof DrawerComponent>;
+type StoryArgs = typeof Component;
+type Story = StoryObj<StoryArgs>;
 
 const meta = {
-  component: DrawerComponent,
+  component: Component,
   argTypes: { children: { control: 'text' } },
   parameters: { layout: 'fullscreen' },
   decorators: [
@@ -16,13 +17,13 @@ const meta = {
       </div>
     )
   ]
-} satisfies Meta<typeof DrawerComponent>;
+} satisfies Meta<StoryArgs>;
 
 export default meta;
 
 export const Drawer: Story = {
   render: (args) => (
-    <DrawerComponent {...args}>
+    <Component {...args}>
       <NavItem
         expanded={args.expanded}
         active
@@ -39,6 +40,6 @@ export const Drawer: Story = {
         shortText={'Proctoring'}
         longText={'Proctoring'}
       />
-    </DrawerComponent>
+    </Component>
   )
 };

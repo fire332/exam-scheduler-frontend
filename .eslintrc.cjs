@@ -17,7 +17,7 @@ module.exports = {
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: ['./tsconfig.json', './tsconfig.*.json']
+    project: ['./tsconfig.json', './tsconfig.*.json', 'cypress/tsconfig.json']
   },
   plugins: ['react-refresh', '@typescript-eslint'],
   rules: {
@@ -41,6 +41,7 @@ module.exports = {
       'error',
       { ignoreVoidOperator: true, ignoreArrowShorthand: true }
     ],
-    '@typescript-eslint/method-signature-style': 'error'
+    '@typescript-eslint/method-signature-style': 'error',
+    '@typescript-eslint/no-namespace': ['error', { allowDeclarations: true }]
   }
 };
