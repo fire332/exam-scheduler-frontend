@@ -4,9 +4,14 @@ import {
   DevToolsManager
 } from '@rest-hooks/react';
 import { withThemeByClassName } from '@storybook/addon-styling';
-import type { Preview, StoryFn } from '@storybook/react';
+import type { Preview } from '@storybook/react';
 
 import '../src/index.css';
+
+type ArrayElement<ArrayType extends readonly unknown[]> =
+  ArrayType extends readonly (infer ElementType)[] ? ElementType : never;
+type Decorator = ArrayElement<Exclude<Preview['decorators'], undefined>>;
+type PartialStoryFn = Parameters<Decorator>[0];
 
 const preview = {
   parameters: {
@@ -19,7 +24,7 @@ const preview = {
       }
     },
     decorators: [
-      (Story: StoryFn) => (
+      (Story: PartialStoryFn) => (
         <CacheProvider
           managers={[
             ...CacheProvider.defaultProps.managers,
@@ -35,7 +40,7 @@ const preview = {
   }
 } satisfies Preview;
 
-export const decorators = [
+export const decorators: Decorator[] = [
   withThemeByClassName({
     themes: {
       light: '',
