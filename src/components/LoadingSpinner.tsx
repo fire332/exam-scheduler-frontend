@@ -29,7 +29,7 @@ export default function LoadingSpinner() {
             }}
             className="h-[86%] w-0.5"
           >
-            <div className="h-1/2 rounded-full bg-primary-500"></div>
+            <div className="h-1/2 rounded-full bg-primary-500" />
           </motion.div>
         </div>
       </div>

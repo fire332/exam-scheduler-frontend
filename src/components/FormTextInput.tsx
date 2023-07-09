@@ -63,7 +63,7 @@ function FormTextInput({
           className="h-full appearance-none border-none focus:!border-none focus:!shadow-none"
           type="text"
           id="{inputId}"
-        ></input>
+         />
 
         <div className="inline-flex items-center justify-center">
           <RightIcon
