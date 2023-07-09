@@ -11,6 +11,9 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/strict-type-checked',
     'plugin:@typescript-eslint/stylistic-type-checked',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
     'plugin:react-hooks/recommended',
     'plugin:storybook/recommended',
     'prettier'
@@ -20,8 +23,16 @@ module.exports = {
     project: ['./tsconfig.json', './tsconfig.*.json', 'cypress/tsconfig.json']
   },
   plugins: ['react-refresh', '@typescript-eslint'],
+  settings: {
+    react: {
+      version: 'detect'
+    },
+    linkComponents: [{ name: 'Link', linkAttribute: 'to' }]
+  },
   rules: {
-    'react-refresh/only-export-components': 'warn',
+    'react-refresh/only-export-components': 'error',
+
+    // @typescript-eslint rules
     '@typescript-eslint/consistent-type-exports': [
       'error',
       { fixMixedExportsWithInlineTypeSpecifier: true }
@@ -42,6 +53,26 @@ module.exports = {
       { ignoreVoidOperator: true, ignoreArrowShorthand: true }
     ],
     '@typescript-eslint/method-signature-style': 'error',
-    '@typescript-eslint/no-namespace': ['error', { allowDeclarations: true }]
+    '@typescript-eslint/no-namespace': ['error', { allowDeclarations: true }],
+
+    // eslint-plugin-react rules
+    'react/jsx-no-bind': [
+      'warn',
+      {
+        ignoreDOMComponents: true,
+        ignoreRefs: true
+      }
+    ],
+    'react/jsx-no-constructed-context-values': 'error',
+    'react/jsx-no-undef': 'off', // TypeScript catches this for us already
+    'react/jsx-no-useless-fragment': 'error',
+    'react/jsx-uses-vars': 'off', // TypeScript catches this for us already
+    'react/no-access-state-in-setstate': 'error',
+    'react/no-invalid-html-attribute': 'error',
+    'react/no-namespace': 'error',
+    'react/no-unstable-nested-components': ['error', { allowAsProps: true }],
+    'react/prop-types': 'off', // TypeScript catches this for us already
+    'react/self-closing-comp': 'error',
+    'react/void-dom-elements-no-children': 'error'
   }
 };
