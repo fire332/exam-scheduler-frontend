@@ -35,6 +35,7 @@ jobs:
         with:
           reporter: github-pr-review
           filter_mode: nofilter
+          eslint_flags: --report-unused-disable-directives --max-warnings=0 **/*.{js,cjs,ts,tsx}
           fail_on_error: true
       - uses: EPMatt/reviewdog-action-prettier@v1
         with:

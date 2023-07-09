@@ -32,7 +32,7 @@ export default function Dashboard() {
       </Drawer>
       <div className="flex grow flex-col">
         <div className="h-16 w-full">
-          <UserBar></UserBar>
+          <UserBar />
         </div>
 
         <div className="grow rounded-tl-md bg-surface-50 px-8 text-surface-900">

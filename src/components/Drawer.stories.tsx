@@ -13,7 +13,7 @@ const meta = {
     (Story) => (
       <div className="flex h-full">
         <Story />
-        <div className="grow bg-white"></div>
+        <div className="grow bg-white" />
       </div>
     )
   ]
