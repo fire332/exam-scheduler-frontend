@@ -1,0 +1,37 @@
+name: Zitadel
+on: deployment_status
+
+env:
+  BASE_URL: ${{ vars.DOMAIN }}/management/v1/projects/${{ vars.PROJECT_ID }}/apps/${{ vars.APP_ID }}
+
+# GET: https://zitadel.com/docs/apis/resources/mgmt/management-service-get-app-by-id
+# PUT: https://zitadel.com/docs/apis/resources/mgmt/management-service-update-oidc-app-config
+
+jobs:
+  register-url:
+    name: Update OIDC app cfg
+    if: ${{ github.event.deployment_status.environment == 'Preview' && github.event.deployment_status.state == 'success' }}
+    runs-on: ubuntu-latest
+    environment: Zitadel
+    steps:
+      - name: Get current URLs
+        shell: pwsh
+        run: >
+          curl -L -X GET $env:BASE_URL
+          -H 'Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}'
+          -H 'Accept: application/json'
+          | jq -c '
+            .app | (.oidcConfig.redirectUris, .oidcConfig.postLogoutRedirectUris, .oidcConfig.additionalOrigins)
+            |= map(select(test(\"exam-scheduler-frontend-[A-Za-z0-9-]+-fire332\\.vercel\\.app\") | not))
+            '
+          | jq -c 'del(.oidcConfig.allowedOrigins)'
+          | % { 'NEW_CFG=' + $_ }
+          | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+      - name: Update config
+        shell: pwsh
+        run: >
+          curl -L -X PUT $($env:BASE_URL + '/oidc_config')
+          -H 'Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}'
+          -H 'Content-Type: application/json'
+          -H 'Accept: application/json'
+          --data-binary $(Write-Output $env:NEW_CFG | jq -c '.')
