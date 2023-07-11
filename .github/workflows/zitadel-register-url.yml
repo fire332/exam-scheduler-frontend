@@ -31,7 +31,7 @@ jobs:
       - name: Update config
         shell: bash
         run: >
-          curl -L -X PUT $($env:BASE_URL + '/oidc_config')
+          curl -L -X PUT ${{ env.BASE_URL }}/oidc_config
           -H 'Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}'
           -H 'Content-Type: application/json'
           -H 'Accept: application/json'
