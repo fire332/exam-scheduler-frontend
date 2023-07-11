@@ -23,16 +23,16 @@ jobs:
           | jq -c '
             .app.oidcConfig | (.redirectUris, .postLogoutRedirectUris)
             |= map(select(test(\"exam-scheduler-frontend-[A-Za-z0-9-]+-fire332\\.vercel\\.app\") | not))
-            | .redirectUris += [\"${{ github.event.environment_url }}\"]
-            | .postLogoutRedirectUris += [\"${{ github.event.environment_url }}\"]
+            | .redirectUris += [\"${{ github.event.deployment_status.environment_url }}\"]
+            | .postLogoutRedirectUris += [\"${{ github.event.deployment_status.environment_url }}\"]
             | del(.clientId, .version, .noneCompliant, .complianceProblems, .allowedOrigins)'
           | % { 'NEW_CFG=' + $_ }
           | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
       - name: Update config
-        shell: pwsh
+        shell: bash
         run: >
           curl -L -X PUT $($env:BASE_URL + '/oidc_config')
           -H 'Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}'
           -H 'Content-Type: application/json'
           -H 'Accept: application/json'
-          --data-binary $(Write-Output $env:NEW_CFG | jq -c '.')
+          --data-raw $NEW_CFG
