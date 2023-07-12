@@ -36,8 +36,11 @@ const meta = {
     }
   ],
   args: {
-    inputId: 'id',
     labelText: 'Label Text',
+    isRequired: true,
+    errorText: 'Placeholder Error Message',
+    showErrorMessage: true,
+    displayRightIconErrorColor: false,
     leftIcon: 'DefaultIcon',
     rightIcon: 'DefaultIcon'
   },
