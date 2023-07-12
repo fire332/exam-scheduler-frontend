@@ -2,7 +2,9 @@ import { CalendarIcon, ClockIcon, TimerIcon } from '@radix-ui/react-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 import { DateTime } from 'luxon';
 import AdditionalInfo from './AdditionalInfo';
-import Component from './ExamListItem';
+import Component from './RichListItem';
+
+// TODO: currently still based upon ExamListItem, refactor to improve this
 
 type StoryArgs = typeof Component;
 type Story = StoryObj<StoryArgs>;
@@ -17,7 +19,7 @@ const meta = {
 
 export default meta;
 
-export const ExamListItem: Story = {
+export const RichListItem: Story = {
   render: (args) => {
     // https://moment.github.io/luxon/#/parsing?id=table-of-tokens
     const startDate = DateTime.fromFormat('Aug 12, 2023, 9:00 AM', 'ff');

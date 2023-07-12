@@ -1,11 +1,13 @@
 import type { PropsWithChildren } from 'react';
 
+// TODO: refactor to support all needed lists
+
 interface Props {
   heading: string;
   subheading?: string;
 }
 
-function ExamListItem({
+function RichListItem({
   heading,
   subheading,
   children
@@ -19,4 +21,4 @@ function ExamListItem({
   );
 }
 
-export default ExamListItem;
+export default RichListItem;
