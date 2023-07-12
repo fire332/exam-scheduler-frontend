@@ -14,5 +14,7 @@
   "files.insertFinalNewline": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": true
-  }
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.preferences.autoImportFileExcludePatterns": ["**/*.stories.tsx?"]
 }
