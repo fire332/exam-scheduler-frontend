@@ -5,6 +5,7 @@ import {
 } from '@radix-ui/react-icons';
 import { AsyncBoundary } from '@rest-hooks/react';
 import { Outlet } from '@tanstack/router';
+import { useCallback, useState } from 'react';
 import { useAuth } from 'react-oidc-context';
 import Drawer from '../components/Drawer';
 import FetchError from '../components/FetchError';
@@ -14,21 +15,37 @@ import UserBar from '../components/UserBar';
 
 export default function Dashboard() {
   const { activeNavigator } = useAuth();
-
+  const [expanded, setExpanded] = useState(false);
   if (activeNavigator === 'signoutRedirect') {
     // TODO
   }
 
+  const handleBurgerClick = useCallback(
+    () => setExpanded(!expanded),
+    [expanded]
+  );
+
   return (
     <>
-      <Drawer expanded={false}>
-        <NavItem shortText={'Schedule'} longText={''} icon={CalendarIcon} />
+      <Drawer expanded={expanded} onBurgerClick={handleBurgerClick}>
         <NavItem
+          expanded={expanded}
+          shortText={'Schedule'}
+          longText={'Schedule'}
+          icon={CalendarIcon}
+        />
+        <NavItem
+          expanded={expanded}
           shortText={'Requests'}
-          longText={''}
+          longText={'Requests'}
           icon={EnvelopeClosedIcon}
         />
-        <NavItem shortText={'Proctoring'} longText={''} icon={EyeOpenIcon} />
+        <NavItem
+          expanded={expanded}
+          shortText={'Proctoring'}
+          longText={'Proctoring'}
+          icon={EyeOpenIcon}
+        />
       </Drawer>
       <div className="flex grow flex-col">
         <div className="h-16 w-full">
