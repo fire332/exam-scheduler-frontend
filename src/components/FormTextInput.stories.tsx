@@ -30,9 +30,7 @@ const meta = {
     (Story) => {
       return (
         <div className="flex h-60 w-[360px] items-center justify-center">
-          <form>
-            <Story />
-          </form>
+          <Story />
         </div>
       );
     }
