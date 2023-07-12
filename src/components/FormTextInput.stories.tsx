@@ -30,14 +30,19 @@ const meta = {
     (Story) => {
       return (
         <div className="flex h-60 w-[360px] items-center justify-center">
-          <Story />
+          <form>
+            <Story />
+          </form>
         </div>
       );
     }
   ],
   args: {
-    inputId: 'id',
     labelText: 'Label Text',
+    isRequired: true,
+    errorText: 'Placeholder Error Message',
+    showErrorMessage: true,
+    displayRightIconErrorColor: false,
     leftIcon: 'DefaultIcon',
     rightIcon: 'DefaultIcon'
   },
