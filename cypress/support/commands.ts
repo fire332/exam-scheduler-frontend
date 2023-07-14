@@ -47,7 +47,7 @@ export function loginViaZitadelUI(username: string, password: string) {
       cy.get('button[type=submit]').click();
       cy.get('input[name=password]').type(password);
       cy.get('button[type=submit]').click();
-    }
+    },
   );
 
   cy.location('origin').should('eq', Cypress.config('baseUrl'));
@@ -71,11 +71,11 @@ const loginToZitadelCommand = (username: string, password: string) => {
             'getItem',
             `oidc.user:${import.meta.env.VITE_OIDC_AUTHORITY}:${
               import.meta.env.VITE_OIDC_CLIENTID
-            }`
+            }`,
           )
           .should('exist');
       },
-    }
+    },
   );
 
   log.snapshot('after');

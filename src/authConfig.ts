@@ -26,7 +26,7 @@ function getUser() {
   // TODO: sessionStorage might be the incorrect place to store the auth data
   // See: https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage
   const oidcStorage = sessionStorage.getItem(
-    `oidc.user:${authConfig.authority}:${authConfig.client_id}`
+    `oidc.user:${authConfig.authority}:${authConfig.client_id}`,
   );
 
   return oidcStorage ? User.fromStorageString(oidcStorage) : null;

@@ -1,5 +1,5 @@
 export default function FICLogoColoured(
-  props: React.SVGAttributes<SVGSVGElement>
+  props: React.SVGAttributes<SVGSVGElement>,
 ) {
   return (
     <svg

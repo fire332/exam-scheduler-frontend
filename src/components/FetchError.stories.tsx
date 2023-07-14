@@ -26,7 +26,7 @@ export const FetchError: Story = {
   },
   render: ({ httpStatusCode }) => {
     const error = new NetworkError(
-      new Response(undefined, { status: httpStatusCode })
+      new Response(undefined, { status: httpStatusCode }),
     );
 
     return <Component error={error} />;

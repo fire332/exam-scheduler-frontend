@@ -15,7 +15,7 @@ export default function ExamRequests() {
             weekday: 'short',
             month: 'short',
             day: 'numeric',
-          })
+          }),
         )
         .join(' | ');
 
@@ -25,7 +25,7 @@ export default function ExamRequests() {
           <AdditionalInfo Icon={CalendarIcon}>{humanDateList}</AdditionalInfo>
         </ExamListItem>
       );
-    }
+    },
   );
 
   return (
