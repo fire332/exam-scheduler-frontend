@@ -26,6 +26,9 @@ dependencies:
   '@tanstack/router':
     specifier: 0.0.1-beta.93
     version: 0.0.1-beta.93(react-dom@18.2.0)(react@18.2.0)
+  chromatic:
+    specifier: ^6.19.9
+    version: 6.19.9
   classnames:
     specifier: ^2.3.2
     version: 2.3.2
@@ -115,9 +118,6 @@ devDependencies:
   '@vitejs/plugin-react-swc':
     specifier: ^3.3.2
     version: 3.3.2(vite@4.4.2)
-  chromatic:
-    specifier: ^6.19.9
-    version: 6.19.9
   cypress:
     specifier: ^12.17.0
     version: 12.17.0
@@ -6539,7 +6539,7 @@ packages:
   /chromatic@6.19.9:
     resolution: {integrity: sha512-UHrPbPoLnJwd063cRSO0U865VhcATykpMiHsAnNFz5EFRsBvM9wefqyS2Z6W8Ti9J7Fjrf4MV4PA+Q5k2lhFfQ==}
     hasBin: true
-    dev: true
+    dev: false
 
   /chrome-trace-event@1.0.3:
     resolution: {integrity: sha512-p3KULyQg4S7NIHixdwbGX+nFHkoBiA4YQmyWtjb8XngSKV124nJmRysgAeujbUVb15vh+RvFUfCPqU7rXk+hZg==}

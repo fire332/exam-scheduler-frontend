@@ -16,6 +16,7 @@ type PartialStoryFn = Parameters<Decorator>[0];
 const preview = {
   parameters: {
     layout: 'centered',
+    chromatic: { pauseAnimationAtEnd: true },
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
