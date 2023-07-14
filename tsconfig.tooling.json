@@ -4,12 +4,13 @@
     "composite": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "emitDeclarationOnly": true, // workaround for noEmit not allowed in referenced tsconfig
 
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    "outDir": "ts-out"
   },
   "include": [
     "./**/.eslintrc.cjs",
@@ -17,6 +18,7 @@
     "postcss.config.js",
     "tailwind.config.js",
     "cypress.config.ts",
-    "lint-staged.config.js"
+    "lint-staged.config.js",
+    "./tsconfig.json"
   ]
 }
