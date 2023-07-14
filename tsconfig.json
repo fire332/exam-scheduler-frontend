@@ -18,6 +18,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
+    "baseUrl": "src",
+
     "outDir": "ts-out"
   },
   "include": ["src"],
