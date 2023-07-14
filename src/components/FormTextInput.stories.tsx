@@ -2,7 +2,7 @@ import {
   CalendarIcon,
   ExclamationTriangleIcon,
   InfoCircledIcon,
-  InputIcon
+  InputIcon,
 } from '@radix-ui/react-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ComponentProps } from 'react';
@@ -13,7 +13,7 @@ const iconMap = {
   InputIcon,
   InfoCircledIcon,
   ExclamationTriangleIcon,
-  DefaultIcon: undefined
+  DefaultIcon: undefined,
 } as const;
 
 interface ExtraProps {
@@ -33,7 +33,7 @@ const meta = {
           <Story />
         </div>
       );
-    }
+    },
   ],
   args: {
     labelText: 'Label Text',
@@ -42,7 +42,7 @@ const meta = {
     showErrorMessage: true,
     displayRightIconErrorColor: false,
     leftIcon: 'DefaultIcon',
-    rightIcon: 'DefaultIcon'
+    rightIcon: 'DefaultIcon',
   },
   argTypes: {
     leftIcon: {
@@ -50,18 +50,18 @@ const meta = {
       options: {
         DefaultIcon: 'DefaultIcon',
         InputIcon: 'InputIcon',
-        InfoCircledIcon: 'InfoCircledIcon'
-      }
+        InfoCircledIcon: 'InfoCircledIcon',
+      },
     },
     rightIcon: {
       control: 'radio',
       options: {
         DefaultIcon: 'DefaultIcon',
         InfoCircledIcon: 'InfoCircledIcon',
-        ExclamationTriangleIcon: 'ExclamationTriangleIcon'
-      }
-    }
-  }
+        ExclamationTriangleIcon: 'ExclamationTriangleIcon',
+      },
+    },
+  },
 } satisfies Meta<StoryArgs>;
 
 export default meta;
@@ -71,5 +71,5 @@ export const FormTextInput: Story = {
     const leftIcon = iconMap[args.leftIcon];
     const rightIcon = iconMap[args.rightIcon];
     return <Component {...args} LeftIcon={leftIcon} RightIcon={rightIcon} />;
-  }
+  },
 };

@@ -15,8 +15,8 @@ const meta = {
         <Story />
         <div className="grow bg-white" />
       </div>
-    )
-  ]
+    ),
+  ],
 } satisfies Meta<StoryArgs>;
 
 export default meta;
@@ -41,5 +41,5 @@ export const Drawer: Story = {
         longText={'Proctoring'}
       />
     </Component>
-  )
+  ),
 };

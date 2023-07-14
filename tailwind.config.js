@@ -8,7 +8,7 @@ const config = {
   plugins: [formsPlugin, typographyPlugin],
   theme: {
     fontFamily: {
-      sans: ['Nunito Sans']
+      sans: ['Nunito Sans'],
     },
     extend: {
       colors: {
@@ -23,7 +23,7 @@ const config = {
           700: 'color(display-p3 0.235 0.482 0.059 / <alpha-value>)',
           800: 'color(display-p3 0.153 0.333 0.027 / <alpha-value>)',
           900: 'color(display-p3 0.075 0.173 0.008 / <alpha-value>)',
-          950: 'color(display-p3 0.031 0.078 0 / <alpha-value>)'
+          950: 'color(display-p3 0.031 0.078 0 / <alpha-value>)',
         },
         secondary: {
           50: 'color(display-p3 0.98 0.898 0.906 / <alpha-value>)',
@@ -36,7 +36,7 @@ const config = {
           700: 'color(display-p3 0.408 0.071 0.102 / <alpha-value>)',
           800: 'color(display-p3 0.271 0.047 0.067 / <alpha-value>)',
           900: 'color(display-p3 0.137 0.024 0.035 / <alpha-value>)',
-          950: 'color(display-p3 0.067 0.012 0.016 / <alpha-value>)'
+          950: 'color(display-p3 0.067 0.012 0.016 / <alpha-value>)',
         },
         surface: {
           50: 'color(display-p3 0.969 0.969 0.973 / <alpha-value>)',
@@ -49,7 +49,7 @@ const config = {
           700: 'color(display-p3 0.31 0.333 0.388 / <alpha-value>)',
           800: 'color(display-p3 0.212 0.227 0.267 / <alpha-value>)',
           900: 'color(display-p3 0.106 0.114 0.133 / <alpha-value>)',
-          950: 'color(display-p3 0.055 0.059 0.067 / <alpha-value>)'
+          950: 'color(display-p3 0.055 0.059 0.067 / <alpha-value>)',
         },
         error: {
           50: 'color(display-p3 1 0.922 0.922 / <alpha-value>)',
@@ -62,11 +62,11 @@ const config = {
           700: 'color(display-p3 0.655 0.027 0.027 / <alpha-value>)',
           800: 'color(display-p3 0.250 0.010 0.010 / <alpha-value>)',
           900: 'color(display-p3 0.216 0.004 0.004 / <alpha-value>)',
-          950: 'color(display-p3 0.118 0 0 / <alpha-value>)'
-        }
-      }
-    }
-  }
+          950: 'color(display-p3 0.118 0 0 / <alpha-value>)',
+        },
+      },
+    },
+  },
 };
 
 export default config;

@@ -7,7 +7,7 @@ interface ErrorComponentProps {
 
 export default function FetchError({
   error,
-  children
+  children,
 }: PropsWithChildren<ErrorComponentProps>) {
   return (
     <div className="prose flex h-full max-w-full flex-col items-center justify-center text-error-500">

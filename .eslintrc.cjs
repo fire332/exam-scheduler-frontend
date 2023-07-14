@@ -5,7 +5,7 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    es2022: true
+    es2022: true,
   },
   extends: [
     'eslint:recommended',
@@ -14,20 +14,19 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
-    'plugin:react-hooks/recommended',
     'plugin:storybook/recommended',
-    'prettier'
+    'prettier',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: ['./tsconfig.json', './tsconfig.*.json', 'cypress/tsconfig.json']
+    project: ['./tsconfig.json', './tsconfig.*.json', 'cypress/tsconfig.json'],
   },
   plugins: ['react-refresh', '@typescript-eslint'],
   settings: {
     react: {
-      version: 'detect'
+      version: 'detect',
     },
-    linkComponents: [{ name: 'Link', linkAttribute: 'to' }]
+    linkComponents: [{ name: 'Link', linkAttribute: 'to' }],
   },
   rules: {
     'react-refresh/only-export-components': 'error',
@@ -35,14 +34,14 @@ module.exports = {
     // @typescript-eslint rules
     '@typescript-eslint/consistent-type-exports': [
       'error',
-      { fixMixedExportsWithInlineTypeSpecifier: true }
+      { fixMixedExportsWithInlineTypeSpecifier: true },
     ],
     '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/no-redundant-type-constituents': 'error',
     '@typescript-eslint/switch-exhaustiveness-check': 'error',
     '@typescript-eslint/require-array-sort-compare': [
       'error',
-      { ignoreStringArrays: true }
+      { ignoreStringArrays: true },
     ],
     '@typescript-eslint/no-useless-empty-export': 'error',
     '@typescript-eslint/no-unnecessary-qualifier': 'error',
@@ -50,7 +49,7 @@ module.exports = {
     '@typescript-eslint/no-import-type-side-effects': 'error',
     '@typescript-eslint/no-confusing-void-expression': [
       'error',
-      { ignoreVoidOperator: true, ignoreArrowShorthand: true }
+      { ignoreVoidOperator: true, ignoreArrowShorthand: true },
     ],
     '@typescript-eslint/method-signature-style': 'error',
     '@typescript-eslint/no-namespace': ['error', { allowDeclarations: true }],
@@ -60,8 +59,8 @@ module.exports = {
       'warn',
       {
         ignoreDOMComponents: true,
-        ignoreRefs: true
-      }
+        ignoreRefs: true,
+      },
     ],
     'react/jsx-no-constructed-context-values': 'error',
     'react/jsx-no-undef': 'off', // TypeScript catches this for us already
@@ -73,6 +72,6 @@ module.exports = {
     'react/no-unstable-nested-components': ['error', { allowAsProps: true }],
     'react/prop-types': 'off', // TypeScript catches this for us already
     'react/self-closing-comp': 'error',
-    'react/void-dom-elements-no-children': 'error'
-  }
+    'react/void-dom-elements-no-children': 'error',
+  },
 };

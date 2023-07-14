@@ -11,7 +11,9 @@ node_modules
 dist
 dist-ssr
 storybook-static
+ts-out
 *.local
+*.tsbuildinfo
 
 # Editor directories and files
 .idea

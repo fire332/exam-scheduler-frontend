@@ -30,5 +30,5 @@ export const ExamRequestResource = createResource({
   path: '/examRequest/:id',
   schema: ExamRequest,
 
-  Endpoint: AuthdEndpoint
+  Endpoint: AuthdEndpoint,
 });

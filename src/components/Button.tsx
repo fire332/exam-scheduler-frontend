@@ -7,13 +7,13 @@ interface Props {
 enum ButtonType {
   Solid,
   Outline,
-  Tonal
+  Tonal,
 }
 
 export default function Button({
   children,
   onClick,
-  buttonType = ButtonType.Solid
+  buttonType = ButtonType.Solid,
 }: React.PropsWithChildren<Props>) {
   switch (buttonType) {
     case ButtonType.Solid:

@@ -21,7 +21,7 @@ function NavItem({
   active,
   shortText,
   longText,
-  icon = DotFilledIcon
+  icon = DotFilledIcon,
 }: Props) {
   const NavIcon = icon;
 

@@ -10,7 +10,7 @@ interface Props {
 export default function Drawer({
   expanded,
   children,
-  onBurgerClick
+  onBurgerClick,
 }: React.PropsWithChildren<Props>) {
   return (
     <nav

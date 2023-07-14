@@ -1,7 +1,7 @@
 import {
   CalendarIcon,
   EnvelopeClosedIcon,
-  EyeOpenIcon
+  EyeOpenIcon,
 } from '@radix-ui/react-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ComponentProps } from 'react';
@@ -11,7 +11,7 @@ const iconMap = {
   CalendarIcon,
   EnvelopeClosedIcon,
   EyeOpenIcon,
-  DefaultIcon: undefined
+  DefaultIcon: undefined,
 } as const;
 
 interface ExtraStoryArgs {
@@ -28,13 +28,13 @@ const meta = {
       <div className="flex h-60 w-[360px] items-center justify-center">
         <Story />
       </div>
-    )
+    ),
   ],
   args: {
     active: true,
     shortText: 'Short Label',
     longText: 'Long Label',
-    iconChoise: 'DefaultIcon'
+    iconChoise: 'DefaultIcon',
   },
   argTypes: {
     iconChoise: {
@@ -43,10 +43,10 @@ const meta = {
         DefaultIcon: 'DefaultIcon',
         CalendarIcon: 'CalendarIcon',
         EnvelopeClosedIcon: 'EnvelopeClosedIcon',
-        EyeOpenIcon: 'EyeOpenIcon'
-      }
-    }
-  }
+        EyeOpenIcon: 'EyeOpenIcon',
+      },
+    },
+  },
 } satisfies Meta<StoryArgs>;
 
 export default meta;
@@ -55,5 +55,5 @@ export const NavItem: Story = {
   render: (args) => {
     const icon = iconMap[args.iconChoise];
     return <Component {...args} icon={icon} />;
-  }
+  },
 };

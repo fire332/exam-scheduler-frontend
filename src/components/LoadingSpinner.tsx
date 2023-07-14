@@ -1,6 +1,9 @@
+import isChromatic from 'chromatic/isChromatic';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useCounter, useInterval } from 'react-timing-hooks';
+
+const CHROMATIC_SNAPSHOT_ANGLE = 60;
 
 export default function LoadingSpinner() {
   const [dots, setDots] = useState('.');
@@ -8,12 +11,15 @@ export default function LoadingSpinner() {
     dots.length >= 3 ? setDots(dots.charAt(0)) : setDots(dots + dots.charAt(0));
   useInterval(updateDots, 500, { startOnMount: true });
 
-  const [rotate] = useCounter({
+  let [rotate] = useCounter({
     start: 0,
     interval: 250, // step every 250ms
     stepSize: 6, // stepSize 6 to emulate the # of positions of a clock's second hand
-    startOnMount: true
+    startOnMount: true,
   });
+
+  // Lock the angle for Chromatic snapshot testing
+  if (isChromatic()) rotate = CHROMATIC_SNAPSHOT_ANGLE;
 
   return (
     <div className="flex flex-col items-center">
@@ -25,7 +31,7 @@ export default function LoadingSpinner() {
               type: 'spring',
               stiffness: 2000,
               damping: 40,
-              mass: 1
+              mass: 1,
             }}
             className="h-[86%] w-0.5"
           >

@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
-    "allowJs": true,
     "composite": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "jsx": "react-jsx",
-    "emitDeclarationOnly": true, // workaround for noEmit not allowed in referenced tsconfig
 
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    "outDir": "ts-out"
   },
-  "include": [".storybook/**/*", "tailwind.config.js"]
+  "include": [".storybook/**/*"]
 }

@@ -3,11 +3,11 @@ import { RestEndpoint } from '@rest-hooks/rest';
 import { getUser } from '../authConfig';
 
 export default class AuthdEndpoint<
-  O extends RestGenerics = { path: '' }
+  O extends RestGenerics = { path: '' },
 > extends RestEndpoint<O> {
   getHeaders(headers: HeadersInit) {
     const newHeaders: HeadersInit & { Authorization?: string } = {
-      ...headers
+      ...headers,
     };
 
     const accessToken = getUser()?.access_token;

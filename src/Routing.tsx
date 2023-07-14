@@ -4,25 +4,25 @@ import ExamRequests from './routes/ExamRequests';
 import Index from './routes/Index';
 
 const rootRoute = new RootRoute({
-  component: Outlet
+  component: Outlet,
 });
 
 const indexRoute = new Route({
   getParentRoute: () => rootRoute,
   path: '/',
-  component: Index
+  component: Index,
 });
 
 const dashboardRoute = new Route({
   getParentRoute: () => rootRoute,
   path: '/dashboard',
-  component: Dashboard
+  component: Dashboard,
 });
 
 const examRequestsRoute = new Route({
   getParentRoute: () => dashboardRoute,
   path: '/exam-requests',
-  component: ExamRequests
+  component: ExamRequests,
 });
 
 const routeTree = rootRoute.addChildren([indexRoute, dashboardRoute]);

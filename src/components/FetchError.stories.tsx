@@ -14,21 +14,21 @@ type Story = StoryObj<StoryArgs>;
 const meta = {
   component: Component,
   parameters: {
-    layout: 'fullscreen'
-  }
+    layout: 'fullscreen',
+  },
 } satisfies Meta<StoryArgs>;
 
 export default meta;
 
 export const FetchError: Story = {
   args: {
-    httpStatusCode: 401
+    httpStatusCode: 401,
   },
   render: ({ httpStatusCode }) => {
     const error = new NetworkError(
-      new Response(undefined, { status: httpStatusCode })
+      new Response(undefined, { status: httpStatusCode }),
     );
 
     return <Component error={error} />;
-  }
+  },
 };
