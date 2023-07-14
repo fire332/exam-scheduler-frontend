@@ -38,7 +38,7 @@ function FormTextInput({
   isRequired,
   displayRightIconErrorColor,
   LeftIcon = DotFilledIcon,
-  RightIcon = DotFilledIcon
+  RightIcon = DotFilledIcon,
 }: Props) {
   return (
     <div className="mb-4">

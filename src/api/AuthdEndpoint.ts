@@ -7,7 +7,7 @@ export default class AuthdEndpoint<
 > extends RestEndpoint<O> {
   getHeaders(headers: HeadersInit) {
     const newHeaders: HeadersInit & { Authorization?: string } = {
-      ...headers
+      ...headers,
     };
 
     const accessToken = getUser()?.access_token;

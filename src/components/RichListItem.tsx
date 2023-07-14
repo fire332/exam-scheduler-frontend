@@ -10,7 +10,7 @@ interface Props {
 function RichListItem({
   heading,
   subheading,
-  children
+  children,
 }: PropsWithChildren<Props>) {
   return (
     <li className="w-full list-none text-surface-900">

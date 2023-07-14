@@ -14,7 +14,7 @@ interface Props {
 
 function AdditionalInfo({
   Icon = DotFilledIcon,
-  children
+  children,
 }: PropsWithChildren<Props>) {
   return (
     <div className="inline-flex items-center [&:not(:last-child)]:after:px-2 [&:not(:last-child)]:after:text-surface-100 [&:not(:last-child)]:after:content-['|']">

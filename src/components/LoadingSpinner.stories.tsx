@@ -7,7 +7,7 @@ type StoryArgs = ComponentProps<typeof Component>;
 type Story = StoryObj<StoryArgs>;
 
 const meta = {
-  component: Component
+  component: Component,
 } satisfies Meta<StoryArgs>;
 
 export default meta;

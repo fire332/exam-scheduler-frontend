@@ -1,7 +1,7 @@
 import {
   CalendarIcon,
   EnvelopeClosedIcon,
-  EyeOpenIcon
+  EyeOpenIcon,
 } from '@radix-ui/react-icons';
 import { AsyncBoundary } from '@rest-hooks/react';
 import { Outlet } from '@tanstack/router';

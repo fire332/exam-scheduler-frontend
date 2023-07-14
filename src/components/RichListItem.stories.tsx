@@ -13,8 +13,8 @@ const meta = {
   component: Component,
   args: {
     heading: 'BUS 251',
-    subheading: 'Steve Gibson'
-  }
+    subheading: 'Steve Gibson',
+  },
 } satisfies Meta<StoryArgs>;
 
 export default meta;
@@ -35,7 +35,7 @@ export const RichListItem: Story = {
               weekday: 'short',
               month: 'short',
               day: 'numeric',
-              year: 'numeric'
+              year: 'numeric',
             })}
           </AdditionalInfo>
 
@@ -47,5 +47,5 @@ export const RichListItem: Story = {
         </div>
       </Component>
     );
-  }
+  },
 };

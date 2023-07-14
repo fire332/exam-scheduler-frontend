@@ -19,7 +19,7 @@ const authConfig = {
   loadUserInfo: true,
   mergeClaims: true,
   onSigninCallback,
-  onRemoveUser
+  onRemoveUser,
 } as const satisfies AuthProviderProps;
 
 function getUser() {

@@ -9,14 +9,14 @@ const config = {
     proxy: {
       '/api/': {
         target: 'https://fic-exam-scheduler-api-6f324588b682.herokuapp.com/',
-        rewrite: (path) => path.replace(/^\/api\//, '')
+        rewrite: (path) => path.replace(/^\/api\//, ''),
       },
       '/auth/': {
         target: 'https://fancy-runnable-unicorn-dfmpp0.zitadel.cloud/',
-        rewrite: (path) => path.replace(/^\/auth\//, '')
-      }
-    }
-  }
+        rewrite: (path) => path.replace(/^\/auth\//, ''),
+      },
+    },
+  },
 } satisfies UserConfigExport;
 
 // https://vitejs.dev/config/

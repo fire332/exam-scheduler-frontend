@@ -1,7 +1,7 @@
 import {
   AsyncBoundary,
   CacheProvider,
-  DevToolsManager
+  DevToolsManager,
 } from '@rest-hooks/react';
 import { withThemeByClassName } from '@storybook/addon-styling';
 import type { Preview } from '@storybook/react';
@@ -20,34 +20,34 @@ const preview = {
     controls: {
       matchers: {
         color: /(background|color)$/i,
-        date: /Date$/
-      }
+        date: /Date$/,
+      },
     },
     decorators: [
       (Story: PartialStoryFn) => (
         <CacheProvider
           managers={[
             ...CacheProvider.defaultProps.managers,
-            new DevToolsManager()
+            new DevToolsManager(),
           ]}
         >
           <AsyncBoundary fallback="loading">
             <Story />
           </AsyncBoundary>
         </CacheProvider>
-      )
-    ]
-  }
+      ),
+    ],
+  },
 } satisfies Preview;
 
 export const decorators: Decorator[] = [
   withThemeByClassName({
     themes: {
       light: '',
-      dark: 'dark'
+      dark: 'dark',
     },
-    defaultTheme: 'light'
-  })
+    defaultTheme: 'light',
+  }),
 ];
 
 export default preview;

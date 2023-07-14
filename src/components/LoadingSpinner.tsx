@@ -12,7 +12,7 @@ export default function LoadingSpinner() {
     start: 0,
     interval: 250, // step every 250ms
     stepSize: 6, // stepSize 6 to emulate the # of positions of a clock's second hand
-    startOnMount: true
+    startOnMount: true,
   });
 
   return (
@@ -25,7 +25,7 @@ export default function LoadingSpinner() {
               type: 'spring',
               stiffness: 2000,
               damping: 40,
-              mass: 1
+              mass: 1,
             }}
             className="h-[86%] w-0.5"
           >

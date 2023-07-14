@@ -5,7 +5,7 @@ interface Props {
 
 export default function Button({
   children,
-  onClick
+  onClick,
 }: React.PropsWithChildren<Props>) {
   return (
     <button

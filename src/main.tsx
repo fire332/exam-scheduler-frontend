@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <CacheProvider
         managers={[
           ...CacheProvider.defaultProps.managers,
-          new DevToolsManager()
+          new DevToolsManager(),
         ]}
       >
         <RouterProvider router={router} />

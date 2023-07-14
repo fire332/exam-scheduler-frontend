@@ -57,7 +57,7 @@ const loginToZitadelCommand = (username: string, password: string) => {
   const log = Cypress.log({
     displayName: 'ZITADEL LOGIN',
     message: [`🔐 Authenticating | ${username}`],
-    autoEnd: false
+    autoEnd: false,
   });
   log.snapshot('before');
 
@@ -74,7 +74,7 @@ const loginToZitadelCommand = (username: string, password: string) => {
             }`
           )
           .should('exist');
-      }
+      },
     }
   );
 

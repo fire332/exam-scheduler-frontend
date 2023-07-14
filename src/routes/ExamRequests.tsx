@@ -14,7 +14,7 @@ export default function ExamRequests() {
           dt.toLocaleString({
             weekday: 'short',
             month: 'short',
-            day: 'numeric'
+            day: 'numeric',
           })
         )
         .join(' | ');
