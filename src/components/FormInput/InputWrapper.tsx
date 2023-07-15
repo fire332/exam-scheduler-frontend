@@ -1,39 +1,70 @@
-import type * as icons from '@radix-ui/react-icons';
-import { DotFilledIcon } from '@radix-ui/react-icons';
+import { ErrorMessage } from '@hookform/error-message';
+import type { Icon } from '@radix-ui/react-icons';
+import type { FieldErrors, FieldPath, FieldValues } from 'react-hook-form';
+import { useFormState } from 'react-hook-form';
 
-type ValueOf<T> = T[keyof T];
-
-interface Props {
-  labelText: string;
-  helperText?: string;
-  labelIcon?: ValueOf<typeof icons>;
+function hasErrorMessages<T extends FieldValues>(errors: FieldErrors<T>) {
+  return Reflect.ownKeys(errors).length > 0;
 }
 
-function InputWrapper({
+interface Props<T> {
+  inputName: T;
+  required?: boolean;
+  labelFor: string;
+  labelText: string;
+  helperText?: string;
+  labelIcon?: Icon;
+}
+
+function InputWrapper<T extends FieldValues>({
+  inputName,
+  required,
+  labelFor,
   labelText,
   children,
   helperText,
-  labelIcon = DotFilledIcon,
-}: React.PropsWithChildren<Props>) {
+  labelIcon,
+}: React.PropsWithChildren<Props<FieldPath<T>>>) {
+  const { isValid, errors } = useFormState<T>({ name: inputName, exact: true });
+
   const LeftIcon = labelIcon;
+  const infoText = hasErrorMessages(errors) ? (
+    /* @ts-expect-error bad library type */
+    <ErrorMessage name={inputName} errors={errors} />
+  ) : (
+    helperText
+  );
+
   return (
-    <div className="mb-4">
+    <div className="inline-flex flex-col gap-2">
       <label
-        // htmlFor={inputName}
-        className="block text-xs font-medium leading-6 text-surface-500"
+        htmlFor={labelFor}
+        className="block text-xs font-medium text-surface-500"
       >
         {labelText}
-        <span className="text-error-500">*</span>
+        {required && <span className="text-error-500">*</span>}
       </label>
 
-      <div className="[&>input: relative mt-2 h-9 rounded-md border border-surface-300 text-surface-900 outline-none focus-within:border-primary-500 [&>*]:h-full [&>*]:w-full [&>input:focus]:!ring-0 [&>input:invalid]:border-error-500 [&>input]:!border-none [&>input]:[background:none]">
-        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-          <LeftIcon
-            width="20"
-            height="20"
-            color="color(display-p3 0.11 0.137 0.192)"
-          />
-        </div>
+      <div
+        className={
+          'relative h-9 rounded-md border border-surface-300 text-surface-900 outline-none [&>*]:h-full [&>input:focus]:!ring-0 [&>input]:inline-block [&>input]:w-full [&>input]:!border-none [&>input]:[background:none]' +
+          ' ' +
+          (isValid
+            ? 'focus-within:border-primary-500'
+            : 'focus-within:border-error-500') +
+          ' ' +
+          (LeftIcon ? '[&>input]:pl-12' : '')
+        }
+      >
+        {LeftIcon && (
+          <div className="pointer-events-none absolute left-0 inline-flex w-12 items-center justify-center">
+            <LeftIcon
+              width="20"
+              height="20"
+              color="color(display-p3 0.11 0.137 0.192)"
+            />
+          </div>
+        )}
 
         {children}
         {/* <input
@@ -56,8 +87,13 @@ function InputWrapper({
         </div> */}
       </div>
 
-      <div className="mt-2 block w-full text-xs text-error-500">
-        {helperText}
+      <div
+        className={
+          'block w-full text-xs empty:before:content-["​"]' +
+          (isValid ? '' : ' text-error-500')
+        }
+      >
+        {infoText}
       </div>
     </div>
   );

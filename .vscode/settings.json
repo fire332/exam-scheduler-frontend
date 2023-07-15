@@ -8,7 +8,7 @@
   "files.readonlyInclude": {
     ".husky": true,
     "dist": true,
-    "pnpm-lock.yaml": true,
+    "pnpm-lock.yaml": false,
     "node_modules": true
   },
   "files.insertFinalNewline": true,
