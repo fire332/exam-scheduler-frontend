@@ -5,7 +5,8 @@ import {
   InputIcon,
 } from '@radix-ui/react-icons';
 import type { Meta, StoryObj } from '@storybook/react';
-import type { ComponentProps } from 'react';
+import { useEffect, type ComponentProps } from 'react';
+import { FormProvider, useForm, useFormContext } from 'react-hook-form';
 import Component from './FormTextInput';
 
 const iconMap = {
@@ -28,19 +29,24 @@ const meta = {
   component: Component,
   decorators: [
     (Story) => {
+      const methods = useForm({
+        defaultValues: {
+          test: 'input text value',
+        },
+      });
+
       return (
-        <div className="flex h-60 w-[360px] items-center justify-center">
-          <Story />
-        </div>
+        <FormProvider {...methods}>
+          <form className="flex h-60 w-[360px] items-center justify-center bg-white">
+            <Story />
+          </form>
+        </FormProvider>
       );
     },
   ],
   args: {
     labelText: 'Label Text',
-    isRequired: true,
-    errorText: 'Placeholder Error Message',
-    showErrorMessage: true,
-    displayRightIconErrorColor: false,
+    helperText: 'Helper Text',
     leftIcon: 'DefaultIcon',
     rightIcon: 'DefaultIcon',
   },
@@ -66,10 +72,26 @@ const meta = {
 
 export default meta;
 
-export const FormTextInput: Story = {
+export const Normal: Story = {
   render: (args) => {
-    const leftIcon = iconMap[args.leftIcon];
-    const rightIcon = iconMap[args.rightIcon];
-    return <Component {...args} LeftIcon={leftIcon} RightIcon={rightIcon} />;
+    // const leftIcon = iconMap[args.leftIcon];
+    // const rightIcon = iconMap[args.rightIcon];
+    return <Component {...args} inputName="test" />;
+  },
+};
+
+export const Error: Story = {
+  decorators: [
+    (Story) => {
+      const { setError } = useFormContext();
+      useEffect(() => {
+        setError('test', { type: 'custom', message: 'error message' });
+      }, [setError]);
+
+      return <Story />;
+    },
+  ],
+  render: (args) => {
+    return <Component {...args} />;
   },
 };
