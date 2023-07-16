@@ -4,7 +4,7 @@ import Date from './Date';
 
 export default function OrderedDate({ luxonDate }: { luxonDate: DateTime }) {
   return (
-    <div className="items-center">
+    <div className="flex border-2">
       <div className="inline-flex">
         <div className="pr-2">
           <CalendarIcon className="h-5 w-5" />
