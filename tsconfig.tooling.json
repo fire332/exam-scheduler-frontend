@@ -12,6 +12,7 @@
   "include": [
     "./**/.eslintrc.cjs",
     ".prettierrc.cjs",
+    ".prettierrc.editor.cjs",
     "postcss.config.js",
     "tailwind.config.js",
     "lint-staged.config.js",
