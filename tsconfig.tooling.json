@@ -1,24 +1,20 @@
 {
   "compilerOptions": {
     "checkJs": true,
-    "composite": true,
+
     "target": "ES2022",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
+    "module": "NodeNext",
 
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-
-    "outDir": "ts-out"
+    "moduleResolution": "NodeNext",
+    "allowSyntheticDefaultImports": true
   },
+  "extends": "./tsconfig.base.json",
   "include": [
     "./**/.eslintrc.cjs",
     ".prettierrc.cjs",
+    ".prettierrc.editor.cjs",
     "postcss.config.js",
     "tailwind.config.js",
-    "cypress.config.ts",
     "lint-staged.config.js",
     "./tsconfig.json"
   ]

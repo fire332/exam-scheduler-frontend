@@ -1,32 +1,18 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "useDefineForClassFields": true,
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
     "skipLibCheck": true,
 
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
 
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-
-    "baseUrl": "src",
-
-    "outDir": "ts-out"
+    "baseUrl": "src"
   },
   "include": ["src"],
+  "extends": "./tsconfig.base.json",
   "references": [
-    { "path": "./tsconfig.vite.json" },
+    { "path": "./tsconfig.tscfg.json" },
     { "path": "./tsconfig.tooling.json" },
     { "path": "./tsconfig.storybook.json" },
-    { "path": "./cypress/tsconfig.json" }
+    { "path": "./tsconfig.cypress.json" }
   ]
 }

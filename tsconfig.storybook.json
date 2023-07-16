@@ -1,18 +1,4 @@
 {
-  "compilerOptions": {
-    "composite": true,
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true,
-    "jsx": "react-jsx",
-
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-
-    "outDir": "ts-out"
-  },
+  "extends": "./tsconfig.base.json",
   "include": [".storybook/**/*"]
 }

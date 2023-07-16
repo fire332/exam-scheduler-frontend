@@ -1,6 +1,6 @@
 /* eslint-env node */
 
-/** @type {import('prettier').Config} */
+/** @satisfies {import('prettier').Config} */
 module.exports = {
   singleQuote: true,
 
