@@ -29,6 +29,7 @@ module.exports = {
     linkComponents: [{ name: 'Link', linkAttribute: 'to' }],
   },
   rules: {
+    quotes: ['error', 'single', { avoidEscape: true }],
     'react-refresh/only-export-components': 'error',
 
     // @typescript-eslint rules
@@ -56,7 +57,7 @@ module.exports = {
 
     // eslint-plugin-react rules
     'react/jsx-no-bind': [
-      'warn',
+      'error',
       {
         ignoreDOMComponents: true,
         ignoreRefs: true,
