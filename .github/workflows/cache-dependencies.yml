@@ -23,18 +23,9 @@ jobs:
         with:
           node-version-file: 'package.json'
           cache: 'pnpm'
-      - name: Cache Cypress binary
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-cypress-${{ github.ref }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            cypress-${{ runner.os }}-cypress-${{ github.ref }}-
       - name: Install dependencies
-        run: pnpm install
-      - name: Print Cypress cache
-        run: |
-          pnpm exec cypress cache path
-          pnpm exec cypress cache list
+        uses: cypress-io/github-action@v5
+        with:
+          runTests: false
       - name: Pre-bundle dependencies
         run: pnpm exec vite optimize

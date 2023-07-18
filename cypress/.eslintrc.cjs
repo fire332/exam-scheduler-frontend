@@ -14,7 +14,7 @@ module.exports = {
     'prettier',
   ],
   parserOptions: {
-    project: ['./tsconfig.json'],
+    project: ['../tsconfig.cypress.json'],
   },
   plugins: ['cypress', '@typescript-eslint'],
 };

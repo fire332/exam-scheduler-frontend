@@ -18,15 +18,15 @@ const config = {
     if (filenames.length > BULK_THRESHOLD)
       return [ESLINT_CMD + '.', PRETTIER_CMD + '.'];
 
-    const filesStr = filenames.join(' ');
+    const filesStr = filenames.map((filename) => `'${filename}'`).join(' ');
     return [ESLINT_CMD + filesStr, PRETTIER_CMD + filesStr];
   },
-  '!(*.{js,cjs,ts,tsx})': PRETTIER_CMD,
+  [`!(${BASE_CODE_PATTERN})`]: PRETTIER_CMD,
 };
 
 // Workaround for tsc not supporting --build --noEmit together.
 for (const proj of getProjects()) {
-  config[BASE_CODE_PATTERN + `!(${proj})`] = () =>
+  config[BASE_CODE_PATTERN + `*!(${proj.replaceAll('/', '\\')})`] = () =>
     `tsc --incremental --noEmit -p ${proj}`;
 }
 

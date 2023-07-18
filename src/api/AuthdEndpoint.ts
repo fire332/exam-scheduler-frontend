@@ -5,7 +5,7 @@ import { getUser } from '../authConfig';
 export default class AuthdEndpoint<
   O extends RestGenerics = { path: '' },
 > extends RestEndpoint<O> {
-  getHeaders(headers: HeadersInit) {
+  override getHeaders(headers: HeadersInit) {
     const newHeaders: HeadersInit & { Authorization?: string } = {
       ...headers,
     };

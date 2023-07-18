@@ -22,7 +22,7 @@ export class ExamRequest extends Entity {
     return this.isoDatePrefs.map((isoStr) => DateTime.fromISO(isoStr, {}));
   }
 
-  static key = 'ExamRequest';
+  static override key = 'ExamRequest';
 }
 
 export const ExamRequestResource = createResource({

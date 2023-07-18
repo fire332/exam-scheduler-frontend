@@ -5,7 +5,7 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    es2022: true,
+    es2023: true,
   },
   extends: [
     'eslint:recommended',
@@ -19,7 +19,7 @@ module.exports = {
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: ['./tsconfig.json', './tsconfig.*.json', 'cypress/tsconfig.json'],
+    project: ['./tsconfig.json', './tsconfig.*.json'],
   },
   plugins: ['react-refresh', '@typescript-eslint'],
   settings: {
