@@ -24,6 +24,7 @@ describe('admin user can', () => {
       Cypress.env('TEST_ADMIN_PASSWORD') as string,
     );
     cy.visit('/dashboard/exam-requests');
+    cy.contains('Andy').click();
     cy.contains('Sign Out').click();
     cy.location('pathname').should('eq', '/');
   });

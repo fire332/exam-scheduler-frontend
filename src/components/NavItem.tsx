@@ -1,5 +1,6 @@
 import { DotFilledIcon } from '@radix-ui/react-icons';
 import type { IconProps } from '@radix-ui/react-icons/dist/types';
+import { motion } from 'framer-motion';
 import type { ComponentProps, ComponentType } from 'react';
 
 interface Props {
@@ -23,10 +24,11 @@ function NavItem({
   longText,
   icon = DotFilledIcon,
 }: Props) {
-  const NavIcon = icon;
+  const NavIcon = motion(icon);
 
   return (
-    <li
+    <motion.li
+      layout
       className={
         'flex h-14 list-none items-center rounded-full' +
         ' ' +
@@ -35,7 +37,8 @@ function NavItem({
           : 'w-[6rem] flex-col gap-y-1')
       }
     >
-      <div
+      <motion.div
+        layout
         className={
           'flex items-center justify-center rounded-full' +
           ' ' +
@@ -45,12 +48,14 @@ function NavItem({
         }
       >
         <NavIcon
+          layout
           width="24"
           height="24"
           color="color(display-p3 0.11 0.137 0.192)"
         />
-      </div>
-      <div
+      </motion.div>
+      <motion.div
+        layout
         className={
           'font-bold text-surface-800' +
           ' ' +
@@ -58,8 +63,8 @@ function NavItem({
         }
       >
         {expanded ? longText : shortText}
-      </div>
-    </li>
+      </motion.div>
+    </motion.li>
   );
 }
 
