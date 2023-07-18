@@ -15,7 +15,7 @@ const iconMap = {
 } as const;
 
 interface ExtraStoryArgs {
-  iconChoise: keyof typeof iconMap;
+  iconChoice: keyof typeof iconMap;
 }
 
 type StoryArgs = ComponentProps<typeof Component> & ExtraStoryArgs;
@@ -25,7 +25,7 @@ const meta = {
   component: Component,
   decorators: [
     (Story) => (
-      <div className="flex h-60 w-[360px] items-center justify-center">
+      <div className="flex h-60 w-[360px] flex-col items-center justify-center">
         <Story />
       </div>
     ),
@@ -34,26 +34,38 @@ const meta = {
     active: true,
     shortText: 'Short Label',
     longText: 'Long Label',
-    iconChoise: 'DefaultIcon',
+    iconChoice: 'DefaultIcon',
   },
   argTypes: {
-    iconChoise: {
+    iconChoice: {
       control: 'radio',
-      options: {
-        DefaultIcon: 'DefaultIcon',
-        CalendarIcon: 'CalendarIcon',
-        EnvelopeClosedIcon: 'EnvelopeClosedIcon',
-        EyeOpenIcon: 'EyeOpenIcon',
-      },
+      options: Object.keys(iconMap),
     },
   },
 } satisfies Meta<StoryArgs>;
 
 export default meta;
 
-export const NavItem: Story = {
+export const Single: Story = {
   render: (args) => {
-    const icon = iconMap[args.iconChoise];
+    const icon = iconMap[args.iconChoice];
     return <Component {...args} icon={icon} />;
+  },
+};
+
+export const Triple: Story = {
+  render: (args) => {
+    return (
+      <>
+        {Object.entries(iconMap).map(([iconName, icon]) => (
+          <Component
+            {...args}
+            icon={icon}
+            active={args.iconChoice === iconName}
+            key={iconName}
+          />
+        ))}
+      </>
+    );
   },
 };
