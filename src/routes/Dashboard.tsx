@@ -22,7 +22,7 @@ export default function Dashboard() {
 
   const handleBurgerClick = useCallback(
     () => setExpanded(!expanded),
-    [expanded]
+    [expanded],
   );
 
   return (
@@ -48,10 +48,9 @@ export default function Dashboard() {
         />
       </Drawer>
       <div className="flex grow flex-col">
-        <div className="h-16 w-full">
+        <div className="flex h-16 w-full justify-end">
           <UserBar />
         </div>
-
         <div className="grow rounded-tl-md bg-surface-50 px-8 text-surface-900">
           <AsyncBoundary
             fallback={
