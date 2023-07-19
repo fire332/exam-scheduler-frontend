@@ -1,24 +1,17 @@
-// TODO: implement trailing '...'
-// TODO: bug in 'required' implementation?  or WAI?
-import type { Icon } from '@radix-ui/react-icons';
+import { ClockIcon } from '@radix-ui/react-icons';
 import type { FieldPath, FieldValues } from 'react-hook-form';
 import { useFormContext, type RegisterOptions } from 'react-hook-form';
 import InputWrapper from './InputWrapper';
 
 interface Props<T> {
   labelText: string;
-  labelIcon?: Icon;
   helperText?: string;
   inputName: T;
-  validateOpts?: Pick<
-    RegisterOptions,
-    'required' | 'maxLength' | 'minLength' | 'pattern'
-  >;
+  validateOpts?: Pick<RegisterOptions, 'required' | 'pattern'>;
 }
 
-function FormTextInput<T extends FieldValues>({
+function FormTimeInput<T extends FieldValues>({
   labelText,
-  labelIcon,
   inputName,
   validateOpts,
   helperText,
@@ -34,14 +27,14 @@ function FormTextInput<T extends FieldValues>({
   return (
     <InputWrapper
       inputName={inputName}
-      labelIcon={labelIcon}
+      labelIcon={ClockIcon}
       labelText={labelText}
       helperText={helperText}
       required={isRequired}
     >
-      <input type="text" {...register(inputName, validateOpts)} />
+      <input type="time" {...register(inputName, validateOpts)} />
     </InputWrapper>
   );
 }
 
-export default FormTextInput;
+export default FormTimeInput;

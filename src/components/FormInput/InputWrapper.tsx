@@ -37,7 +37,7 @@ function InputWrapper<T extends FieldValues>({
   );
 
   return (
-    <label className="inline-flex flex-col gap-2">
+    <label className="inline-flex flex-col items-stretch gap-2">
       <div className="text-xs font-medium text-surface-500">
         {labelText}
         {required && <span className="text-error-500">*</span>}
@@ -45,19 +45,19 @@ function InputWrapper<T extends FieldValues>({
 
       <div
         className={
-          'relative h-9 rounded-md border border-surface-300 text-surface-900 outline-none [&>*]:h-full' +
+          'relative inline-flex h-9 rounded-md border border-surface-300 text-surface-900 outline-none [&>*]:h-full' +
           ' ' +
-          '[&>input:focus]:!ring-0 [&>input]:inline-block [&>input]:w-full [&>input]:!border-none [&>input]:[background:none]' +
+          '[&>input:focus]:!ring-0 [&>input]:inline-block [&>input]:min-w-0 [&>input]:flex-grow [&>input]:!border-none [&>input]:[background:none]' +
           ' ' +
           (isValid
             ? 'focus-within:border-primary-500'
-            : 'focus-within:border-error-500') +
+            : 'focus-within:border-error-500 [&>input]:pr-0') +
           ' ' +
-          (labelIcon ? '[&>input]:px-0' : '')
+          (labelIcon ? '[&>input]:pl-0' : '')
         }
       >
         {LeftIcon && (
-          <div className="pointer-events-none inline-flex w-[52px] flex-grow items-center justify-center">
+          <div className="pointer-events-none inline-flex w-[52px] items-center justify-center">
             <LeftIcon
               width="20"
               height="20"
@@ -68,24 +68,20 @@ function InputWrapper<T extends FieldValues>({
 
         {children}
 
-        <div
-          className={
-            'pointer-events-none inline-flex flex-grow items-center p-4' +
-            ' ' +
-            (isValid ? 'invisible' : 'visible')
-          }
-        >
-          <RightIcon
-            width="20"
-            height="20"
-            color="color(display-p3 0.949 0.188 0.188"
-          />
-        </div>
+        {!isValid && (
+          <div className={'pointer-events-none inline-flex items-center p-4'}>
+            <RightIcon
+              width="20"
+              height="20"
+              color="color(display-p3 0.949 0.188 0.188"
+            />
+          </div>
+        )}
       </div>
 
       <div
         className={
-          'block w-full text-xs empty:before:content-["​"]' +
+          'text-xs empty:before:content-["​"]' +
           (isValid ? '' : ' text-error-500')
         }
       >

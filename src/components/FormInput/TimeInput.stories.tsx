@@ -1,3 +1,5 @@
+// TODO remove un-needed
+
 import {
   CalendarIcon,
   ExclamationTriangleIcon,
@@ -11,7 +13,7 @@ import { userEvent } from '@storybook/testing-library';
 import type { ComponentProps } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import Component from './TextInput';
+import Component from './TimeInput';
 
 const iconMap = {
   CalendarIcon,
@@ -80,28 +82,18 @@ export default meta;
 
 export const Normal: Story = {
   render: (args) => {
-    const leftIcon = iconMap[args.leftIcon];
-    return (
-      <Component<FormFields>
-        {...args}
-        inputName={'field'}
-        labelIcon={leftIcon}
-      />
-    );
+    return <Component<FormFields> {...args} inputName={'field'} />;
   },
 };
 
 export const Error: Story = {
   render: (args) => {
-    const leftIcon = iconMap[args.leftIcon];
     return (
       <Component<FormFields>
         {...args}
         inputName={'field'}
-        labelIcon={leftIcon}
         validateOpts={{
           required: true,
-          maxLength: { value: 2, message: args.errorMessage },
         }}
       />
     );

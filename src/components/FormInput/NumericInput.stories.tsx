@@ -11,7 +11,7 @@ import { userEvent } from '@storybook/testing-library';
 import type { ComponentProps } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import Component from './TextInput';
+import Component from './NumericInput';
 
 const iconMap = {
   CalendarIcon,
@@ -101,7 +101,6 @@ export const Error: Story = {
         labelIcon={leftIcon}
         validateOpts={{
           required: true,
-          maxLength: { value: 2, message: args.errorMessage },
         }}
       />
     );

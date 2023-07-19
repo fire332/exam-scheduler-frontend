@@ -1,29 +1,35 @@
-// TODO: implement trailing '...'
-// TODO: bug in 'required' implementation?  or WAI?
+// TODO: replace with proper calendar view - plan to refactor this component away entirely?
+
 import type { Icon } from '@radix-ui/react-icons';
+import { DateTime } from 'luxon';
 import type { FieldPath, FieldValues } from 'react-hook-form';
 import { useFormContext, type RegisterOptions } from 'react-hook-form';
 import InputWrapper from './InputWrapper';
+
+function inputValueAsIso(value: string) {
+  return DateTime.fromJSDate(new Date(value)).toISO({
+    suppressSeconds: true,
+    suppressMilliseconds: true,
+  })!;
+}
 
 interface Props<T> {
   labelText: string;
   labelIcon?: Icon;
   helperText?: string;
+  inputType?: string;
   inputName: T;
-  validateOpts?: Pick<
-    RegisterOptions,
-    'required' | 'maxLength' | 'minLength' | 'pattern'
-  >;
+  validateOpts?: Pick<RegisterOptions, 'required' | 'validate'>;
 }
 
-function FormTextInput<T extends FieldValues>({
+function DateTimeInput<T extends FieldValues>({
   labelText,
   labelIcon,
   inputName,
   validateOpts,
   helperText,
 }: Props<FieldPath<T>>) {
-  const { register } = useFormContext();
+  const { register } = useFormContext<T>();
 
   const isRequired: boolean =
     !!validateOpts &&
@@ -39,9 +45,18 @@ function FormTextInput<T extends FieldValues>({
       helperText={helperText}
       required={isRequired}
     >
-      <input type="text" {...register(inputName, validateOpts)} />
+      <input
+        type="datetime-local"
+        {...register(
+          inputName,
+          Object.assign<RegisterOptions, typeof validateOpts>(
+            { setValueAs: inputValueAsIso },
+            validateOpts,
+          ),
+        )}
+      />
     </InputWrapper>
   );
 }
 
-export default FormTextInput;
+export default DateTimeInput;
