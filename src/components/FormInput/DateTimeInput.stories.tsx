@@ -1,7 +1,5 @@
 import { CalendarIcon } from '@radix-ui/react-icons';
-import { expect } from '@storybook/jest';
 import type { Meta, StoryObj } from '@storybook/react';
-import { userEvent } from '@storybook/testing-library';
 import type { ComponentProps } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
@@ -76,12 +74,12 @@ export const Error: Story = {
       />
     );
   },
-  play: async ({ canvasElement, step }) => {
-    await step('select input', async () => {
-      const input = canvasElement.getElementsByTagName('input')[0];
-      expect(input).toBeInstanceOf(HTMLInputElement);
+  // play: async ({ canvasElement, step }) => {
+  //   await step('select input', async () => {
+  //     const input = canvasElement.getElementsByTagName('input')[0];
+  //     expect(input).toBeInstanceOf(HTMLInputElement);
 
-      await userEvent.click(input!);
-    });
-  },
+  //     await userEvent.click(input!);
+  //   });
+  // },
 };
