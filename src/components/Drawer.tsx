@@ -37,7 +37,7 @@ export default function Drawer({
       </motion.div>
       <motion.div
         layout
-        className="flex w-full flex-grow flex-col items-center justify-center gap-y-3"
+        className="flex w-full flex-grow flex-col items-stretch justify-center gap-y-3"
       >
         {children}
       </motion.div>
