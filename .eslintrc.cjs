@@ -54,6 +54,7 @@ module.exports = {
     ],
     '@typescript-eslint/method-signature-style': 'error',
     '@typescript-eslint/no-namespace': ['error', { allowDeclarations: true }],
+    '@typescript-eslint/no-non-assertion': 'off',
 
     // eslint-plugin-react rules
     'react/jsx-no-bind': [
