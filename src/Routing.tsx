@@ -1,4 +1,5 @@
 import { RootRoute, Route, Router } from '@tanstack/router';
+import RequestExamSlot from 'components/RequestExamSlot';
 import Dashboard from './routes/Dashboard';
 import ExamRequests from './routes/ExamRequests';
 import Index from './routes/Index';
@@ -28,10 +29,25 @@ const examRequestsIndexRoute = new Route({
   component: ExamRequests,
 });
 
+const examRequestsEditRoute = new Route({
+  getParentRoute: () => examRequestsIndexRoute,
+  path: '$examRequestId',
+  // eslint-disable-next-line @typescript-eslint/require-await
+  async loader({ params }) {
+    return params.examRequestId;
+  },
+  component: (props) => {
+    return <RequestExamSlot initialValues={} />;
+  },
+});
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   dashboardRoute.addChildren([
-    examRequestsRoute.addChildren([examRequestsIndexRoute]),
+    examRequestsRoute.addChildren([
+      examRequestsIndexRoute,
+      examRequestsEditRoute,
+    ]),
   ]),
 ]);
 

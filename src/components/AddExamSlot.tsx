@@ -10,12 +10,12 @@ import type { FormEventHandler } from 'react';
 import { useCallback } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { FormProvider, useForm } from 'react-hook-form';
-import Button from '../components/Button';
-import DateTimeInput from '../components/FormInput/DateTimeInput';
-import DurationInput from '../components/FormInput/DurationInput';
-import NumericInput from '../components/FormInput/NumericInput';
-import TextInput from '../components/FormInput/TextInput';
-import PageHeader from '../components/PageHeader';
+import Button from './Button';
+import DateTimeInput from './FormInput/DateTimeInput';
+import DurationInput from './FormInput/DurationInput';
+import NumericInput from './FormInput/NumericInput';
+import TextInput from './FormInput/TextInput';
+import PageHeader from './PageHeader';
 
 // TODO -> missing API?
 interface Props {
