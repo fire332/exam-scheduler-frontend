@@ -13,7 +13,7 @@ export default function DateWithCalendar({
         <div className="pr-2">
           <CalendarIcon className="h-5 w-5" />
         </div>
-        <div className="mx-2">
+        <div className="ml-2">
           <Date luxonDate={luxonDate} />
         </div>
       </div>
