@@ -2,7 +2,11 @@ import { CalendarIcon } from '@radix-ui/react-icons';
 import type { DateTime } from 'luxon';
 import Date from './Date';
 
-export default function OrderedDate({ luxonDate }: { luxonDate: DateTime }) {
+export default function DateWithCalendar({
+  luxonDate,
+}: {
+  luxonDate: DateTime;
+}) {
   return (
     <div className="flex">
       <div className="inline-flex">
