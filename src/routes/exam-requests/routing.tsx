@@ -20,7 +20,7 @@ const examRequestsIndexRoute = new Route({
 });
 
 const examRequestsEditRoute = new Route({
-  getParentRoute: () => examRequestsIndexRoute,
+  getParentRoute: () => examRequestsRoute,
   path: '$id',
   component: function Component({ useParams }) {
     const { id } = useParams();
@@ -42,8 +42,6 @@ const examRequestsEditRoute = new Route({
   },
 });
 
-examRequestsRoute.addChildren([
-  examRequestsIndexRoute.addChildren([examRequestsEditRoute]),
-]);
+examRequestsRoute.addChildren([examRequestsIndexRoute, examRequestsEditRoute]);
 
 export default examRequestsRoute;
