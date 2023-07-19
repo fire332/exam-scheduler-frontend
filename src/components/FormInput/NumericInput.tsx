@@ -15,7 +15,7 @@ interface Props<T> {
   >;
 }
 
-function FormNumericInput<T extends FieldValues>({
+function NumericInput<T extends FieldValues>({
   labelText,
   labelIcon,
   stepValue = 1,
@@ -48,4 +48,4 @@ function FormNumericInput<T extends FieldValues>({
   );
 }
 
-export default FormNumericInput;
+export default NumericInput;

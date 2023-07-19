@@ -1,31 +1,30 @@
 // TODO: startTime vs startDateTime?
 // TODO: how do proctors work for this? proctorsRequested = array?
 // TODO: fix temp room location logic
+// TODO: num students?  DB/front end potential mismatch
+// TODO: refactor to use separate Date and Time inputs (better match Figma)
 
 import { CalendarIcon, InputIcon, PersonIcon } from '@radix-ui/react-icons';
-// import type { Exam } from 'api/Exam';
-import type { ExamRequest } from 'api/ExamRequest';
-
+import type { Exam } from 'api/Exam';
 import type { FormEventHandler } from 'react';
 import { useCallback } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { FormProvider, useForm } from 'react-hook-form';
 import Button from '../components/Button';
-import DateInput from '../components/FormInput/DateInput';
+import DateTimeInput from '../components/FormInput/DateTimeInput';
 import DurationInput from '../components/FormInput/DurationInput';
 import NumericInput from '../components/FormInput/NumericInput';
 import TextInput from '../components/FormInput/TextInput';
-import TimeInput from '../components/FormInput/TimeInput';
 import PageHeader from '../components/PageHeader';
 
 // TODO -> missing API?
 interface Props {
-  initialValues: ExamRequest;
-  onSubmit: SubmitHandler<ExamRequest>;
+  initialValues: Exam;
+  onSubmit: SubmitHandler<Exam>;
 }
 
 export default function AddExamSlot({ initialValues, onSubmit }: Props) {
-  const methods = useForm<ExamRequest>({
+  const methods = useForm<Exam>({
     defaultValues: { ...initialValues },
   });
 
@@ -48,16 +47,17 @@ export default function AddExamSlot({ initialValues, onSubmit }: Props) {
               inputName="courseCode"
               labelIcon={InputIcon}
             />
+            {/* <div className="inline-flex w-full"> */}
+            <TextInput labelText="Room" inputName="location.0" />
+            {/* </div> */}
           </div>
 
           <div className="inline-flex h-24 w-full flex-row gap-x-9">
-            <DateInput
-              labelText="Date"
+            <DateTimeInput
+              labelText="Date and Start Time"
               inputName="startDateTime"
               labelIcon={CalendarIcon}
             />
-
-            <TimeInput labelText="Start Time" inputName="startTime" />
           </div>
 
           <div className="inline-flex h-24 w-full flex-row gap-x-9">
@@ -74,11 +74,7 @@ export default function AddExamSlot({ initialValues, onSubmit }: Props) {
             />
           </div>
 
-          <div className="inline-flex h-24 w-full flex-col">
-            <div className="inline-flex w-full">
-              <TextInput labelText="Room" inputName="location.0" />
-            </div>
-          </div>
+          {/* <div className="inline-flex h-24 w-full flex-col"></div> */}
 
           <div className="inline-flex w-full flex-row-reverse">
             <div className="inline-flex h-9 w-40">

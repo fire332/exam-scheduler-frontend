@@ -1,7 +1,7 @@
 // TODO: correct parsing of date times?
 // TODO: refactor this page entirely
 
-import type { ExamRequest } from 'api/ExamRequest';
+import type { Proctor } from 'api/Proctor';
 import type { FormEventHandler } from 'react';
 import { useCallback } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
@@ -11,15 +11,15 @@ import DateTimeInput from '../components/FormInput/DateTimeInput';
 import PageHeader from '../components/PageHeader';
 
 interface Props {
-  initialValues: ExamRequest; // TODO -> API
-  onSubmit: SubmitHandler<ExamRequest>;
+  initialValues: Proctor; // TODO -> API finish
+  onSubmit: SubmitHandler<Proctor>;
 }
 
 export default function ProctorSelectAvailability({
   initialValues,
   onSubmit,
 }: Props) {
-  const methods = useForm<ExamRequest>({
+  const methods = useForm<Proctor>({
     // TODO
     defaultValues: { ...initialValues },
   });
