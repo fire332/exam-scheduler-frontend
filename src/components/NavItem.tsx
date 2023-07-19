@@ -1,20 +1,13 @@
+import type { Icon } from '@radix-ui/react-icons';
 import { DotFilledIcon } from '@radix-ui/react-icons';
-import type { IconProps } from '@radix-ui/react-icons/dist/types';
 import { motion } from 'framer-motion';
-import type { ComponentProps, ComponentType } from 'react';
 
 interface Props {
   expanded?: boolean;
   active?: boolean;
   shortText: string;
   longText: string;
-  icon?: ComponentType<
-    ComponentProps<
-      React.ForwardRefExoticComponent<
-        IconProps & React.RefAttributes<SVGSVGElement>
-      >
-    >
-  >;
+  icon?: Icon;
 }
 
 function NavItem({
@@ -44,7 +37,7 @@ function NavItem({
       className={
         'relative flex h-14 list-none items-center text-surface-800' +
         ' ' +
-        (expanded ? 'w-full gap-x-3 px-4 py-1' : 'w-[6rem] flex-col gap-y-1')
+        (expanded ? 'w-full gap-x-3 px-4 py-1' : 'flex-col gap-y-1')
       }
     >
       {expanded && activeMarker}

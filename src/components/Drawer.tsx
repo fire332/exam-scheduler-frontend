@@ -17,7 +17,7 @@ export default function Drawer({
     <motion.nav
       layout
       className={
-        'flex h-full flex-col justify-center bg-surface-100 px-4' +
+        'flex h-full flex-col justify-center bg-surface-100 px-3' +
         ' ' +
         (expanded ? 'w-[360px]' : 'w-[96px]')
       }
