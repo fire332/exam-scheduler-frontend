@@ -1,5 +1,5 @@
 import { CalendarIcon, InputIcon } from '@radix-ui/react-icons';
-import type { ExamRequest } from 'api/ExamRequest';
+import type { ExamRequestLike } from 'api/ExamRequest';
 import type { FormEventHandler } from 'react';
 import { useCallback } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
@@ -12,12 +12,12 @@ import TextInput from './FormInput/TextInput';
 import PageHeader from './PageHeader';
 
 interface Props {
-  initialValues: ExamRequest;
-  onSubmit: SubmitHandler<ExamRequest>;
+  initialValues: ExamRequestLike;
+  onSubmit: SubmitHandler<ExamRequestLike>;
 }
 
 export default function RequestExamSlot({ initialValues, onSubmit }: Props) {
-  const methods = useForm<ExamRequest>({
+  const methods = useForm<ExamRequestLike>({
     defaultValues: { ...initialValues },
   });
 

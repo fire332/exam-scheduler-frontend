@@ -1,10 +1,10 @@
 import { CalendarIcon, TimerIcon } from '@radix-ui/react-icons';
 import { useSuspense } from '@rest-hooks/react';
-import { ExamRequestResource } from '../api/ExamRequest';
-import AdditionalInfo from '../components/AdditionalInfo';
-import ExamListItem from '../components/RichListItem';
+import { ExamRequestResource } from '../../api/ExamRequest';
+import AdditionalInfo from '../../components/AdditionalInfo';
+import ExamListItem from '../../components/RichListItem';
 
-export default function ExamRequests() {
+export default function ListExamRequests() {
   const requests = useSuspense(ExamRequestResource.getList);
 
   const listItems = requests.map(

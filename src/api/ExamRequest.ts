@@ -2,7 +2,16 @@ import { Entity, createResource } from '@rest-hooks/rest';
 import { DateTime, Duration } from 'luxon';
 import AuthdEndpoint from './AuthdEndpoint';
 
-export class ExamRequest extends Entity {
+export interface ExamRequestLike {
+  requestId?: string;
+  courseCode: string;
+  instructorId: string;
+  studentCount: number;
+  isoDuration: string;
+  isoDatePrefs: string[];
+}
+
+export class ExamRequest extends Entity implements ExamRequestLike {
   requestId = '';
   courseCode = '';
   instructorId = '';
@@ -10,7 +19,7 @@ export class ExamRequest extends Entity {
   isoDuration = '';
   isoDatePrefs: string[] = [];
 
-  pk() {
+  override pk() {
     return this.requestId;
   }
 
