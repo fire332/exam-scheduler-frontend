@@ -1,5 +1,4 @@
 // TODO: limit year to 4 digits
-// TODO: address DateTime conversion error (-1 day)
 
 import type { Icon } from '@radix-ui/react-icons';
 import { DateTime } from 'luxon';
@@ -8,9 +7,10 @@ import { useFormContext, type RegisterOptions } from 'react-hook-form';
 import InputWrapper from './InputWrapper';
 
 function inputValueAsIso(value: string) {
-  return DateTime.fromJSDate(new Date(value)).toISO({
+  return DateTime.fromJSDate(new Date(value + 'T00:00')).toISO({
     suppressSeconds: true,
     suppressMilliseconds: true,
+    extendedZone: true,
   })!;
 }
 
