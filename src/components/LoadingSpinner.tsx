@@ -1,14 +1,27 @@
 import isChromatic from 'chromatic/isChromatic';
+import type { Variants } from 'framer-motion';
 import { motion } from 'framer-motion';
+import type { ReactNode } from 'react';
 import { useState } from 'react';
 import { useCounter, useInterval } from 'react-timing-hooks';
+import { inRange } from 'utility';
 
 const CHROMATIC_SNAPSHOT_ANGLE = 60;
 
+const dotVariants: Variants = {
+  visible: {
+    opacity: 1,
+    y: 0,
+  },
+  invisible: {
+    opacity: 0,
+    y: 6,
+  },
+};
+
 export default function LoadingSpinner() {
-  const [dots, setDots] = useState('.');
-  const updateDots = () =>
-    dots.length >= 3 ? setDots(dots.charAt(0)) : setDots(dots + dots.charAt(0));
+  const [dots, setDots] = useState(0);
+  const updateDots = () => (dots === 5 ? setDots(0) : setDots(dots + 1));
   useInterval(updateDots, 500, { startOnMount: true });
 
   let [rotate] = useCounter({
@@ -20,6 +33,26 @@ export default function LoadingSpinner() {
 
   // Lock the angle for Chromatic snapshot testing
   if (isChromatic()) rotate = CHROMATIC_SNAPSHOT_ANGLE;
+
+  const dotEles: ReactNode[] = [];
+
+  for (let i = 0; i < 3; ++i) {
+    dotEles.push(
+      <motion.span
+        key={i}
+        className="inline-block"
+        animate={inRange(dots, i + 1, i + 3) ? 'visible' : 'invisible'}
+        variants={dotVariants}
+        transition={{
+          y: { type: 'spring', damping: 9, mass: 1, stiffness: 1000 },
+          type: 'tween',
+          duration: 0.15,
+        }}
+      >
+        .
+      </motion.span>,
+    );
+  }
 
   return (
     <div className="flex flex-col items-center">
@@ -39,7 +72,7 @@ export default function LoadingSpinner() {
           </motion.div>
         </div>
       </div>
-      <h2>{`Loading${dots}`}</h2>
+      <h2>Loading{dotEles}</h2>
     </div>
   );
 }

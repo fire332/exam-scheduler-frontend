@@ -40,3 +40,10 @@ export type InclusiveOrWithChildren<BaseProps, OtherProps> = StrictUnion<
  * Like the `keyof` operator but for values.
  */
 export type ValueOf<T> = T[keyof T];
+
+/**
+ * Checks if `x` is between `a` and `b`, inclusive.
+ */
+export function inRange(x: number, a: number, b: number): boolean {
+  return Math.min(a, b) <= x && x <= Math.max(a, b);
+}
