@@ -5,7 +5,7 @@ import AuthdEndpoint from './AuthdEndpoint';
 export interface ExamRequestLike {
   requestId?: string;
   courseCode: string;
-  instructorId: string;
+  instructorId?: string;
   studentCount: number;
   isoDuration: string;
   isoDatePrefs: string[];
@@ -14,7 +14,6 @@ export interface ExamRequestLike {
 export class ExamRequest extends Entity implements ExamRequestLike {
   requestId = '';
   courseCode = '';
-  instructorId = '';
   studentCount = 0;
   isoDuration = '';
   isoDatePrefs: string[] = [];
@@ -38,7 +37,11 @@ export class ExamRequest extends Entity implements ExamRequestLike {
 
 export const ExamRequestResource = createResource({
   urlPrefix: 'https://fic-exam-scheduler-api-6f324588b682.herokuapp.com',
-  path: '/examRequest/:id',
+  /**
+   * Must match property name that pk is derived from when DELETE response is empty.
+   * https://discord.com/channels/768254430381735967/1134257394910769384/1134264509373091871
+   */
+  path: '/examRequest/:requestId',
   schema: ExamRequest,
 
   Endpoint: AuthdEndpoint,

@@ -1,5 +1,5 @@
 import { useController, useSuspense } from '@rest-hooks/react';
-import { Route } from '@tanstack/router';
+import { Route, useNavigate } from '@tanstack/router';
 import type { ExamRequestLike } from 'api/ExamRequest';
 import { ExamRequestResource } from 'api/ExamRequest';
 import RequestExamSlot from 'components/RequestExamSlot';
@@ -13,35 +13,66 @@ const examRequestsRoute = new Route({
   path: 'exam-requests',
 });
 
-const examRequestsIndexRoute = new Route({
+export const examRequestsIndexRoute = new Route({
   getParentRoute: () => examRequestsRoute,
   path: '/',
   component: ListExamRequests,
 });
 
-const examRequestsEditRoute = new Route({
+export const examRequestsAddRoute = new Route({
+  getParentRoute: () => examRequestsRoute,
+  path: 'new',
+  component: function Component() {
+    const ctrl = useController();
+    const navigate = useNavigate({ from: '/' });
+
+    const handleSubmit = useCallback<SubmitHandler<ExamRequestLike>>(
+      (formData) => {
+        const fetchPromise = ctrl.fetch(ExamRequestResource.create, formData);
+
+        fetchPromise
+          .then(() => {
+            void navigate({ to: '/exam-requests', params: {} }); // TODO: void?
+          })
+          .catch((error) => console.error(`Error: ${error}`)); // TODO: best practices
+      },
+      [ctrl, navigate],
+    );
+
+    return <RequestExamSlot onSubmit={handleSubmit} />;
+  },
+});
+
+export const examRequestsEditRoute = new Route({
   getParentRoute: () => examRequestsRoute,
   path: '$id',
   component: function Component({ useParams }) {
     const { id } = useParams();
+    const navigate = useNavigate();
     const examRequest = useSuspense(ExamRequestResource.get, {
-      id,
+      requestId: id,
     });
     const ctrl = useController();
 
     const handleSubmit = useCallback<SubmitHandler<ExamRequestLike>>(
       (formData) => {
-        void ctrl.fetch(ExamRequestResource.update, { id }, formData);
+        void ctrl
+          .fetch(ExamRequestResource.update, { requestId: id }, formData)
+          .then(() => navigate({ to: examRequestsIndexRoute.fullPath }));
       },
-      [ctrl, id],
+      [ctrl, id, navigate],
     );
 
     return (
-      <RequestExamSlot initialValues={examRequest} onSubmit={handleSubmit} />
+      <RequestExamSlot examRequest={examRequest} onSubmit={handleSubmit} />
     );
   },
 });
 
-examRequestsRoute.addChildren([examRequestsIndexRoute, examRequestsEditRoute]);
+examRequestsRoute.addChildren([
+  examRequestsIndexRoute,
+  examRequestsAddRoute,
+  examRequestsEditRoute,
+]);
 
 export default examRequestsRoute;

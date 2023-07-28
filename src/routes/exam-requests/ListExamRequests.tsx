@@ -1,32 +1,24 @@
-import { CalendarIcon, TimerIcon } from '@radix-ui/react-icons';
+import { PlusIcon } from '@radix-ui/react-icons';
 import { useSuspense } from '@rest-hooks/react';
+import { useNavigate } from '@tanstack/router';
+import FloatingActionButton from 'components/FloatingActionButton';
+import { AnimatePresence } from 'framer-motion';
+import { useCallback } from 'react';
 import { ExamRequestResource } from '../../api/ExamRequest';
-import AdditionalInfo from '../../components/AdditionalInfo';
-import ExamListItem from '../../components/RichListItem';
+import ExamListItem from '../../components/ExamListItem';
 
 export default function ListExamRequests() {
   const requests = useSuspense(ExamRequestResource.getList);
+  const navigate = useNavigate({ from: '/exam-requests' });
 
-  const listItems = requests.map(
-    ({ requestId, courseCode, datePreferences, duration }) => {
-      const humanDateList = datePreferences
-        .map((dt) =>
-          dt.toLocaleString({
-            weekday: 'short',
-            month: 'short',
-            day: 'numeric',
-          }),
-        )
-        .join(' | ');
-
-      return (
-        <ExamListItem key={requestId} heading={courseCode}>
-          <AdditionalInfo Icon={TimerIcon}>{duration.toHuman()}</AdditionalInfo>
-          <AdditionalInfo Icon={CalendarIcon}>{humanDateList}</AdditionalInfo>
-        </ExamListItem>
-      );
-    },
+  const onClick = useCallback(
+    () => void navigate({ to: '/exam-requests/new' }),
+    [navigate],
   );
+
+  const listItems = requests.map((req) => (
+    <ExamListItem key={req.requestId} examRequest={req} />
+  ));
 
   return (
     <>
@@ -34,7 +26,13 @@ export default function ListExamRequests() {
         Exam slot requests
       </header>
 
-      <ol className="list-none">{...listItems}</ol>
+      <ol className="list-none">
+        <AnimatePresence>{...listItems}</AnimatePresence>
+      </ol>
+
+      <FloatingActionButton onClick={onClick} icon={PlusIcon}>
+        Add Request
+      </FloatingActionButton>
     </>
   );
 }
