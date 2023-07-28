@@ -32,7 +32,7 @@ export const examRequestsAddRoute = new Route({
 
         fetchPromise
           .then(() => {
-            void navigate({ to: '/exam-requests', params: {} }); // TODO: void?
+            void navigate({ to: '/exam-requests', params: {} });
           })
           .catch((error) => console.error(`Error: ${error}`)); // TODO: best practices
       },

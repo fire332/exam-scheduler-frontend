@@ -32,7 +32,7 @@ export default function ExamListItem({
         day: 'numeric',
       }),
     )
-    .join(' | ');
+    .join(' - ');
 
   const handleDelete = useCallback(() => {
     void ctrl.fetch(ExamRequestResource.delete, {
