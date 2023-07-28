@@ -8,7 +8,7 @@ import type { SubmitHandler } from 'react-hook-form';
 import { dashboardRoute } from 'routing';
 import ListExamRequests from './ListExamRequests';
 
-const examRequestsRoute = new Route({
+export const examRequestsRoute = new Route({
   getParentRoute: () => dashboardRoute,
   path: 'exam-requests',
 });
@@ -68,11 +68,3 @@ export const examRequestsEditRoute = new Route({
     );
   },
 });
-
-examRequestsRoute.addChildren([
-  examRequestsIndexRoute,
-  examRequestsAddRoute,
-  examRequestsEditRoute,
-]);
-
-export default examRequestsRoute;

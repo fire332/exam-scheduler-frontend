@@ -10,7 +10,7 @@ import { ExamRequestResource, type ExamRequest } from 'api/ExamRequest';
 import { useCallback } from 'react';
 import {
   examRequestsEditRoute,
-  examRequestsIndexRoute,
+  examRequestsRoute,
 } from 'routes/exam-requests/routing';
 import AdditionalInfo from './AdditionalInfo';
 import RichListItem from './RichListItem';
@@ -44,7 +44,7 @@ export default function ExamListItem({
     <>
       <Link
         className="flex items-center"
-        from={examRequestsIndexRoute.fullPath}
+        from={examRequestsRoute.fullPath}
         to={examRequestsEditRoute.fullPath}
         params={{ id: requestId }}
       >

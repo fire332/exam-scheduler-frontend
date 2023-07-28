@@ -1,5 +1,10 @@
 import { RootRoute, Route, Router } from '@tanstack/router';
-import examRequestsRoute from 'routes/exam-requests/routing';
+import {
+  examRequestsAddRoute,
+  examRequestsEditRoute,
+  examRequestsIndexRoute,
+  examRequestsRoute,
+} from 'routes/exam-requests/routing';
 import Dashboard from './routes/Dashboard';
 import Index from './routes/Index';
 
@@ -19,7 +24,13 @@ const dashboardRoute = new Route({
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
-  dashboardRoute.addChildren([examRequestsRoute]),
+  dashboardRoute.addChildren([
+    examRequestsRoute.addChildren([
+      examRequestsIndexRoute,
+      examRequestsAddRoute,
+      examRequestsEditRoute,
+    ]),
+  ]),
 ]);
 
 const router = new Router({ routeTree });
