@@ -17,6 +17,11 @@ export type Prettify<T> = {
 } & NonNullable<unknown>;
 
 /**
+ * Type has properties of `Base` and can further have either properties of `A`, `B`, neither `A` and `B`, but not both.
+ */
+export type ExlusiveOr<Base, A, B> = StrictUnion<(Base & (A | B)) | Base>;
+
+/**
  * Type has properties of `Base` and can further have either properties of `A`, `B`, both `A` and `B`, but not neither.
  */
 export type InclusiveOr<Base, A, B> = StrictUnion<

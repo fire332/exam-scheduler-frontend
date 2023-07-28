@@ -1,14 +1,23 @@
 import { PlusIcon } from '@radix-ui/react-icons';
-import { useSuspense } from '@rest-hooks/react';
+import { useDLE } from '@rest-hooks/react';
 import { useNavigate } from '@tanstack/router';
+import FetchError from 'components/FetchError';
 import FloatingActionButton from 'components/FloatingActionButton';
+import LoadingSpinner from 'components/LoadingSpinner';
 import { AnimatePresence } from 'framer-motion';
 import { useCallback } from 'react';
 import { ExamRequestResource } from '../../api/ExamRequest';
 import ExamListItem from '../../components/ExamListItem';
 
+const centeringClasses =
+  'w-full h-[calc(100%-_theme(spacing.20))] flex justify-center items-center';
+
 export default function ListExamRequests() {
-  const requests = useSuspense(ExamRequestResource.getList);
+  const {
+    data: requests,
+    loading,
+    error,
+  } = useDLE(ExamRequestResource.getList);
   const navigate = useNavigate({ from: '/exam-requests' });
 
   const onClick = useCallback(
@@ -16,23 +25,48 @@ export default function ListExamRequests() {
     [navigate],
   );
 
-  const listItems = requests.map((req) => (
-    <ExamListItem key={req.requestId} examRequest={req} />
-  ));
+  const body = (() => {
+    if (error)
+      return (
+        <div className={centeringClasses}>
+          <FetchError
+            httpStatus={
+              typeof error.status === 'number' ? error.status : undefined
+            }
+          >
+            Failed to load exam requests.
+          </FetchError>
+        </div>
+      );
+    if (loading)
+      return (
+        <div className={centeringClasses}>
+          <LoadingSpinner />
+        </div>
+      );
+
+    const listItems = requests.map((req) => (
+      <ExamListItem key={req.requestId} examRequest={req} />
+    ));
+
+    return (
+      <>
+        <ol className="list-none">
+          <AnimatePresence>{...listItems}</AnimatePresence>
+        </ol>
+        <FloatingActionButton onClick={onClick} icon={PlusIcon}>
+          Add Request
+        </FloatingActionButton>
+      </>
+    );
+  })();
 
   return (
     <>
       <header className="flex h-20 w-full items-center text-xl font-bold">
         Exam slot requests
       </header>
-
-      <ol className="list-none">
-        <AnimatePresence>{...listItems}</AnimatePresence>
-      </ol>
-
-      <FloatingActionButton onClick={onClick} icon={PlusIcon}>
-        Add Request
-      </FloatingActionButton>
+      {body}
     </>
   );
 }
