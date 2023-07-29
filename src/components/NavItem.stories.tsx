@@ -54,18 +54,16 @@ export const Single: Story = {
 };
 
 export const Triple: Story = {
-  render: (args) => {
-    return (
-      <>
-        {Object.entries(iconMap).map(([iconName, icon]) => (
-          <Component
-            {...args}
-            icon={icon}
-            active={args.iconChoice === iconName}
-            key={iconName}
-          />
-        ))}
-      </>
-    );
-  },
+  render: (args) => (
+    <>
+      {Object.entries(iconMap).map(([iconName, icon]) => (
+        <Component
+          {...args}
+          icon={icon}
+          active={args.iconChoice === iconName}
+          key={iconName}
+        />
+      ))}
+    </>
+  ),
 };
