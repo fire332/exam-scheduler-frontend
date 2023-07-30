@@ -41,15 +41,15 @@ const meta = {
 export default meta;
 
 export const IconOnly: Story = {
-  render: (args: StoryArgs) => {
-    return <Component onClick={args.onClick} icon={iconMap[args.iconChoice]} />;
-  },
+  render: (args: StoryArgs) => (
+    <Component onClick={args.onClick} icon={iconMap[args.iconChoice]} />
+  ),
 };
 
 export const LabelOnly: Story = {
-  render: (args: StoryArgs) => {
-    return <Component onClick={args.onClick}>{args.label + '​'}</Component>;
-  },
+  render: (args: StoryArgs) => (
+    <Component onClick={args.onClick}>{args.label + '​'}</Component>
+  ),
 };
 export const Extended: Story = {
   render: (args: StoryArgs) => {
