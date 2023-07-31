@@ -5,6 +5,12 @@ import {
   examRequestsIndexRoute,
   examRequestsRoute,
 } from 'routes/exam-requests/routing';
+import {
+  scheduledExamsAddRoute,
+  scheduledExamsEditRoute,
+  scheduledExamsIndexRoute,
+  scheduledExamsRoute,
+} from 'routes/scheduled-exams/routing';
 import Dashboard from './routes/Dashboard';
 import Index from './routes/Index';
 
@@ -29,6 +35,11 @@ const routeTree = rootRoute.addChildren([
       examRequestsIndexRoute,
       examRequestsAddRoute,
       examRequestsEditRoute,
+    ]),
+    scheduledExamsRoute.addChildren([
+      scheduledExamsIndexRoute,
+      scheduledExamsAddRoute,
+      scheduledExamsEditRoute,
     ]),
   ]),
 ]);
