@@ -30,6 +30,7 @@ module.exports = {
   },
   rules: {
     quotes: ['error', 'single', { avoidEscape: true }],
+    'no-useless-rename': ['error'],
     'arrow-body-style': ['error', 'as-needed'],
     'react-refresh/only-export-components': 'error',
 
