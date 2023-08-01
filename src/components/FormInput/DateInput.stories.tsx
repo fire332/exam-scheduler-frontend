@@ -1,9 +1,10 @@
 import { CalendarIcon } from '@radix-ui/react-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ComponentProps } from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 import Component from './DateInput';
+import FormStoryWrapper from './FormStoryWrapper';
 
 interface ExtraProps {
   defaultValue: string;
@@ -28,20 +29,14 @@ const meta: Meta<StoryArgs> = {
         mode: 'all',
       });
 
-      return (
-        <FormProvider {...methods}>
-          <form className="flex h-60 w-[360px] items-center justify-center bg-white">
-            <Story />
-          </form>
-        </FormProvider>
-      );
+      return <FormStoryWrapper story={Story} methods={methods} />;
     },
   ],
   args: {
-    defaultValue: 'John Doe',
-    labelText: 'Name',
+    defaultValue: undefined,
+    labelText: 'Date',
     helperText: 'Some helper Text',
-    errorMessage: 'Max 2 character limit.',
+    errorMessage: 'Date must be after today.',
   },
 } satisfies Meta<StoryArgs>;
 

@@ -1,8 +1,8 @@
-// TODO: improve look and feel when filling data from existing state
-
 import { ErrorMessage } from '@hookform/error-message';
 import type { Icon } from '@radix-ui/react-icons';
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
+import type { ForwardedRef } from 'react';
+import { forwardRef, type DOMAttributes } from 'react';
 import type { FieldErrors, FieldPath, FieldValues } from 'react-hook-form';
 import { useFormState } from 'react-hook-form';
 
@@ -14,18 +14,25 @@ interface Props<T> {
   inputName: T;
   required?: boolean;
   labelText: string;
+  labelFor?: string;
   helperText?: string;
   labelIcon?: Icon;
+  labelIconOnClick?: DOMAttributes<HTMLButtonElement>['onClick'];
 }
 
-function InputWrapper<T extends FieldValues>({
-  inputName,
-  required,
-  labelText,
-  children,
-  helperText,
-  labelIcon,
-}: React.PropsWithChildren<Props<FieldPath<T>>>) {
+const InputWrapper = forwardRef(function InputWrapper<T extends FieldValues>(
+  {
+    inputName,
+    required,
+    labelText,
+    labelFor,
+    children,
+    helperText,
+    labelIcon,
+    labelIconOnClick,
+  }: React.PropsWithChildren<Props<FieldPath<T>>>,
+  ref: ForwardedRef<HTMLLabelElement>,
+) {
   const { isValid, errors } = useFormState<T>({ name: inputName, exact: true });
 
   const LeftIcon = labelIcon;
@@ -39,7 +46,11 @@ function InputWrapper<T extends FieldValues>({
   );
 
   return (
-    <label className="inline-flex flex-col items-stretch gap-2">
+    <label
+      ref={ref}
+      htmlFor={labelFor}
+      className="inline-flex flex-col items-stretch gap-2"
+    >
       <div className="text-xs font-medium text-surface-500">
         {labelText}
         {required && <span className="text-error-500">*</span>}
@@ -47,36 +58,46 @@ function InputWrapper<T extends FieldValues>({
 
       <div
         className={
-          'relative inline-flex h-9 rounded-md border border-surface-300 text-surface-900 outline-none [&>*]:h-full' +
+          'relative inline-flex rounded-md border border-surface-300 text-surface-900 outline-none' +
           ' ' +
-          '[&>input:focus]:!ring-0 [&>input]:inline-block [&>input]:min-w-0 [&>input]:flex-grow [&>input]:!border-none [&>input]:[background:none]' +
+          '[&_input:focus]:!ring-0 [&_input]:inline-block [&_input]:min-w-0 [&_input]:flex-grow [&_input]:!border-none [&_input]:[background:none]' +
           ' ' +
           (isValid
             ? 'focus-within:border-primary-500'
-            : 'focus-within:border-error-500 [&>input]:pr-0') +
+            : 'focus-within:border-error-500 [&_input]:pr-0') +
           ' ' +
-          (labelIcon ? '[&>input]:pl-0' : '')
+          (labelIcon ? '[&_input]:pl-0' : '')
         }
       >
         {LeftIcon && (
-          <div className="pointer-events-none inline-flex w-[52px] items-center justify-center">
-            <LeftIcon
-              width="20"
-              height="20"
-              color="color(display-p3 0.11 0.137 0.192)"
-            />
-          </div>
+          <button
+            className="group/label-icon inline-flex w-[52px] items-center justify-center"
+            onClick={labelIconOnClick}
+            disabled={!labelIconOnClick}
+          >
+            <div
+              className={
+                'flex h-8 w-8 items-center justify-center rounded-full transition-colors' +
+                ' ' +
+                (labelIconOnClick
+                  ? 'group-hover/label-icon:bg-surface-100 group-hover/label-icon:text-surface-800'
+                  : '')
+              }
+            >
+              <LeftIcon width="20" height="20" />
+            </div>
+          </button>
         )}
 
         {children}
 
         {!isValid && (
-          <div className={'pointer-events-none inline-flex items-center p-4'}>
-            <RightIcon
-              width="20"
-              height="20"
-              color="color(display-p3 0.949 0.188 0.188"
-            />
+          <div
+            className={
+              'pointer-events-none inline-flex w-[52px] items-center justify-center'
+            }
+          >
+            <RightIcon width="20" height="20" className="text-error-500" />
           </div>
         )}
       </div>
@@ -91,6 +112,6 @@ function InputWrapper<T extends FieldValues>({
       </div>
     </label>
   );
-}
+});
 
 export default InputWrapper;

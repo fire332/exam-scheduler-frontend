@@ -19,7 +19,9 @@ export class ExamRequest extends Entity {
   }
 
   get datePreferences() {
-    return this.isoDatePrefs.map((isoStr) => DateTime.fromISO(isoStr, {}));
+    return this.isoDatePrefs.map((isoStr) =>
+      DateTime.fromISO(isoStr, { setZone: true }),
+    );
   }
 
   static override key = 'ExamRequest';
