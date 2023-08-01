@@ -1,5 +1,5 @@
 import { DragHandleDots2Icon, Pencil1Icon } from '@radix-ui/react-icons';
-import Date, { type DateInfo } from './Date';
+import Date, { type DateInfo } from '../Date';
 
 export default function OrderedDate({ value }: { value?: DateInfo }) {
   return (
