@@ -3,6 +3,19 @@ import classNames from 'classnames';
 import { DateTime } from 'luxon';
 import { Fragment, type HTMLAttributes } from 'react';
 
+type ArrayElement<ArrayType extends readonly unknown[]> =
+  ArrayType extends readonly (infer ElementType)[] ? ElementType : never;
+
+const formats = [
+  DateTime.DATE_HUGE,
+  DateTime.DATE_FULL,
+  DateTime.DATE_MED_WITH_WEEKDAY,
+  DateTime.DATE_MED,
+  DateTime.DATE_SHORT,
+] as const;
+
+type DateFormat = ArrayElement<typeof formats>;
+
 const dtPartMapper = (part: Intl.DateTimeFormatPart, index: number) => {
   switch (part.type) {
     case 'literal':
@@ -16,15 +29,15 @@ const dtPartMapper = (part: Intl.DateTimeFormatPart, index: number) => {
   }
 };
 
-function dtToNodes(dt: DateTime) {
-  return dt.toLocaleParts(DateTime.DATE_SHORT).map(dtPartMapper);
+function dtToNodes(dt: DateTime, format: DateFormat) {
+  return dt.toLocaleParts(format).map(dtPartMapper);
 }
 
-function placeholderNodes(locale: string) {
+function placeholderNodes(locale: string, format: DateFormat) {
   const parts = DateTime.fromObject(
     { year: 7777, month: 12, day: 27 },
     { locale },
-  ).toLocaleParts(DateTime.DATE_SHORT);
+  ).toLocaleParts(format);
   const literalsUseHyphen = !!parts
     .filter((part) => part.type === 'literal')
     .find((part) => part.value === '-');
@@ -53,6 +66,7 @@ interface Props {
   locale?: string;
   showIcon?: boolean;
   className?: HTMLAttributes<HTMLSpanElement>['className'];
+  format?: DateFormat;
 }
 
 export default function Date({
@@ -60,17 +74,23 @@ export default function Date({
   locale = window.navigator.language,
   showIcon,
   className,
+  format = DateTime.DATE_SHORT,
 }: Props) {
   const nodes = value
-    ? dtToNodes(DateTime.fromObject(value, { locale }))
-    : placeholderNodes(locale);
+    ? dtToNodes(DateTime.fromObject(value, { locale }), format)
+    : placeholderNodes(locale, format);
 
   return (
-    <span className={classNames('min-w-fit text-center text-sm', className)}>
+    <span
+      className={classNames(
+        'inline-flex min-w-fit max-w-full items-center whitespace-nowrap',
+        className,
+      )}
+    >
       {showIcon && (
         <CalendarIcon width={20} height={20} className="mr-2 inline-block" />
       )}
-      <span className="align-middle">{nodes}</span>
+      <span className="inline-block">{nodes}</span>
     </span>
   );
 }
