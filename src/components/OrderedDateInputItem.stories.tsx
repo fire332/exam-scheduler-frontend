@@ -1,19 +1,31 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { DateTime } from 'luxon';
+import type { ComponentProps } from 'react';
 import Component from './OrderedDateInputItem';
 
-type Story = StoryObj<typeof Component>;
+interface ExtraArgs {
+  year: number;
+  month: number;
+  day: number;
+  provideValue: boolean;
+  locale: string;
+}
+
+type StoryArgs = ComponentProps<typeof Component> & ExtraArgs;
+type Story = StoryObj<StoryArgs>;
 
 const meta = {
   component: Component,
-} satisfies Meta<typeof Component>;
+  args: {
+    year: 2023,
+    month: 7,
+    day: 7,
+    provideValue: true,
+  },
+  render: ({ year, month, day, provideValue }) => (
+    <Component value={provideValue ? { year, month, day } : undefined} />
+  ),
+} satisfies Meta<StoryArgs>;
 
 export default meta;
 
-export const OrderedDateInputItem: Story = {
-  render: () => (
-    <Component
-      luxonDate={DateTime.fromObject({ year: 2023, month: 7, day: 1 })}
-    />
-  ),
-};
+export const OrderedDateInputItem: Story = {};
