@@ -1,5 +1,3 @@
-// TODO: improve look and feel when filling data from existing state
-
 import { ErrorMessage } from '@hookform/error-message';
 import type { Icon } from '@radix-ui/react-icons';
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
@@ -60,7 +58,7 @@ const InputWrapper = forwardRef(function InputWrapper<T extends FieldValues>(
 
       <div
         className={
-          'relative inline-flex h-9 rounded-md border border-surface-300 text-surface-900 outline-none [&>*]:h-full' +
+          'relative inline-flex rounded-md border border-surface-300 text-surface-900 outline-none' +
           ' ' +
           '[&_input:focus]:!ring-0 [&_input]:inline-block [&_input]:min-w-0 [&_input]:flex-grow [&_input]:!border-none [&_input]:[background:none]' +
           ' ' +
@@ -94,12 +92,12 @@ const InputWrapper = forwardRef(function InputWrapper<T extends FieldValues>(
         {children}
 
         {!isValid && (
-          <div className={'inline-flex items-center p-4'}>
-            <RightIcon
-              width="20"
-              height="20"
-              color="color(display-p3 0.949 0.188 0.188"
-            />
+          <div
+            className={
+              'pointer-events-none inline-flex w-[52px] items-center justify-center'
+            }
+          >
+            <RightIcon width="20" height="20" className="text-error-500" />
           </div>
         )}
       </div>
