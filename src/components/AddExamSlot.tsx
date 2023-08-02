@@ -17,7 +17,6 @@ import type { FormEventHandler } from 'react';
 import { useCallback } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { FormProvider, useForm } from 'react-hook-form';
-import { scheduledExamsRoute } from 'routes/scheduled-exams/routing';
 import Button from './Button';
 import ComboChipInput from './FormInput/ComboChipInput';
 import DateTimeInput from './FormInput/DateTimeInput';
@@ -67,7 +66,7 @@ export default function AddExamSlot({ scheduledExam, onSubmit }: Props) {
             <div>
               <Link
                 className="inline-flex w-8 items-center justify-center"
-                to={scheduledExamsRoute.fullPath}
+                to="/scheduled-exams"
               >
                 <ChevronLeftIcon width="24" height="24" />
               </Link>
