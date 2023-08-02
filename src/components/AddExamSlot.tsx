@@ -32,19 +32,10 @@ interface Props {
 export default function AddExamSlot({ scheduledExam, onSubmit }: Props) {
   const defaultValues: ScheduledExamLike = Object.assign(
     {
-      // courseCode: 'CMPT276',
-      // startDateTime: '2023-09-07T15:30:00-0800',
-      // isoDuration: 'PT1H35M',
       // instructorId: '219195704583651585', // < - Default
       // instructorId: '221523240743338241', // <- Admin Andy
       instructorId: '221523781573673217', // <- Instructor Ivy
-      // instructorId: undefined,
-      // locations: [{ roomName: 'DIS1 2020' }, { roomName: 'DIS1 2040' }],
-      proctorsRequested: [
-        // {
-        //   proctorId: '219195704583651585',
-        // },
-      ],
+      proctorsRequested: [],
       proctorsConfirmed: [],
       locations: [],
     },
@@ -116,20 +107,17 @@ export default function AddExamSlot({ scheduledExam, onSubmit }: Props) {
             <ComboChipInput labelText="Room" inputName="locations" />
           </div>
 
-          {/* <TextInput labelText="Instructor ID" inputName="instructorId" /> */}
-
           <div className="inline-flex w-full">
             <div className="inline-flex h-9 w-40">
               <Button>Add Exam</Button>
             </div>
           </div>
 
-          {/* <div className="inline-flex w-full">
+          <div className="inline-flex w-full">
             <div className="inline-flex h-9 w-40">
-              <Link>
-              </Link>
+              <Link />
             </div>
-          </div> */}
+          </div>
         </div>
       </form>
     </FormProvider>
