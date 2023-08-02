@@ -1,6 +1,7 @@
 import { ErrorMessage } from '@hookform/error-message';
 import type { Icon } from '@radix-ui/react-icons';
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
+import { motion } from 'framer-motion';
 import type { ForwardedRef } from 'react';
 import { forwardRef, type DOMAttributes } from 'react';
 import type { FieldErrors, FieldPath, FieldValues } from 'react-hook-form';
@@ -46,10 +47,11 @@ const InputWrapper = forwardRef(function InputWrapper<T extends FieldValues>(
   );
 
   return (
-    <label
+    <motion.label
+      layout
       ref={ref}
       htmlFor={labelFor}
-      className="inline-flex flex-col items-stretch gap-2"
+      className="inline-flex flex-col items-stretch gap-2 overflow-hidden"
     >
       <div className="text-xs font-medium text-surface-500">
         {labelText}
@@ -61,6 +63,8 @@ const InputWrapper = forwardRef(function InputWrapper<T extends FieldValues>(
           'relative inline-flex rounded-md border border-surface-300 text-surface-900 outline-none' +
           ' ' +
           '[&_input:focus]:!ring-0 [&_input]:inline-block [&_input]:min-w-0 [&_input]:flex-grow [&_input]:!border-none [&_input]:[background:none]' +
+          ' ' +
+          '[&:not(:has(>input))]:p-3' +
           ' ' +
           (isValid
             ? 'focus-within:border-primary-500'
@@ -110,7 +114,7 @@ const InputWrapper = forwardRef(function InputWrapper<T extends FieldValues>(
       >
         {infoText}
       </div>
-    </label>
+    </motion.label>
   );
 });
 
