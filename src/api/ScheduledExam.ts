@@ -1,5 +1,5 @@
 import { Entity, createResource } from '@rest-hooks/rest';
-import { Duration } from 'luxon';
+import { DateTime, Duration } from 'luxon';
 import AuthdEndpoint from './AuthdEndpoint';
 
 // TODO: correct optionals?
@@ -31,6 +31,10 @@ export class ScheduledExam extends Entity implements ScheduledExamLike {
 
   get duration() {
     return Duration.fromISO(this.isoDuration);
+  }
+
+  get startDate() {
+    return DateTime.fromISO(this.startDateTime, { setZone: true });
   }
 
   static override key = 'ScheduledExam';
