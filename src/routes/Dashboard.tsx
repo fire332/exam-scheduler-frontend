@@ -5,6 +5,7 @@ import {
 } from '@radix-ui/react-icons';
 import { AsyncBoundary } from '@rest-hooks/react';
 import { Outlet } from '@tanstack/router';
+import { LayoutGroup, motion } from 'framer-motion';
 import { useCallback, useState } from 'react';
 import { useAuth } from 'react-oidc-context';
 import Drawer from '../components/Drawer';
@@ -26,7 +27,7 @@ export default function Dashboard() {
   );
 
   return (
-    <>
+    <LayoutGroup>
       <Drawer expanded={expanded} onBurgerClick={handleBurgerClick}>
         <NavItem
           expanded={expanded}
@@ -47,11 +48,14 @@ export default function Dashboard() {
           icon={EyeOpenIcon}
         />
       </Drawer>
-      <div className="flex grow flex-col">
-        <div className="flex h-16 w-full justify-end">
+      <motion.div layout className="flex grow flex-col">
+        <motion.div layout className="flex h-16 w-full justify-end">
           <UserBar />
-        </div>
-        <div className="grow rounded-tl-md bg-surface-50 px-8 text-surface-900">
+        </motion.div>
+        <motion.div
+          layout
+          className="grow rounded-tl-md bg-surface-50 px-8 text-surface-900"
+        >
           <AsyncBoundary
             fallback={
               <div className="flex h-full items-center justify-center">
@@ -62,8 +66,8 @@ export default function Dashboard() {
           >
             <Outlet />
           </AsyncBoundary>
-        </div>
-      </div>
-    </>
+        </motion.div>
+      </motion.div>
+    </LayoutGroup>
   );
 }

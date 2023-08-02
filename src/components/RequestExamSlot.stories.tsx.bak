@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ComponentProps } from 'react';
 
-import Component from '../routes/RequestExamSlot';
+import Component from './RequestExamSlot';
 
 type StoryArgs = ComponentProps<typeof Component>;
 type Story = StoryObj<StoryArgs>;

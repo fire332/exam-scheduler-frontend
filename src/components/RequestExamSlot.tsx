@@ -1,24 +1,36 @@
-import { CalendarIcon, InputIcon } from '@radix-ui/react-icons';
-import type { ExamRequest } from 'api/ExamRequest';
+import {
+  CalendarIcon,
+  ChevronLeftIcon,
+  InputIcon,
+} from '@radix-ui/react-icons';
+import { Link } from '@tanstack/router';
+import type { ExamRequest, ExamRequestLike } from 'api/ExamRequest';
 import type { FormEventHandler } from 'react';
 import { useCallback } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { FormProvider, useForm } from 'react-hook-form';
-import Button from '../components/Button';
-import DateInput from '../components/FormInput/DateInput';
-import DurationInput from '../components/FormInput/DurationInput';
-import NumericInput from '../components/FormInput/NumericInput';
-import TextInput from '../components/FormInput/TextInput';
-import PageHeader from '../components/PageHeader';
+import { examRequestsRoute } from 'routes/exam-requests/routing';
+import Button from './Button';
+import DateInput from './FormInput/DateInput';
+import DurationInput from './FormInput/DurationInput';
+import NumericInput from './FormInput/NumericInput';
+import TextInput from './FormInput/TextInput';
 
 interface Props {
-  initialValues: ExamRequest;
-  onSubmit: SubmitHandler<ExamRequest>;
+  examRequest?: ExamRequest;
+  onSubmit: SubmitHandler<ExamRequestLike>;
 }
 
-export default function RequestExamSlot({ initialValues, onSubmit }: Props) {
-  const methods = useForm<ExamRequest>({
-    defaultValues: { ...initialValues },
+export default function RequestExamSlot({ examRequest, onSubmit }: Props) {
+  const defaultValues = Object.assign({}, examRequest);
+  defaultValues.isoDuration =
+    examRequest?.duration.shiftTo('minutes').minutes.toString() ?? '60';
+  defaultValues.isoDatePrefs =
+    examRequest?.datePreferences.map((date) => date.toFormat('yyyy-LL-dd')) ??
+    [];
+
+  const methods = useForm<ExamRequestLike>({
+    defaultValues,
   });
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = useCallback(
@@ -32,7 +44,17 @@ export default function RequestExamSlot({ initialValues, onSubmit }: Props) {
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit}>
         <div className="inline-flex h-full w-full flex-col">
-          <PageHeader>Request exam slot</PageHeader>
+          <header className="inline-flex h-20 w-full flex-row items-center text-xl font-bold">
+            <div>
+              <Link
+                className="inline-flex w-8 items-center justify-center"
+                to={examRequestsRoute.fullPath}
+              >
+                <ChevronLeftIcon width="24" height="24" />
+              </Link>
+            </div>
+            <div className="inline-flex">Request exam slot</div>
+          </header>
 
           <div className="inline-flex h-24 w-full flex-row gap-x-9">
             <TextInput

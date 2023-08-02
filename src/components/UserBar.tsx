@@ -23,17 +23,14 @@ export default function UserBar() {
                   : ''}
               </div>
             </div>
-            <button
-              className="h-[43px] w-[43px] rounded-full bg-black"
-              aria-label="user-bar"
-            >
-              <button className="h-10 w-10 rounded-full bg-surface-400 text-lg">
+            <div className="h-[43px] w-[43px] rounded-full bg-black">
+              <div className="inline-block h-10 w-10 rounded-full bg-surface-400 text-lg">
                 {auth.user?.profile.given_name?.charAt(0)}
                 {auth.user?.profile.family_name
                   ? auth.user.profile.family_name.charAt(0)
                   : ''}
-              </button>
-            </button>
+              </div>
+            </div>
           </button>
         </DropdownMenu.Trigger>
 

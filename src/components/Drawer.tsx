@@ -17,7 +17,7 @@ export default function Drawer({
     <motion.nav
       layout
       className={
-        'flex h-full flex-col justify-center bg-surface-100 px-4' +
+        'flex h-full flex-col justify-center bg-surface-100 px-3' +
         ' ' +
         (expanded ? 'w-[360px]' : 'w-[96px]')
       }
@@ -37,7 +37,7 @@ export default function Drawer({
       </motion.div>
       <motion.div
         layout
-        className="flex w-full flex-grow flex-col items-center justify-center gap-y-3"
+        className="flex w-full flex-grow flex-col items-stretch justify-center gap-y-3"
       >
         {children}
       </motion.div>

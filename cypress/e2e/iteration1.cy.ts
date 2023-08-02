@@ -14,7 +14,7 @@ describe('admin user can', () => {
       Cypress.env('TEST_ADMIN_EMAIL') as string,
       Cypress.env('TEST_ADMIN_PASSWORD') as string,
     );
-    cy.visit('/dashboard/exam-requests');
+    cy.visit('/exam-requests');
     cy.get('nav').should('be.visible');
   });
 
@@ -23,7 +23,7 @@ describe('admin user can', () => {
       Cypress.env('TEST_ADMIN_EMAIL') as string,
       Cypress.env('TEST_ADMIN_PASSWORD') as string,
     );
-    cy.visit('/dashboard/exam-requests');
+    cy.visit('/exam-requests');
     cy.contains('Andy').click();
     cy.contains('Sign Out').click();
     cy.location('pathname').should('eq', '/');

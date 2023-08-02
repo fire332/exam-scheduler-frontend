@@ -31,6 +31,10 @@ function NumericInput<T extends FieldValues>({
       (typeof validateOpts.required === 'object' &&
         validateOpts.required.value));
 
+  if (validateOpts?.setValueAs === undefined) {
+    validateOpts = Object.assign({ valueAsNumber: true }, validateOpts);
+  }
+
   return (
     <InputWrapper
       inputName={inputName}
