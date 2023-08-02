@@ -6,6 +6,7 @@ import {
   MagnifyingGlassIcon,
 } from '@radix-ui/react-icons';
 import type { Meta, StoryObj } from '@storybook/react';
+import type { ScheduledExam } from 'api/ScheduledExam';
 import type { ComponentProps } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import Component from './ComboChipInput';
@@ -26,20 +27,16 @@ interface ExtraProps {
   rightIcon: keyof typeof iconMap;
 }
 
-interface FormFields {
-  field: string;
-}
-
 type StoryArgs = ComponentProps<typeof Component> & ExtraProps;
 type Story = StoryObj<StoryArgs>;
 
 const meta: Meta<StoryArgs> = {
   component: Component,
   decorators: [
-    (Story, { args }) => {
-      const methods = useForm<FormFields>({
+    (Story) => {
+      const methods = useForm<{ field: ScheduledExam['locations'] }>({
         defaultValues: {
-          field: args.defaultValue,
+          field: [{ roomName: 'BIS1 2020' }],
         },
         mode: 'all',
       });
