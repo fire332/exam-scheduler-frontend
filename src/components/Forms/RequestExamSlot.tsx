@@ -10,11 +10,11 @@ import { useCallback } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { FormProvider, useForm } from 'react-hook-form';
 import { examRequestsRoute } from 'routes/exam-requests/routing';
-import Button from './Button';
-import DateInput from './FormInput/DateInput';
-import DurationInput from './FormInput/DurationInput';
-import NumericInput from './FormInput/NumericInput';
-import TextInput from './FormInput/TextInput';
+import Button from '../Button';
+import DateInput from '../FormInput/DateInput';
+import DurationInput from '../FormInput/DurationInput';
+import NumericInput from '../FormInput/NumericInput';
+import TextInput from '../FormInput/TextInput';
 
 interface Props {
   examRequest?: ExamRequest;

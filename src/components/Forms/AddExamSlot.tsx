@@ -17,11 +17,11 @@ import type { FormEventHandler } from 'react';
 import { useCallback } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { FormProvider, useForm } from 'react-hook-form';
-import Button from './Button';
-import ComboChipInput from './FormInput/ComboChipInput';
-import DateTimeInput from './FormInput/DateTimeInput';
-import DurationInput from './FormInput/DurationInput';
-import TextInput from './FormInput/TextInput';
+import Button from '../Button';
+import ComboChipInput from '../FormInput/ComboChipInput';
+import DateTimeInput from '../FormInput/DateTimeInput';
+import DurationInput from '../FormInput/DurationInput';
+import TextInput from '../FormInput/TextInput';
 
 interface Props {
   scheduledExam?: ScheduledExam;

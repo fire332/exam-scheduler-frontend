@@ -2,7 +2,7 @@ import { useController, useSuspense } from '@rest-hooks/react';
 import { Route, useNavigate } from '@tanstack/router';
 import type { ExamRequestLike } from 'api/ExamRequest';
 import { ExamRequestResource } from 'api/ExamRequest';
-import RequestExamSlot from 'components/RequestExamSlot';
+import RequestExamSlot from 'components/Forms/RequestExamSlot';
 import { useCallback } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { dashboardRoute } from 'routing';
