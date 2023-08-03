@@ -9,7 +9,6 @@ import type { FormEventHandler } from 'react';
 import { useCallback } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { FormProvider, useForm } from 'react-hook-form';
-import { examRequestsRoute } from 'routes/exam-requests/routing';
 import Button from '../Button';
 import DateInput from '../FormInput/DateInput';
 import DurationInput from '../FormInput/DurationInput';
@@ -48,7 +47,7 @@ export default function RequestExamSlot({ examRequest, onSubmit }: Props) {
             <div>
               <Link
                 className="inline-flex w-8 items-center justify-center"
-                to={examRequestsRoute.fullPath}
+                to="/exam-requests"
               >
                 <ChevronLeftIcon width="24" height="24" />
               </Link>
