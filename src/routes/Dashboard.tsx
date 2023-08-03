@@ -30,21 +30,26 @@ export default function Dashboard() {
     <LayoutGroup>
       <Drawer expanded={expanded} onBurgerClick={handleBurgerClick}>
         <NavItem
+          key="/scheduled-exams" // TODO: ?????
           expanded={expanded}
-          shortText={'Schedule'}
-          longText={'Schedule'}
+          shortText="Schedule"
+          longText="Schedule"
           icon={CalendarIcon}
+          to="/scheduled-exams"
         />
         <NavItem
+          key="/exam-requests"
           expanded={expanded}
-          shortText={'Requests'}
-          longText={'Requests'}
+          shortText="Requests"
+          longText="Slot Requests"
           icon={EnvelopeClosedIcon}
+          to="/exam-requests"
         />
         <NavItem
+          key="/proctoring"
           expanded={expanded}
-          shortText={'Proctoring'}
-          longText={'Proctoring'}
+          shortText="Proctoring"
+          longText="Proctoring Availability"
           icon={EyeOpenIcon}
         />
       </Drawer>
