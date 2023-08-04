@@ -1,7 +1,6 @@
 import { ErrorMessage } from '@hookform/error-message';
 import type { Icon } from '@radix-ui/react-icons';
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
-import { motion } from 'framer-motion';
 import type { ForwardedRef } from 'react';
 import { forwardRef, type DOMAttributes } from 'react';
 import type { FieldErrors, FieldPath, FieldValues } from 'react-hook-form';
@@ -47,8 +46,7 @@ const InputWrapper = forwardRef(function InputWrapper<T extends FieldValues>(
   );
 
   return (
-    <motion.label
-      layout
+    <label
       ref={ref}
       htmlFor={labelFor}
       className="inline-flex flex-col items-stretch gap-2 overflow-hidden"
@@ -96,11 +94,7 @@ const InputWrapper = forwardRef(function InputWrapper<T extends FieldValues>(
         {children}
 
         {!isValid && (
-          <div
-            className={
-              'pointer-events-none inline-flex w-[52px] items-center justify-center'
-            }
-          >
+          <div className="pointer-events-none inline-flex w-[52px] items-center justify-center">
             <RightIcon width="20" height="20" className="text-error-500" />
           </div>
         )}
@@ -114,7 +108,7 @@ const InputWrapper = forwardRef(function InputWrapper<T extends FieldValues>(
       >
         {infoText}
       </div>
-    </motion.label>
+    </label>
   );
 });
 

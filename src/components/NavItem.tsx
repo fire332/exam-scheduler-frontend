@@ -1,8 +1,9 @@
 import type { Icon } from '@radix-ui/react-icons';
 import { DotFilledIcon } from '@radix-ui/react-icons';
+import { Link, useRouter, type MakeLinkOptions } from '@tanstack/router';
 import { motion } from 'framer-motion';
 
-interface Props {
+interface Props extends MakeLinkOptions {
   expanded?: boolean;
   active?: boolean;
   shortText: string;
@@ -10,37 +11,43 @@ interface Props {
   icon?: Icon;
 }
 
+const ActiveMarker = (
+  <motion.div
+    layout
+    layoutId="navitem-activemarker"
+    className="absolute inset-0 bg-primary-200"
+    style={{
+      borderRadius:
+        '9999px' /* equivalent to tailwind rounded-full; needed for framer motion compensation */,
+    }}
+  />
+);
+
+const MotionLink = motion<MakeLinkOptions>(Link);
+
 function NavItem({
   expanded,
   active,
   shortText,
   longText,
   icon = DotFilledIcon,
+  ...linkOpts
 }: Props) {
+  const router = useRouter();
   const NavIcon = motion(icon);
 
-  const activeMarker = active && (
-    <motion.div
-      layout
-      layoutId="navitem-activemarker"
-      className="absolute inset-0 -z-10 bg-primary-200"
-      style={{
-        borderRadius:
-          '9999px' /* equivalent to tailwind rounded-full; needed for framer motion compensation */,
-      }}
-    />
-  );
+  const isActive = linkOpts.to
+    ? router.state.resolvedLocation.pathname.startsWith(linkOpts.to)
+    : active;
 
-  return (
-    <motion.li
-      layout
-      className={
-        'relative flex h-14 list-none items-center text-surface-800' +
-        ' ' +
-        (expanded ? 'w-full gap-x-3 px-4 py-1' : 'flex-col gap-y-1')
-      }
-    >
-      {expanded && activeMarker}
+  const outerClassName =
+    'relative flex items-center text-surface-800 min-h-[3.5rem]' +
+    ' ' +
+    (expanded ? 'w-full gap-x-3 px-4 py-1' : 'flex-col gap-y-1 pb-1');
+
+  const inner = (
+    <>
+      {expanded && isActive && ActiveMarker}
       <motion.div
         layout
         className={
@@ -49,18 +56,37 @@ function NavItem({
           (expanded ? 'inline-block' : 'h-8 w-14')
         }
       >
-        {!expanded && activeMarker}
-        <NavIcon layout width="24" height="24" />
+        {!expanded && isActive && ActiveMarker}
+        <NavIcon layout width="24" height="24" className="z-10" />
       </motion.div>
       <motion.div
-        layout
+        layout="position"
         className={
-          'font-bold' + ' ' + (expanded ? 'inline-block text-sm' : 'text-xs')
+          'z-10 w-full break-words font-bold' +
+          ' ' +
+          (expanded ? 'inline-block text-sm' : 'text-center text-xs')
         }
       >
-        {expanded ? longText : shortText}
+        <motion.span layout="size">
+          {expanded ? longText : shortText}
+        </motion.span>
       </motion.div>
-    </motion.li>
+    </>
+  );
+
+  return (
+    <li className="contents">
+      {linkOpts.to ? (
+        // @ts-expect-error idk how to fix the type but it should work
+        <MotionLink layout {...linkOpts} className={outerClassName}>
+          {inner}
+        </MotionLink>
+      ) : (
+        <motion.a layout className={outerClassName}>
+          {inner}
+        </motion.a>
+      )}
+    </li>
   );
 }
 

@@ -1,47 +1,60 @@
+import { cva } from 'class-variance-authority';
+import type { MouseEventHandler } from 'react';
+import { ButtonIntent } from './constants';
+
 interface Props {
-  icon?: React.ReactNode;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  buttonType?: ButtonType;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  intent?: ButtonIntent;
 }
 
-enum ButtonType {
-  Solid,
-  Outline,
-  Tonal,
-}
+const button = cva(
+  [
+    'h-16',
+    'w-full',
+    'min-w-[10rem]',
+    'px-8',
+    'rounded-full',
+    'text-xl',
+    'font-bold',
+    'transition-all',
+  ],
+  {
+    variants: {
+      intent: {
+        solid: [
+          'border-2',
+          'text-white',
+          'bg-primary-400',
+          'border-primary-400',
+          'hover:bg-transparent',
+          'hover:text-primary-400',
+        ],
+        outline: [
+          'border-2',
+          'text-primary-400',
+          'border-primary-400',
+          'hover:bg-primary-400',
+          'hover:text-white',
+        ],
+        tonal: [
+          'text-primary-700',
+          'bg-primary-200',
+          'hover:text-primary-600',
+          'hover:bg-primary-300',
+        ],
+      },
+    },
+  },
+);
 
 export default function Button({
   children,
   onClick,
-  buttonType = ButtonType.Solid,
+  intent = ButtonIntent.Solid,
 }: React.PropsWithChildren<Props>) {
-  switch (buttonType) {
-    case ButtonType.Solid:
-      return (
-        <button
-          onClick={onClick}
-          className="h-16 w-full min-w-[10rem] rounded-full bg-primary-400 px-8 text-xl font-bold text-black transition-all hover:border-2 hover:border-primary-500 hover:bg-transparent hover:text-primary-500"
-        >
-          {children}
-        </button>
-      );
-    case ButtonType.Outline:
-      return (
-        <button
-          onClick={onClick}
-          className="h-16 w-full min-w-[10rem] rounded-full border-2 border-primary-400 bg-transparent px-8 text-xl font-bold text-primary-400 transition-all hover:border-2 hover:border-primary-500 hover:bg-transparent hover:text-primary-500"
-        >
-          {children}
-        </button>
-      );
-    case ButtonType.Tonal:
-      return (
-        <button
-          onClick={onClick}
-          className="h-16 w-full min-w-[10rem] rounded-full bg-primary-200 px-8 text-xl font-bold text-primary-700 transition-all hover:border-2 hover:border-primary-500 hover:bg-transparent hover:text-primary-500"
-        >
-          {children}
-        </button>
-      );
-  }
+  return (
+    <button onClick={onClick} className={button({ intent })}>
+      {children}
+    </button>
+  );
 }

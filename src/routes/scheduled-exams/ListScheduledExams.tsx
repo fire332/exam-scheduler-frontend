@@ -5,6 +5,7 @@ import { ScheduledExamResource } from 'api/ScheduledExam';
 import FetchError from 'components/FetchError';
 import FloatingActionButton from 'components/FloatingActionButton';
 import LoadingSpinner from 'components/LoadingSpinner';
+import PageHeader from 'components/PageHeader';
 import { AnimatePresence } from 'framer-motion';
 import { useCallback } from 'react';
 import ScheduledExamListItem from '../../components/ScheduledExamListItem';
@@ -69,9 +70,7 @@ export default function ListScheduledExams() {
 
   return (
     <>
-      <header className="flex h-20 w-full items-center text-xl font-bold">
-        Scheduled Exams
-      </header>
+      <PageHeader>Scheduled Exams</PageHeader>
       {body}
     </>
   );

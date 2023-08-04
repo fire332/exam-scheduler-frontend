@@ -15,17 +15,15 @@ interface IconProp {
 type Props = InclusiveOrWithChildren<BaseProps, IconProp>;
 
 const variants = {
-  labelPresent: {
-    width: undefined,
-    margin: undefined,
-    display: undefined,
+  shown: {
+    marginRight: '1rem', // equivalent to mr-4
+    width: 'max-content',
+    opacity: 1,
   },
-  labelAbsent: {
-    width: '0px',
-    margin: '0px',
-    transitionEnd: {
-      display: 'none',
-    },
+  hidden: {
+    marginRight: 0,
+    width: 0,
+    opacity: 0,
   },
 } satisfies Variants;
 
@@ -45,30 +43,25 @@ export default function FloatingActionButton({
       }
     >
       {Icon && (
-        <div className="inline-flex h-[56px] w-[56px] items-center justify-center ">
+        <div className="inline-flex h-[56px] w-[56px] items-center justify-center">
           <Icon height="24" width="24" />
         </div>
       )}
-      <motion.div
-        layoutScroll
-        animate={children ? 'labelPresent' : 'labelAbsent'}
-        variants={variants}
-        className="mr-4 inline-block overflow-hidden first:ml-4"
-      >
-        <AnimatePresence>
-          {children && (
-            <motion.span
-              layout
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="whitespace-nowrap"
-            >
-              {children}
-            </motion.span>
-          )}
-        </AnimatePresence>
-      </motion.div>
+      <AnimatePresence initial={!!Icon}>
+        {children && (
+          <motion.div
+            layout
+            layoutScroll
+            initial="hidden"
+            animate="shown"
+            exit="hidden"
+            variants={variants}
+            className="inline-block overflow-hidden whitespace-nowrap first:ml-4"
+          >
+            {children}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.button>
   );
 }

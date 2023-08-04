@@ -70,6 +70,10 @@ module.exports = {
     'react/jsx-no-undef': 'off', // TypeScript catches this for us already
     'react/jsx-no-useless-fragment': 'error',
     'react/jsx-uses-vars': 'off', // TypeScript catches this for us already
+    'react/jsx-curly-brace-presence': [
+      'error',
+      { propElementValues: 'always' },
+    ],
     'react/no-access-state-in-setstate': 'error',
     'react/no-invalid-html-attribute': 'error',
     'react/no-namespace': 'error',

@@ -1,20 +1,13 @@
-import { useNavigate } from '@tanstack/router';
-import { useCallback, useEffect } from 'react';
+import { Navigate } from '@tanstack/router';
+import { useCallback } from 'react';
 import { useAuth } from 'react-oidc-context';
 import Button from '../components/ButtonHero';
 import FICLogoColoured from '../components/FICLogo/FICLogoColoured';
 
 function Index() {
   const auth = useAuth();
-  const navigate = useNavigate();
 
   const onClick = useCallback(() => void auth.signinRedirect(), [auth]);
-
-  useEffect(() => {
-    if (auth.isAuthenticated) {
-      window.location.pathname = '/exam-requests';
-    }
-  }, [auth.isAuthenticated, navigate]);
 
   return (
     <div className="mx-auto max-w-lg ">
@@ -30,6 +23,7 @@ function Index() {
       </div>
 
       <Button onClick={onClick}>SIGN IN</Button>
+      {auth.isAuthenticated && <Navigate to="/scheduled-exams" />}
     </div>
   );
 }

@@ -47,14 +47,14 @@ const meta: Meta<StoryArgs> = {
 export default meta;
 
 export const Normal: Story = {
-  render: (args) => <Component<FormFields> {...args} inputName={'field'} />,
+  render: (args) => <Component<FormFields> {...args} inputName="field" />,
 };
 
 export const Error: Story = {
   render: (args) => (
     <Component<FormFields>
       {...args}
-      inputName={'field'}
+      inputName="field"
       validateOpts={{
         required: true,
       }}

@@ -1,27 +1,19 @@
-/* eslint-disable react-refresh/only-export-components */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
 import type * as icons from '@radix-ui/react-icons';
-import { CacheProvider, DevToolsManager } from '@rest-hooks/react';
+import {
+  AsyncBoundary,
+  CacheProvider,
+  DevToolsManager,
+} from '@rest-hooks/react';
 import { RouterProvider } from '@tanstack/router';
+import LoadingSpinner from 'components/LoadingSpinner';
 import { AuthProvider } from 'react-oidc-context';
 import type { ValueOf } from 'utility';
 import { authConfig } from './authConfig';
 import { router } from './routing';
-
-const TanStackRouterDevtools =
-  process.env.NODE_ENV === 'production'
-    ? () => null // Render nothing in production
-    : React.lazy(() =>
-        // Lazy load in development
-        import('@tanstack/router-devtools').then((res) => ({
-          default: res.TanStackRouterDevtools,
-          // For Embedded Mode
-          // default: res.TanStackRouterDevtoolsPanel
-        })),
-      );
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -32,12 +24,15 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           new DevToolsManager(),
         ]}
       >
-        <RouterProvider router={router} />
-        <TanStackRouterDevtools
-          initialIsOpen={false}
-          router={router}
-          position="bottom-right"
-        />
+        <AsyncBoundary
+          fallback={
+            <div className="flex items-center justify-center">
+              <LoadingSpinner />
+            </div>
+          }
+        >
+          <RouterProvider router={router} />
+        </AsyncBoundary>
       </CacheProvider>
     </AuthProvider>
   </React.StrictMode>,

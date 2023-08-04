@@ -75,7 +75,7 @@ export default meta;
 export const Normal: Story = {
   render: (args) => {
     const leftIcon = iconMap[args.leftIcon];
-    return <Component {...args} inputName={'field'} labelIcon={leftIcon} />;
+    return <Component {...args} inputName="field" labelIcon={leftIcon} />;
   },
 };
 
@@ -85,7 +85,7 @@ export const Error: Story = {
     return (
       <Component
         {...args}
-        inputName={'field'}
+        inputName="field"
         labelIcon={leftIcon}
         validateOpts={{
           required: true,

@@ -6,9 +6,9 @@ import type { FormEventHandler } from 'react';
 import { useCallback } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { FormProvider, useForm } from 'react-hook-form';
-import Button from './Button';
-import DateTimeInput from './FormInput/DateTimeInput';
-import PageHeader from './PageHeader';
+import Button from '../Button';
+import DateTimeInput from '../FormInput/DateTimeInput';
+import PageHeader from '../PageHeader';
 
 interface Props {
   initialValues: Proctor; // TODO -> API finish
