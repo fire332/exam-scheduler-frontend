@@ -52,7 +52,6 @@ export default function RequestExamSlot({ examRequest, onSubmit }: Props) {
               inputName="isoDuration"
               stepValue={15}
             />
-            P
           </div>
 
           <div className="inline-flex h-24 w-full">
