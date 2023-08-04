@@ -1,18 +1,24 @@
 import { ChevronLeftIcon } from '@radix-ui/react-icons';
+import { Link, type MakeLinkOptions } from '@tanstack/router';
+import type { PropsWithChildren } from 'react';
 
-// TODO: link to return page?
+type Props = MakeLinkOptions;
 
-export default function Header({ children }: React.PropsWithChildren) {
+export default function PageHeader({
+  children,
+  ...linkOpts
+}: PropsWithChildren<Props>) {
   return (
-    <header className="inline-flex h-20 w-full flex-row items-center text-xl font-bold">
-      <div className="inline-flex w-8 items-center justify-center">
-        <ChevronLeftIcon
-          width="24"
-          height="24"
-          color="color(display-p3 0.192 0.251 0.365)"
-        />
-      </div>
-      <div className="inline-flex">{children}</div>
+    <header className="mb-6 flex h-20 w-full items-stretch text-xl font-bold">
+      {linkOpts.to && (
+        <Link
+          {...linkOpts}
+          className="inline-flex w-8 items-center justify-center"
+        >
+          <ChevronLeftIcon width="24" height="24" />
+        </Link>
+      )}
+      <div className="inline-flex items-center">{children}</div>
     </header>
   );
 }

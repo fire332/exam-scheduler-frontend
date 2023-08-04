@@ -4,6 +4,7 @@ import { useNavigate } from '@tanstack/router';
 import FetchError from 'components/FetchError';
 import FloatingActionButton from 'components/FloatingActionButton';
 import LoadingSpinner from 'components/LoadingSpinner';
+import PageHeader from 'components/PageHeader';
 import { AnimatePresence } from 'framer-motion';
 import { useCallback } from 'react';
 import { ExamRequestResource } from '../../api/ExamRequest';
@@ -63,9 +64,7 @@ export default function ListExamRequests() {
 
   return (
     <>
-      <header className="flex h-20 w-full items-center text-xl font-bold">
-        Exam slot requests
-      </header>
+      <PageHeader>Exam Requests</PageHeader>
       {body}
     </>
   );

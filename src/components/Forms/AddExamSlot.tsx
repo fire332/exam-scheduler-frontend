@@ -5,13 +5,10 @@
 // TODO: refactor to use separate Date and Time inputs (better match Figma)
 // TODO: rename? -> ScheduleExam.tsx?
 
-import {
-  CalendarIcon,
-  ChevronLeftIcon,
-  InputIcon,
-} from '@radix-ui/react-icons';
+import { CalendarIcon, InputIcon } from '@radix-ui/react-icons';
 import { Link } from '@tanstack/router';
 import type { ScheduledExam, ScheduledExamLike } from 'api/ScheduledExam';
+import PageHeader from 'components/PageHeader';
 import { DateTime } from 'luxon';
 import type { FormEventHandler } from 'react';
 import { useCallback } from 'react';
@@ -62,17 +59,7 @@ export default function AddExamSlot({ scheduledExam, onSubmit }: Props) {
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit}>
         <div className="inline-flex h-full w-full flex-col">
-          <header className="inline-flex h-20 w-full flex-row items-center text-xl font-bold">
-            <div>
-              <Link
-                className="inline-flex w-8 items-center justify-center"
-                to="/scheduled-exams"
-              >
-                <ChevronLeftIcon width="24" height="24" />
-              </Link>
-            </div>
-            <div className="inline-flex">Add exam slot</div>
-          </header>
+          <PageHeader to="/scheduled-exams">Add exam slot</PageHeader>
 
           <div className="inline-flex h-24 w-full flex-row gap-x-9">
             <TextInput
@@ -80,7 +67,6 @@ export default function AddExamSlot({ scheduledExam, onSubmit }: Props) {
               inputName="courseCode"
               labelIcon={InputIcon}
             />
-
             <DateTimeInput
               labelText="Date and Start Time"
               inputName="startDateTime"

@@ -1,10 +1,6 @@
-import {
-  CalendarIcon,
-  ChevronLeftIcon,
-  InputIcon,
-} from '@radix-ui/react-icons';
-import { Link } from '@tanstack/router';
+import { CalendarIcon, InputIcon } from '@radix-ui/react-icons';
 import type { ExamRequest, ExamRequestLike } from 'api/ExamRequest';
+import PageHeader from 'components/PageHeader';
 import type { FormEventHandler } from 'react';
 import { useCallback } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
@@ -43,17 +39,7 @@ export default function RequestExamSlot({ examRequest, onSubmit }: Props) {
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit}>
         <div className="inline-flex h-full w-full flex-col">
-          <header className="inline-flex h-20 w-full flex-row items-center text-xl font-bold">
-            <div>
-              <Link
-                className="inline-flex w-8 items-center justify-center"
-                to="/exam-requests"
-              >
-                <ChevronLeftIcon width="24" height="24" />
-              </Link>
-            </div>
-            <div className="inline-flex">Request exam slot</div>
-          </header>
+          <PageHeader to="/exam-requests">Request exam slot</PageHeader>
 
           <div className="inline-flex h-24 w-full flex-row gap-x-9">
             <TextInput
@@ -61,12 +47,12 @@ export default function RequestExamSlot({ examRequest, onSubmit }: Props) {
               inputName="courseCode"
               labelIcon={InputIcon}
             />
-
             <DurationInput
               labelText="Duration (minutes)"
               inputName="isoDuration"
               stepValue={15}
             />
+            P
           </div>
 
           <div className="inline-flex h-24 w-full">
