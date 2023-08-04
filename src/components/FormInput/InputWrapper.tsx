@@ -96,11 +96,7 @@ const InputWrapper = forwardRef(function InputWrapper<T extends FieldValues>(
         {children}
 
         {!isValid && (
-          <div
-            className={
-              'pointer-events-none inline-flex w-[52px] items-center justify-center'
-            }
-          >
+          <div className="pointer-events-none inline-flex w-[52px] items-center justify-center">
             <RightIcon width="20" height="20" className="text-error-500" />
           </div>
         )}

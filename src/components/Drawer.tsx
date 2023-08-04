@@ -26,7 +26,7 @@ export default function Drawer({
         layout
         className={expanded ? 'flex items-center' : 'flex justify-center'}
       >
-        <motion.button layout onClick={onBurgerClick} className={'h-16'}>
+        <motion.button layout onClick={onBurgerClick} className="h-16">
           {expanded ? <Cross1Icon /> : <HamburgerMenuIcon />}
         </motion.button>
         {expanded && (

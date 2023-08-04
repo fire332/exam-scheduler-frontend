@@ -51,11 +51,7 @@ export const Normal: Story = {
   render: (args) => {
     const leftIcon = CalendarIcon;
     return (
-      <Component<FormFields>
-        {...args}
-        inputName={'field'}
-        labelIcon={leftIcon}
-      />
+      <Component<FormFields> {...args} inputName="field" labelIcon={leftIcon} />
     );
   },
 };
@@ -66,7 +62,7 @@ export const Error: Story = {
     return (
       <Component<FormFields>
         {...args}
-        inputName={'field'}
+        inputName="field"
         labelIcon={leftIcon}
         validateOpts={{
           required: true,

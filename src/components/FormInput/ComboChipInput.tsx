@@ -91,7 +91,7 @@ export default function ComboChipInput<
       <motion.div layout className="inline-flex w-full flex-col">
         <AnimatePresence>
           <motion.input
-            key={'input'}
+            key="input"
             layout
             className="p-0"
             type="text"
@@ -102,7 +102,7 @@ export default function ComboChipInput<
             <>
               <motion.hr
                 layout
-                key={'divider'}
+                key="divider"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -110,7 +110,7 @@ export default function ComboChipInput<
               />
               <motion.div
                 layout
-                key={'chips'}
+                key="chips"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
