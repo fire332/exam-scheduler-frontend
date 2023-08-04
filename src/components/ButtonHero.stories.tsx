@@ -5,11 +5,12 @@ type Story = StoryObj<typeof Component>;
 
 const meta = {
   component: Component,
+  args: {
+    children: 'CLICK ME',
+  },
   argTypes: { children: { control: 'text' } },
 } satisfies Meta<typeof Component>;
 
 export default meta;
 
-export const ButtonHero: Story = {
-  render: (args) => <Component {...args}>{args.children}</Component>,
-};
+export const ButtonHero: Story = {};

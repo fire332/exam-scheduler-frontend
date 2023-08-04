@@ -1,3 +1,4 @@
+import { Navigate } from '@tanstack/router';
 import { useCallback } from 'react';
 import { useAuth } from 'react-oidc-context';
 import Button from '../components/ButtonHero';
@@ -5,11 +6,8 @@ import FICLogoColoured from '../components/FICLogo/FICLogoColoured';
 
 function Index() {
   const auth = useAuth();
-  const onClick = useCallback(() => void auth.signinRedirect(), [auth]);
 
-  if (auth.isAuthenticated) {
-    window.location.pathname = '/dashboard/exam-requests';
-  }
+  const onClick = useCallback(() => void auth.signinRedirect(), [auth]);
 
   return (
     <div className="mx-auto max-w-lg ">
@@ -25,6 +23,7 @@ function Index() {
       </div>
 
       <Button onClick={onClick}>SIGN IN</Button>
+      {auth.isAuthenticated && <Navigate to="/scheduled-exams" />}
     </div>
   );
 }

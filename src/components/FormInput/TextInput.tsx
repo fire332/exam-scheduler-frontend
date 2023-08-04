@@ -39,7 +39,11 @@ function FormTextInput<T extends FieldValues>({
       helperText={helperText}
       required={isRequired}
     >
-      <input type="text" {...register(inputName, validateOpts)} />
+      <input
+        // className="h-5"
+        type="text"
+        {...register(inputName, validateOpts)}
+      />
     </InputWrapper>
   );
 }

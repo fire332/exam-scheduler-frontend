@@ -1,5 +1,3 @@
-// TODO remove un-needed
-
 import {
   CalendarIcon,
   ExclamationTriangleIcon,
@@ -8,10 +6,10 @@ import {
   MagnifyingGlassIcon,
 } from '@radix-ui/react-icons';
 import type { Meta, StoryObj } from '@storybook/react';
+import type { ScheduledExam } from 'api/ScheduledExam';
 import type { ComponentProps } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-
-import Component from './TimeInput';
+import Component from './ComboChipInput';
 
 const iconMap = {
   CalendarIcon,
@@ -29,20 +27,16 @@ interface ExtraProps {
   rightIcon: keyof typeof iconMap;
 }
 
-interface FormFields {
-  field: string;
-}
-
 type StoryArgs = ComponentProps<typeof Component> & ExtraProps;
 type Story = StoryObj<StoryArgs>;
 
 const meta: Meta<StoryArgs> = {
   component: Component,
   decorators: [
-    (Story, { args }) => {
-      const methods = useForm<FormFields>({
+    (Story) => {
+      const methods = useForm<{ field: ScheduledExam['locations'] }>({
         defaultValues: {
-          field: args.defaultValue,
+          field: [{ roomName: 'BIS1 2020' }],
         },
         mode: 'all',
       });
@@ -58,7 +52,7 @@ const meta: Meta<StoryArgs> = {
   ],
   args: {
     defaultValue: 'John Doe',
-    labelText: 'Name',
+    labelText: 'Rooms',
     helperText: 'Some helper Text',
     errorMessage: 'Max 2 character limit.',
     leftIcon: 'DefaultIcon',
@@ -79,17 +73,25 @@ const meta: Meta<StoryArgs> = {
 export default meta;
 
 export const Normal: Story = {
-  render: (args) => <Component<FormFields> {...args} inputName="field" />,
+  render: (args) => {
+    const leftIcon = iconMap[args.leftIcon];
+    return <Component {...args} inputName="field" labelIcon={leftIcon} />;
+  },
 };
 
 export const Error: Story = {
-  render: (args) => (
-    <Component<FormFields>
-      {...args}
-      inputName="field"
-      validateOpts={{
-        required: true,
-      }}
-    />
-  ),
+  render: (args) => {
+    const leftIcon = iconMap[args.leftIcon];
+    return (
+      <Component
+        {...args}
+        inputName="field"
+        labelIcon={leftIcon}
+        validateOpts={{
+          required: true,
+          maxLength: { value: 2, message: args.errorMessage },
+        }}
+      />
+    );
+  },
 };

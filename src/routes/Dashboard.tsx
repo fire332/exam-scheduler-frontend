@@ -5,6 +5,7 @@ import {
 } from '@radix-ui/react-icons';
 import { AsyncBoundary } from '@rest-hooks/react';
 import { Outlet } from '@tanstack/router';
+import { LayoutGroup, motion } from 'framer-motion';
 import { useCallback, useState } from 'react';
 import { useAuth } from 'react-oidc-context';
 import Drawer from '../components/Drawer';
@@ -26,32 +27,40 @@ export default function Dashboard() {
   );
 
   return (
-    <>
+    <LayoutGroup>
       <Drawer expanded={expanded} onBurgerClick={handleBurgerClick}>
         <NavItem
+          key="/scheduled-exams" // TODO: ?????
           expanded={expanded}
-          shortText={'Schedule'}
-          longText={'Schedule'}
+          shortText="Schedule"
+          longText="Schedule"
           icon={CalendarIcon}
+          to="/scheduled-exams"
         />
         <NavItem
+          key="/exam-requests"
           expanded={expanded}
-          shortText={'Requests'}
-          longText={'Requests'}
+          shortText="Requests"
+          longText="Slot Requests"
           icon={EnvelopeClosedIcon}
+          to="/exam-requests"
         />
         <NavItem
+          key="/proctoring"
           expanded={expanded}
-          shortText={'Proctoring'}
-          longText={'Proctoring'}
+          shortText="Proctoring"
+          longText="Proctoring Availability"
           icon={EyeOpenIcon}
         />
       </Drawer>
-      <div className="flex grow flex-col">
-        <div className="flex h-16 w-full justify-end">
+      <motion.div layout className="flex grow flex-col">
+        <motion.div layout className="flex h-16 w-full justify-end">
           <UserBar />
-        </div>
-        <div className="grow rounded-tl-md bg-surface-50 px-8 text-surface-900">
+        </motion.div>
+        <motion.div
+          layout
+          className="grow rounded-tl-md bg-surface-50 px-8 text-surface-900"
+        >
           <AsyncBoundary
             fallback={
               <div className="flex h-full items-center justify-center">
@@ -62,8 +71,8 @@ export default function Dashboard() {
           >
             <Outlet />
           </AsyncBoundary>
-        </div>
-      </div>
-    </>
+        </motion.div>
+      </motion.div>
+    </LayoutGroup>
   );
 }

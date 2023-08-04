@@ -27,18 +27,18 @@ export const Drawer: Story = {
       <NavItem
         expanded={args.expanded}
         active
-        shortText={'Schedule'}
-        longText={'Schedule'}
+        shortText="Schedule"
+        longText="Schedule"
       />
       <NavItem
         expanded={args.expanded}
-        shortText={'Request'}
-        longText={'Request'}
+        shortText="Request"
+        longText="Request"
       />
       <NavItem
         expanded={args.expanded}
-        shortText={'Proctoring'}
-        longText={'Proctoring'}
+        shortText="Proctoring"
+        longText="Proctoring"
       />
     </Component>
   ),

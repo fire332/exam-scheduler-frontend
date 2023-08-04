@@ -26,7 +26,8 @@ const meta = {
     provideValue: true,
   },
   argTypes: {
-    dragHandlePointerDown: { action: 'dragHandleDown' },
+    onChange: { action: 'onChange' },
+    onBlur: { action: 'onBlur' },
   },
   decorators: [
     (Story) => (
@@ -35,13 +36,13 @@ const meta = {
       </div>
     ),
   ],
-  render: ({ year, month, day, provideValue }) => {
+  render: ({ year, month, day, provideValue, onChange, onBlur }) => {
     const value = provideValue ? { year, month, day } : undefined;
 
     return (
       // eslint-disable-next-line react/jsx-no-bind, @typescript-eslint/no-empty-function
       <Reorder.Group values={[value]} onReorder={() => {}}>
-        <Component value={value} />
+        <Component value={value} onChange={onChange} onBlur={onBlur} />
       </Reorder.Group>
     );
   },
