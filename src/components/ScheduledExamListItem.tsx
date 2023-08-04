@@ -1,4 +1,6 @@
 import {
+  CalendarIcon,
+  ClockIcon,
   MinusCircledIcon,
   Pencil1Icon,
   TimerIcon,
@@ -6,6 +8,7 @@ import {
 import { useController } from '@rest-hooks/react';
 import { Link } from '@tanstack/router';
 import { ScheduledExamResource, type ScheduledExam } from 'api/ScheduledExam';
+import { DateTime } from 'luxon';
 import { useCallback } from 'react';
 import {
   scheduledExamsEditRoute,
@@ -22,7 +25,7 @@ export default function ScheduledExamListItem({
   scheduledExam: {
     examId,
     courseCode,
-    // startDateTime,
+    startDateTime,
     duration,
     // instructorId,
     // location,
@@ -32,15 +35,16 @@ export default function ScheduledExamListItem({
 }: Props) {
   const ctrl = useController();
 
-  // const humanDateList = datePreferences
-  //   .map((dt) =>
-  //     dt.toLocaleString({
-  //       weekday: 'short',
-  //       month: 'short',
-  //       day: 'numeric',
-  //     }),
-  //   )
-  //   .join(' - ');
+  const humanDate = DateTime.fromISO(startDateTime).toLocaleString({
+    weekday: 'short',
+    month: 'long',
+    day: 'numeric',
+  });
+
+  const humanTime = DateTime.fromISO(startDateTime).toLocaleString({
+    hour: 'numeric',
+    minute: 'numeric',
+  });
 
   const handleDelete = useCallback(() => {
     void ctrl.fetch(ScheduledExamResource.delete, {
@@ -66,8 +70,9 @@ export default function ScheduledExamListItem({
 
   return (
     <RichListItem heading={courseCode} actionElements={actionButtons}>
+      <AdditionalInfo Icon={CalendarIcon}>{humanDate}</AdditionalInfo>
+      <AdditionalInfo Icon={ClockIcon}>{humanTime}</AdditionalInfo>
       <AdditionalInfo Icon={TimerIcon}>{duration.toHuman()}</AdditionalInfo>
-      {/* <AdditionalInfo Icon={CalendarIcon}>{humanDateList}</AdditionalInfo> */}
     </RichListItem>
   );
 }
