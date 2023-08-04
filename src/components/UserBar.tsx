@@ -23,12 +23,14 @@ export default function UserBar() {
                   : ''}
               </div>
             </div>
-            <div className="h-[43px] w-[43px] rounded-full bg-black">
-              <div className="inline-block h-10 w-10 rounded-full bg-surface-400 text-lg">
-                {auth.user?.profile.given_name?.charAt(0)}
-                {auth.user?.profile.family_name
-                  ? auth.user.profile.family_name.charAt(0)
-                  : ''}
+            <div className="rounded-full bg-black p-0.5 text-lg">
+              <div className="flex h-10 w-10 items-center justify-center whitespace-nowrap rounded-full bg-surface-400">
+                <span>
+                  {auth.user?.profile.given_name?.charAt(0)}
+                  {auth.user?.profile.family_name
+                    ? auth.user.profile.family_name.charAt(0)
+                    : ''}
+                </span>
               </div>
             </div>
           </button>
