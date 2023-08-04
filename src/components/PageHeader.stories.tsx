@@ -19,7 +19,14 @@ const meta = {
       options: [undefined, '/'],
     },
   },
-  decorators: [RouterStoryDecorator],
+  decorators: [
+    RouterStoryDecorator,
+    (Story) => (
+      <div className="w-80">
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<StoryArgs>;
 
 export default meta;
