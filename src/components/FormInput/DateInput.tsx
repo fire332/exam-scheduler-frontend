@@ -68,15 +68,13 @@ function DateInput<T extends FieldValues>({
       helperText={helperText}
       required={isRequired}
     >
-      <div className="relative flow-root flex-grow">
-        <input
-          id={id}
-          type="date"
-          className="h-full w-full [&::-webkit-calendar-picker-indicator]:hidden"
-          {...inputAttrs}
-          ref={mergeRefs([inputRef, inputAttrs.ref])}
-        />
-      </div>
+      <input
+        id={id}
+        type="date"
+        className="h-full w-full [&::-webkit-calendar-picker-indicator]:hidden"
+        {...inputAttrs}
+        ref={mergeRefs([inputRef, inputAttrs.ref])}
+      />
     </InputWrapper>
   );
 }
