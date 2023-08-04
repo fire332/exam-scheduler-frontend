@@ -47,7 +47,7 @@ export default function OrderedDate({ value, onChange, onBlur }: Props) {
         },
         [triggerEdit],
       )}
-      className="relative flex h-12 w-full min-w-fit items-stretch justify-between rounded bg-gray-50 shadow [&>*]:flex [&>*]:items-center [&>*]:justify-center"
+      className="relative flex h-12 w-full min-w-[16rem] items-stretch justify-between rounded bg-gray-50 shadow [&>*]:flex [&>*]:items-center [&>*]:justify-center"
     >
       <input
         type="date"
@@ -58,7 +58,7 @@ export default function OrderedDate({ value, onChange, onBlur }: Props) {
       <div
         onPointerDown={dragHandlePointerDown}
         onPointerUp={onBlur}
-        className="w-12"
+        className="w-12 touch-none"
       >
         <DragHandleDots2Icon height="20" width="20" />
       </div>

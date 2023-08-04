@@ -11,7 +11,7 @@ const meta = {
   decorators: [
     (Story) => {
       const methods = useForm({
-        defaultValues: { isoDates: ['2023-08-04', '2023-08-05', '2023-08-06'] },
+        defaultValues: { isoDates: ['2023-08-04', '2023-08-05', undefined] },
       });
       return (
         <FormProvider {...methods}>
@@ -20,7 +20,7 @@ const meta = {
       );
     },
   ],
-  render: () => <Component name="isoDates" label="Dates" />,
+  render: () => <Component inputName="isoDates" labelText="Dates" />,
 } satisfies Meta<StoryArgs>;
 
 export default meta;

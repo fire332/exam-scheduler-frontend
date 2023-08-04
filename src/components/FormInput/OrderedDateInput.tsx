@@ -8,8 +8,8 @@ import InputWrapper from './InputWrapper';
 import OrderedDateInputItem from './OrderedDateInputItem';
 
 interface Props<N> {
-  name: N;
-  label: string;
+  inputName: N;
+  labelText: string;
   helperText?: string;
 }
 
@@ -22,8 +22,8 @@ const toISOOpts = {
 export default function OrderedDateInput<
   InputName extends FieldPath<FormValues>,
   FormValues extends FieldValues,
->({ name, label, helperText }: Props<InputName>) {
-  const { field } = useController<FormValues, InputName>({ name });
+>({ inputName, labelText, helperText }: Props<InputName>) {
+  const { field } = useController<FormValues, InputName>({ name: inputName });
   // const [dates, setDates] = useState<(string | undefined)[]>(
   //   field.value ?? [undefined, undefined, undefined],
   // );
@@ -58,8 +58,13 @@ export default function OrderedDateInput<
   ) as DateInfoArray;
 
   return (
-    <InputWrapper inputName={name} labelText={label} helperText={helperText}>
+    <InputWrapper
+      inputName={inputName}
+      labelText={labelText}
+      helperText={helperText}
+    >
       <Reorder.Group
+        as="ol"
         values={dateInfos}
         onReorder={useCallback(
           (infos: DateInfoArray) =>
@@ -70,7 +75,7 @@ export default function OrderedDateInput<
             ),
           [update],
         )}
-        className="flex flex-col gap-y-3"
+        className="flex w-full flex-col gap-y-3"
       >
         {dateInfos.map((info, index) => (
           <OrderedDateInputItem
