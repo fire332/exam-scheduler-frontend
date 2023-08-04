@@ -45,6 +45,14 @@ export const decorators: Decorator[] = [
       dark: 'dark',
     },
     defaultTheme: 'light',
+  }), // Adds theme switching support.
+  // NOTE: requires setting "darkMode" to "class" in your tailwind config
+  withThemeByClassName({
+    themes: {
+      light: 'light',
+      dark: 'dark',
+    },
+    defaultTheme: 'light',
   }),
 ];
 
